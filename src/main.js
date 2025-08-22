@@ -310,6 +310,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     setTimeout(()=>{
       kpis.forEach(k=>{ if(!k.dataset.running) runCounter(k); });
     }, 500);
+
+    // Immediate start as additional safety
+    kpis.forEach(k=>{ if(!k.dataset.running) runCounter(k); });
   })();
 
   // Mobile-optimized sticky header
