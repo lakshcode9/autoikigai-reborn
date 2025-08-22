@@ -260,11 +260,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   // Mobile-optimized lead flow animation
+  console.log('=== LEAD FLOW DEBUG ===');
   const flow=document.getElementById('lead-flow');
   console.log('Lead flow element found:', flow);
+  console.log('All elements with id:', document.querySelectorAll('[id]'));
+  console.log('All elements with class flow:', document.querySelectorAll('.flow'));
   if(flow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     const svg=flow.querySelector('.flow-svg');
-    const dots=flow.querySelectorAll('.flow .dot');
+    const dots=flow.querySelectorAll('.dot');
     const kpis=flow.querySelectorAll('.kpi span');
     
     console.log('Flow elements found:', { svg, dots: dots.length, kpis: kpis.length });
