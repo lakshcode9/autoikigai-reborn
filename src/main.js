@@ -259,82 +259,59 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
   }
 
-  // Mobile-optimized lead flow animation
-  console.log('=== LEAD FLOW DEBUG ===');
-  const flow=document.getElementById('lead-flow');
-  console.log('Lead flow element found:', flow);
-  console.log('All elements with id:', document.querySelectorAll('[id]'));
-  console.log('All elements with class flow:', document.querySelectorAll('.flow'));
-  if(flow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    const svg=flow.querySelector('.flow-svg');
-    const dots=flow.querySelectorAll('.dot');
-    const kpis=flow.querySelectorAll('.kpi span');
+  // Simple lead flow animation - bulletproof version
+  try {
+    console.log('=== LEAD FLOW DEBUG ===');
+    const flow = document.getElementById('lead-flow');
+    console.log('Lead flow element found:', flow);
     
-    console.log('Flow elements found:', { svg, dots: dots.length, kpis: kpis.length });
-    
-    if(svg && dots.length && kpis.length){
-      const path=svg.querySelector('path');
-      if(path){
-        const pathLength=path.getTotalLength();
-        let t=0;
-        
-        const animateFlow=()=>{
-          t+=0.005; // Slower on mobile
-          if(t>1) t=0;
-          
-          dots.forEach((dot,idx)=>{
-            const offset=(t+idx*0.33)%1;
-            const point=path.getPointAtLength(offset*pathLength);
-            dot.style.transform=`translate(${point.x}px,${point.y}px)`;
-          });
-          
-          requestAnimationFrame(animateFlow);
-        };
-        
-        // Only animate when visible (mobile performance)
-        if('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if(entry.isIntersecting) {
-                animateFlow();
-              }
-            });
-          }, { threshold: 0.1 });
-          observer.observe(flow);
-        } else {
-          animateFlow();
-        }
-      }
-    }
-
-    // KPI counter animation (mobile-optimized)
-    if('IntersectionObserver' in window){
-      const kpiObserver=new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            const target=entry.target;
-            const final=parseInt(target.dataset.value)||0;
-            const duration=isMobile ? 2000 : 1500; // Slower on mobile
-            const increment=final/(duration/16);
-            let current=0;
-            
-            const counter=setInterval(()=>{
-              current+=increment;
-              if(current>=final){
-                target.textContent=final;
-                clearInterval(counter);
-              }else{
-                target.textContent=Math.floor(current);
-              }
-            },16);
-            
-            kpiObserver.unobserve(target);
-          }
-        });
-      },{threshold:0.5});
+    if (flow) {
+      const svg = flow.querySelector('.flow-svg');
+      const dots = flow.querySelectorAll('.dot');
+      const kpis = flow.querySelectorAll('.kpi span');
       
-      kpis.forEach(kpi=>kpiObserver.observe(kpi));
+      console.log('Flow elements found:', { svg: !!svg, dots: dots.length, kpis: kpis.length });
+      
+      // Simple dot animation
+      if (dots.length > 0) {
+        let t = 0;
+        const animateDots = () => {
+          t += 0.01;
+          dots.forEach((dot, idx) => {
+            const x = Math.sin(t + idx) * 20;
+            const y = Math.cos(t + idx) * 10;
+            dot.style.transform = `translate(${x}px, ${y}px)`;
+          });
+          requestAnimationFrame(animateDots);
+        };
+        animateDots();
+        console.log('Dot animation started');
+      }
+      
+      // Simple KPI counter
+      if (kpis.length > 0) {
+        kpis.forEach((kpi, idx) => {
+          const targetValue = parseInt(kpi.dataset.value) || [5000, 1250, 312][idx] || 1000;
+          let current = 0;
+          const increment = targetValue / 100;
+          
+          const counter = setInterval(() => {
+            current += increment;
+            if (current >= targetValue) {
+              kpi.textContent = targetValue;
+              clearInterval(counter);
+            } else {
+              kpi.textContent = Math.floor(current);
+            }
+          }, 20);
+        });
+        console.log('KPI counters started');
+      }
+    } else {
+      console.log('Lead flow element NOT found');
     }
+  } catch (error) {
+    console.error('Lead flow animation error:', error);
   }
 
   // Mobile-optimized sticky header
