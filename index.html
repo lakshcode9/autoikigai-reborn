@@ -110,32 +110,18 @@
               <p>Qualified prospects scheduled into your team’s calendar.</p>
             </div>
           </div>
-          <div class="flow" id="lead-flow" aria-label="Lead reactivation flow">
-            <svg class="flow-svg" viewBox="0 0 1100 160" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="flowGrad" x1="0%" x2="100%">
-                  <stop offset="0%" stop-color="#6d6afc"/>
-                  <stop offset="100%" stop-color="#65e6cf"/>
-                </linearGradient>
-                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <path id="flow-path" d="M40,120 C240,20 380,20 560,120 S880,220 1060,60" stroke="url(#flowGrad)" stroke-width="6" fill="none" opacity=".35" />
-              <!-- Rebuilt: use three animated dots following the path -->
-              <circle class="dot" r="7" filter="url(#glow)" />
-              <circle class="dot" r="7" filter="url(#glow)" />
-              <circle class="dot" r="7" filter="url(#glow)" />
-            </svg>
-            <div class="flow-labels">
-              <div class="flow-col">
+          <div class="pipeline" id="lead-pipeline" aria-label="Lead reactivation pipeline">
+            <div class="stages">
+              <div class="stage">
+                <div class="bar"><span class="spark"></span></div>
                 <div class="kpi"><span data-value="5000">0</span> Old Leads</div>
               </div>
-              <div class="flow-col">
+              <div class="stage">
+                <div class="bar"><span class="spark"></span></div>
                 <div class="kpi"><span data-value="1250">0</span> Activated</div>
               </div>
-              <div class="flow-col">
+              <div class="stage">
+                <div class="bar"><span class="spark"></span></div>
                 <div class="kpi"><span data-value="312">0</span> Booked</div>
               </div>
             </div>
