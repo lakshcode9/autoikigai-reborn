@@ -2,7 +2,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   const yearEl=document.getElementById('y');
   if(yearEl){yearEl.textContent=String(new Date().getFullYear());}
 
-  // Smooth scroll for internal anchors
+  // Mobile detection
+  const isMobile = window.matchMedia('(max-width: 960px)').matches;
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  // Smooth scroll for internal anchors (mobile-optimized)
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
       const id=a.getAttribute('href');
@@ -10,13 +14,17 @@ document.addEventListener('DOMContentLoaded',()=>{
         const target=document.querySelector(id);
         if(target){
           e.preventDefault();
-          target.scrollIntoView({behavior:'smooth',block:'start'});
+          // Mobile-optimized scroll behavior
+          const scrollOptions = isMobile ? 
+            {behavior:'smooth',block:'start',inline:'nearest'} : 
+            {behavior:'smooth',block:'start'};
+          target.scrollIntoView(scrollOptions);
         }
       }
     });
   });
 
-  // Mobile menu toggle
+  // Mobile menu toggle with improved UX
   const toggle=document.querySelector('.menu-toggle');
   const headerEl=document.querySelector('.site-header');
   if(toggle && headerEl){
@@ -24,7 +32,21 @@ document.addEventListener('DOMContentLoaded',()=>{
       const open=headerEl.classList.toggle('menu-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
+      
+      // Mobile-specific: close menu on escape key
+      if(open) {
+        const handleEscape = (e) => {
+          if(e.key === 'Escape') {
+            headerEl.classList.remove('menu-open');
+            toggle.setAttribute('aria-expanded','false');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEscape);
+          }
+        };
+        document.addEventListener('keydown', handleEscape);
+      }
     });
+    
     // close on nav link click
     headerEl.querySelectorAll('.nav a').forEach(link=>{
       link.addEventListener('click',()=>{
@@ -33,9 +55,20 @@ document.addEventListener('DOMContentLoaded',()=>{
         document.body.style.overflow='';
       });
     });
+    
+    // Close menu on outside click (mobile)
+    if(isMobile) {
+      document.addEventListener('click', (e) => {
+        if(!headerEl.contains(e.target) && headerEl.classList.contains('menu-open')) {
+          headerEl.classList.remove('menu-open');
+          toggle.setAttribute('aria-expanded','false');
+          document.body.style.overflow = '';
+        }
+      });
+    }
   }
 
-  // Chat demo sequencing
+  // Chat demo sequencing (mobile-optimized)
   const chat=document.getElementById('chat-demo');
   if(chat){
     const bubbles=Array.from(chat.querySelectorAll('.bubble'));
@@ -54,9 +87,10 @@ document.addEventListener('DOMContentLoaded',()=>{
       bubbles.forEach(b=>{b.style.opacity='0';b.style.transform='translateY(6px)';});
       replay.style.opacity='0';
       replay.style.transform='translateY(6px)';
-      // sequence
+      // sequence (slower on mobile for better readability)
       let t=400; // ms
-      bubbles.forEach((b,i)=>{ show(b, t); t += 1600; });
+      const interval = isMobile ? 2000 : 1600; // Longer delays on mobile
+      bubbles.forEach((b,i)=>{ show(b, t); t += interval; });
       setTimeout(()=>{
         replay.style.transition='opacity .5s ease, transform .5s ease';
         replay.style.opacity='1';
@@ -68,119 +102,265 @@ document.addEventListener('DOMContentLoaded',()=>{
     run();
   }
 
-  // Scroll reveal
+  // Mobile-optimized scroll reveal
   const revealEls=document.querySelectorAll('.reveal');
   if(revealEls.length>0 && 'IntersectionObserver' in window){
     const io=new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
           e.target.classList.add('in');
-          // stagger children if applicable
+          // stagger children if applicable (mobile-optimized)
           if(e.target.classList.contains('reveal-stagger')){
             const children=[...e.target.children];
+            const staggerDelay = isMobile ? 100 : 60; // Slower stagger on mobile
             children.forEach((c,idx)=>{
-              c.style.transitionDelay=`${idx*60}ms`;
+              c.style.transitionDelay=`${idx*staggerDelay}ms`;
             });
           }
         }
       });
-    },{threshold:0.15});
+    },{threshold: isMobile ? 0.1 : 0.15}); // Lower threshold on mobile
     revealEls.forEach(el=>io.observe(el));
   }
 
-  // Simple parallax for hero orbs
+  // Mobile-optimized parallax for hero orbs
   const hero=document.querySelector('.hero-art');
   const orbs=document.querySelectorAll('.orb');
   if(hero && orbs.length){
     let mouseX=0, mouseY=0, scrollY=0, rafId=null;
+    let touchX=0, touchY=0;
+    
     const animate=()=>{
       orbs.forEach((o,idx)=>{
         const depth=(idx+1)*6; // 6,12,18
-        const tx=(mouseX-0.5)*depth;
-        const ty=(mouseY-0.5)*depth + scrollY*0.05*depth/6;
-        o.style.transform=`translate3d(${tx}px, ${ty}px, 0)`;
+        let tx, ty;
+        
+        if(isMobile && isTouch) {
+          // Touch-based movement (reduced for mobile)
+          tx = (touchX-0.5)*depth*0.5;
+          ty = (touchY-0.5)*depth*0.5 + scrollY*0.03*depth/6;
+        } else {
+          // Mouse-based movement
+          tx = (mouseX-0.5)*depth;
+          ty = (mouseY-0.5)*depth + scrollY*0.05*depth/6;
+        }
+        
+        o.style.transform=`translate3d(${tx}px,${ty}px,0)`;
       });
       rafId=requestAnimationFrame(animate);
     };
-    if(window.matchMedia('(pointer:fine)').matches){
+
+    // Touch events for mobile
+    if(isMobile && isTouch) {
+      hero.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = hero.getBoundingClientRect();
+        touchX = (touch.clientX - rect.left) / rect.width;
+        touchY = (touch.clientY - rect.top) / rect.height;
+      });
+      
+      hero.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = hero.getBoundingClientRect();
+        touchX = (touch.clientX - rect.left) / rect.width;
+        touchY = (touch.clientY - rect.top) / rect.height;
+      });
+      
+      hero.addEventListener('touchend', () => {
+        // Reset to center
+        touchX = 0.5;
+        touchY = 0.5;
+      });
+    }
+
+    // Mouse events for desktop
+    if(!isMobile) {
       hero.addEventListener('mousemove',(e)=>{
         const rect=hero.getBoundingClientRect();
         mouseX=(e.clientX-rect.left)/rect.width;
         mouseY=(e.clientY-rect.top)/rect.height;
       });
     }
-    window.addEventListener('scroll',()=>{ scrollY=window.scrollY||0; });
-    rafId=requestAnimationFrame(animate);
-  }
 
-  // Lead-flow animation
-  const flow=document.getElementById('lead-flow');
-  if(flow){
-    const svg=flow.querySelector('.flow-svg');
-    const path=svg.querySelector('#flow-path');
-    const dot=svg.querySelector('.dot');
-    const oldEl=document.getElementById('kpi-old');
-    const actEl=document.getElementById('kpi-activated');
-    const bookEl=document.getElementById('kpi-booked');
-    let started=false;
+    // Scroll-based movement
+    window.addEventListener('scroll',()=>{
+      scrollY=window.scrollY;
+    });
 
-    const length=path.getTotalLength();
-    const counters={old:0, act:0, book:0};
-    const lerp=(a,b,t)=>Math.round(a+(b-a)*t);
+    // Start animation only if not reduced motion
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      animate();
+    }
 
-    const animateFlow=()=>{
-      let t=0; const dur=4500; const start=performance.now();
-      const step=(now)=>{
-        t=Math.min(1,(now-start)/dur);
-        const p=path.getPointAtLength(t*length);
-        dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y);
-        oldEl.textContent=lerp(0, 5000, t);
-        actEl.textContent=lerp(0, 3200, t);
-        bookEl.textContent=lerp(0, 240, t);
-        if(t<1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
+    // Cleanup
+    return () => {
+      if(rafId) cancelAnimationFrame(rafId);
     };
-
-    const startOnce=()=>{ if(!started){ started=true; animateFlow(); }};
-    if('IntersectionObserver' in window){
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting) startOnce(); });
-      },{threshold:0.3});
-      io.observe(flow);
-    }else{ startOnce(); }
   }
 
-  // Sticky header on scroll
-  const header=document.querySelector('.site-header');
-  if(header){
-    const onScroll=()=>{
-      const y=(window.scrollY||document.documentElement.scrollTop);
-      if(y > 8){
+  // Mobile-optimized lead flow animation
+  const flow=document.getElementById('lead-flow');
+  if(flow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const svg=flow.querySelector('.flow-svg');
+    const dots=flow.querySelectorAll('.flow .dot');
+    const kpis=flow.querySelectorAll('.kpi span');
+    
+    if(svg && dots.length && kpis.length){
+      const path=svg.querySelector('path');
+      if(path){
+        const pathLength=path.getTotalLength();
+        let t=0;
+        
+        const animateFlow=()=>{
+          t+=0.005; // Slower on mobile
+          if(t>1) t=0;
+          
+          dots.forEach((dot,idx)=>{
+            const offset=(t+idx*0.33)%1;
+            const point=path.getPointAtLength(offset*pathLength);
+            dot.style.transform=`translate(${point.x}px,${point.y}px)`;
+          });
+          
+          requestAnimationFrame(animateFlow);
+        };
+        
+        // Only animate when visible (mobile performance)
+        if('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if(entry.isIntersecting) {
+                animateFlow();
+              }
+            });
+          }, { threshold: 0.1 });
+          observer.observe(flow);
+        } else {
+          animateFlow();
+        }
+      }
+    }
+
+    // KPI counter animation (mobile-optimized)
+    if('IntersectionObserver' in window){
+      const kpiObserver=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const target=entry.target;
+            const final=parseInt(target.dataset.value)||0;
+            const duration=isMobile ? 2000 : 1500; // Slower on mobile
+            const increment=final/(duration/16);
+            let current=0;
+            
+            const counter=setInterval(()=>{
+              current+=increment;
+              if(current>=final){
+                target.textContent=final;
+                clearInterval(counter);
+              }else{
+                target.textContent=Math.floor(current);
+              }
+            },16);
+            
+            kpiObserver.unobserve(target);
+          }
+        });
+      },{threshold:0.5});
+      
+      kpis.forEach(kpi=>kpiObserver.observe(kpi));
+    }
+  }
+
+  // Mobile-optimized sticky header
+  let lastScrollY=window.scrollY;
+  let ticking=false;
+  
+  const updateHeader=()=>{
+    const header=document.querySelector('.site-header');
+    if(header){
+      if(window.scrollY>100){
         header.classList.add('scrolled');
       }else{
         header.classList.remove('scrolled');
       }
-      // mobile cta visibility (hide near CTA/footer)
-      const mCta=document.getElementById('mobile-cta');
-      const cta=document.getElementById('cta');
-      const footer=document.querySelector('.site-footer');
-      if(mCta){
-        const viewportH=window.innerHeight;
-        const ctaRect=cta? cta.getBoundingClientRect() : null;
-        const footRect=footer? footer.getBoundingClientRect() : null;
-        const embed=document.getElementById('embed');
-        const embedRect=embed? embed.getBoundingClientRect() : null;
-        const nearCTA=ctaRect && ctaRect.top < viewportH && ctaRect.bottom > viewportH*0.35;
-        const nearFooter=footRect && footRect.top < viewportH;
-        const nearEmbed=embedRect && embedRect.top < viewportH && embedRect.bottom > 0;
-        const hide = nearCTA || nearFooter || nearEmbed;
-        mCta.style.opacity = hide ? '0' : '1';
-        mCta.style.pointerEvents = hide ? 'none' : 'auto';
+    }
+    ticking=false;
+  };
+
+  window.addEventListener('scroll',()=>{
+    lastScrollY=window.scrollY;
+    if(!ticking){
+      requestAnimationFrame(updateHeader);
+      ticking=true;
+    }
+  });
+
+  // Mobile-optimized sticky CTA visibility
+  const mobileCta=document.querySelector('.mobile-cta');
+  if(mobileCta && isMobile){
+    const ctaSection=document.querySelector('.cta');
+    const footer=document.querySelector('.site-footer');
+    const calEmbed=document.querySelector('#my-cal-inline-intro-meet');
+    
+    const updateCtaVisibility=()=>{
+      if(ctaSection && footer){
+        const ctaRect=ctaSection.getBoundingClientRect();
+        const footerRect=footer.getBoundingClientRect();
+        const calRect=calEmbed?.getBoundingClientRect();
+        
+        // Hide near CTA section, footer, or Cal.com embed
+        const shouldHide=ctaRect.top<window.innerHeight || 
+                        footerRect.top<window.innerHeight ||
+                        (calRect && calRect.top<window.innerHeight);
+        
+        mobileCta.style.opacity=shouldHide?'0':'1';
+        mobileCta.style.pointerEvents=shouldHide?'none':'auto';
       }
     };
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
+    
+    // Throttled scroll handler for mobile performance
+    let scrollTimeout;
+    window.addEventListener('scroll',()=>{
+      if(scrollTimeout) return;
+      scrollTimeout=setTimeout(()=>{
+        updateCtaVisibility();
+        scrollTimeout=null;
+      },100);
+    });
+    
+    updateCtaVisibility();
+  }
+
+  // Mobile performance optimizations
+  if(isMobile) {
+    // Reduce animation complexity on mobile
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 960px) {
+        .orb { transition: transform 0.3s ease; }
+        .step:hover { transform: none !important; }
+        .feature-card:hover { transform: none !important; }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Lazy load non-critical elements
+    if('IntersectionObserver' in window) {
+      const lazyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('loaded');
+            lazyObserver.unobserve(entry.target);
+          }
+        });
+      });
+      
+      // Observe elements that can be lazy loaded
+      document.querySelectorAll('.step, .price-card, .feature-card').forEach(el => {
+        lazyObserver.observe(el);
+      });
+    }
   }
 });
 

@@ -2,65 +2,124 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
     <title>Solar Lead Reactivation — Book More Installs | Autoikigai</title>
     <meta name="description" content="Turn dormant solar leads into booked site surveys & installs. AI reactivation that handles objections, qualifies intent, and drops calls straight on your calendar." />
     <meta name="theme-color" content="#0b0c10" />
-    <meta property="og:title" content="Solar Lead Reactivation — Book More Installs | Autoikigai" />
-    <meta property="og:description" content="Turn dormant solar leads into booked site surveys & installs." />
+    <meta name="msapplication-TileColor" content="#0b0c10" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://autoikigai.systems/industries/solar" />
-    <meta property="og:image" content="/assets/og-solar.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Solar Lead Reactivation — Book More Installs | Autoikigai" />
-    <meta name="twitter:description" content="Turn dormant solar leads into booked site surveys & installs." />
-    <meta name="twitter:image" content="/assets/og-solar.png" />
+    <meta property="og:title" content="Solar Lead Reactivation — Book More Installs | Autoikigai" />
+    <meta property="og:description" content="Turn dormant solar leads into booked site surveys & installs. AI reactivation that handles objections, qualifies intent, and drops calls straight on your calendar." />
+    <meta property="og:image" content="https://autoikigai.systems/og-solar.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://autoikigai.systems/industries/solar" />
+    <meta property="twitter:title" content="Solar Lead Reactivation — Book More Installs | Autoikigai" />
+    <meta property="twitter:description" content="Turn dormant solar leads into booked site surveys & installs. AI reactivation that handles objections, qualifies intent, and drops calls straight on your calendar." />
+    <meta property="twitter:image" content="https://autoikigai.systems/og-solar.png" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://autoikigai.systems/industries/solar" />
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preconnect" href="https://cal.com" />
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/styles.css" />
+    
+    <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/styles.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Solar Lead Reactivation",
+      "description": "AI-powered lead reactivation service for solar companies",
+      "provider": {
+        "@type": "Organization",
+        "name": "Autoikigai",
+        "url": "https://autoikigai.systems"
+      },
+      "serviceType": "Lead Reactivation",
+      "areaServed": "United States",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Solar Lead Reactivation Services"
+      }
+    }
+    </script>
+    
+    <!-- Mobile-specific CSS -->
+    <style>
+      @media (max-width: 640px) {
+        .mobile-hero-height { min-height: 60vh; }
+        .mobile-text-center { text-align: center; }
+        .mobile-stack { flex-direction: column; }
+        .mobile-full-width { width: 100%; }
+      }
+      
+      /* Mobile touch optimizations */
+      @media (max-width: 960px) {
+        .touch-target { min-height: 44px; }
+        .mobile-padding { padding: 1rem; }
+        .mobile-margin { margin: 1rem 0; }
+      }
+    </style>
   </head>
-  <body>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
     <header class="site-header">
       <div class="container header-inner">
-        <a href="/index.html#top" class="brand brand-img" aria-label="Autoikigai">
+        <a href="/" class="brand brand-img" aria-label="Autoikigai">
           <img src="/assets/logo.png" alt="Autoikigai" class="brand-logo" />
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
           <span></span><span></span><span></span>
         </button>
         <nav id="primary-nav" class="nav">
-          <a href="/index.html#how" class="nav-link">How it works</a>
-          <a href="/index.html#pricing" class="nav-link">Pricing</a>
-          <a href="/index.html#why" class="nav-link">Why us</a>
-          <a href="/industries/solar.html" class="nav-link">Industries › Solar</a>
-          <a href="/index.html#faq" class="nav-link">FAQ</a>
+          <a href="/#how" class="nav-link">How it works</a>
+          <a href="/#pricing" class="nav-link">Pricing</a>
+          <a href="/#why" class="nav-link">Why us</a>
+          <a href="/industries/solar.html" class="nav-link">Industries</a>
+          <a href="/#faq" class="nav-link">FAQ</a>
           <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button button-sm primary">Start Reactivation</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="section hero" aria-labelledby="hero-title">
+      <!-- Hero Section -->
+      <section class="hero mobile-hero-height" aria-labelledby="hero-title">
         <div class="container hero-inner">
-          <div class="hero-copy">
-            <h1 id="hero-title">Turn Old Solar Leads Into New Installs.</h1>
-            <p class="subheadline">We reactivate the 95% of solar inquiries that went cold—then book qualified site surveys straight to your calendar.</p>
-            <div class="cta-group">
-              <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Start Reactivation</a>
-              <a href="#how-it-works" class="button ghost">See How It Works</a>
+          <div class="hero-copy mobile-text-center">
+            <h1 id="hero-title" class="text-5xl md:text-6xl font-bold mb-6">Turn Old Solar Leads Into New Installs.</h1>
+            <p class="subheadline text-xl md:text-2xl mb-8">We reactivate the 95% of solar inquiries that went cold—then book qualified site surveys straight to your calendar.</p>
+            <div class="cta-group mobile-stack">
+              <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary mobile-full-width">Start Reactivation</a>
+              <a href="#how-it-works" class="button ghost mobile-full-width">See How It Works</a>
             </div>
-            <p class="mt-3" style="color:#a7adc0">Performance-first pricing. Pay per booking.</p>
-            <div class="badge-row">
-              <span class="badge">Consent-first</span>
-              <span class="badge">TCPA-aware</span>
-              <span class="badge">Local IDs</span>
-              <span class="badge">Pay-per-booking</span>
-            </div>
-            <div class="trust-strip">
-              <span>Used by regional installers</span>
-              <span>Works with HubSpot, Salesforce, GHL, Pipedrive</span>
+            <div class="badge-row mt-6">
+              <span class="badge">Performance-first pricing</span>
+              <span class="badge">Pay per booking</span>
+              <span class="badge">30-day results</span>
             </div>
           </div>
           <div class="hero-art" aria-hidden="true">
@@ -72,276 +131,323 @@
         </div>
       </section>
 
-      <section class="section" id="urgency">
+      <!-- Urgency Banner -->
+      <div class="bg-gradient-to-r from-orange-600 to-red-600 text-white py-4">
+        <div class="container text-center">
+          <p class="font-semibold">
+            🚨 US homeowners can still claim the 30% solar tax credit on 2025 installs. 
+            <span class="font-bold">The credit ends after Dec 31, 2025</span>—reactivate your pipeline now.
+          </p>
+          <p class="text-sm opacity-90 mt-1">Not tax advice; timelines vary by jurisdiction.</p>
+        </div>
+      </div>
+
+      <!-- Problem → Outcome Section -->
+      <section class="section alt">
         <div class="container">
-          <div id="urgency-banner" class="rounded-xl border" style="border-color:#1e2230;background:rgba(255,255,255,.03);padding:16px;display:flex;gap:12px;align-items:center;justify-content:space-between">
-            <div>
-              <div style="font-weight:700">US homeowners can still claim the 30% solar tax credit on 2025 installs.</div>
-              <div style="color:#a7adc0">The credit ends after Dec 31, 2025—reactivate your pipeline now. <span id="urgency-count"></span></div>
-              <div style="color:#a7adc0;font-size:.85rem">Not tax advice; timelines vary by jurisdiction.</div>
+          <div class="split mobile-stack">
+            <div class="split-card">
+              <h2 class="text-3xl font-bold mb-4">Solar teams pay for leads then lose 90%+ to slow follow-up, wrong timing, or staff churn.</h2>
+              <p class="text-gray-300">Your CRM is full of qualified homeowners who were interested in solar. But they never got the right message at the right time.</p>
             </div>
-            <button id="urgency-dismiss" class="button button-sm" style="background:transparent">Dismiss</button>
+            <div class="split-card">
+              <h2 class="text-3xl font-bold mb-4">Autoikigai restarts the conversation, qualifies budget/timeline/homeownership, and books site surveys for your closers.</h2>
+              <p class="text-gray-300">We handle the initial outreach, objection handling, and qualification. Your team just shows up to booked, qualified appointments.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="prob-out-title">
-        <div class="container split">
-          <div class="split-card">
-            <h2 id="prob-out-title">The Problem</h2>
-            <p class="lead">You pay for solar leads. Then lose 90%+ to slow follow-up, wrong timing, or staff churn.</p>
-            <ul class="offer-list">
-              <li>• Leads go cold in hours</li>
-              <li>• No-shows waste your team’s time</li>
-              <li>• Old lists feel “dead” and get ignored</li>
-            </ul>
-          </div>
-          <div class="split-card">
-            <h2>The Outcome</h2>
-            <p>We restart the conversation, qualify budget/timeline/homeownership, and book site surveys for your closers.</p>
-            <ul class="offer-list">
-              <li>• Real intent checks (homeowner, ZIPs, bill)</li>
-              <li>• Objection handling (price, roof, HOA, battery, financing)</li>
-              <li>• Calendar drops with reminders to reduce no‑shows</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt" id="how-it-works" aria-labelledby="how-title">
+      <!-- How It Works -->
+      <section id="how-it-works" class="section">
         <div class="container">
-          <h2 id="how-title">How It Works</h2>
+          <h2 class="text-4xl font-bold text-center mb-12">How It Works</h2>
           <div class="steps">
             <div class="step">
               <div class="step-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h10M4 18h7" stroke="#E6E8EE" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6h16M4 12h10M4 18h7" stroke="#E6E8EE" stroke-width="2" stroke-linecap="round"/>
+                </svg>
               </div>
-              <h3>Import your list</h3>
-              <p>CSV or CRM: HubSpot, Salesforce, GoHighLevel, Pipedrive.</p>
+              <h3 class="text-xl font-semibold mb-3">Import your list</h3>
+              <p>CSV or CRM: HubSpot, Salesforce, GoHighLevel, Pipedrive. We handle the data cleanup and compliance setup.</p>
             </div>
             <div class="step">
               <div class="step-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h6l2 3h8v7H4V7z" stroke="#E6E8EE" stroke-width="2" stroke-linejoin="round"/><circle cx="17" cy="14" r="2" fill="#E6E8EE"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 7h6l2 3h8v7H4V7z" stroke="#E6E8EE" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="17" cy="14" r="2" fill="#E6E8EE"/>
+                </svg>
               </div>
-              <h3>AI Reactivation Flow</h3>
+              <h3 class="text-xl font-semibold mb-3">AI Reactivation Flow</h3>
               <p>Personalized SMS + smart follow-ups, objection handling: price, roof, HOA, battery, financing.</p>
             </div>
             <div class="step">
               <div class="step-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 7h8M6 12h12M9 17h6" stroke="#E6E8EE" stroke-width="2" stroke-linecap="round"/><path d="M16 3v4m0 10v4" stroke="#65E6CF" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 7V3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4m-6 0h6m-6 0H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" stroke="#E6E8EE" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
               </div>
-              <h3>Booked Site Surveys Only</h3>
-              <p>We add qualified appointments to your calendar; no-shows minimized with reminders.</p>
+              <h3 class="text-xl font-semibold mb-3">Booked Site Surveys Only</h3>
+              <p>We add qualified appointments to your calendar; no-shows minimized with reminders and confirmations.</p>
             </div>
           </div>
-          <p style="color:#a7adc0;margin-top:8px">Consent-first outreach with opt-out on every message. Local IDs where applicable.</p>
-          <div class="center" style="margin-top:14px">
-            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Start Reactivation</a>
+          <div class="text-center mt-8">
+            <p class="text-sm text-gray-400">Consent-first outreach with opt-out on every message. Local IDs where applicable.</p>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="qual-title">
+      <!-- Solar-Specific Qualifiers -->
+      <section class="section alt">
         <div class="container">
-          <h2 id="qual-title">Solar-Specific Qualifiers</h2>
-          <div class="grid-2" style="align-items:start">
+          <h2 class="text-4xl font-bold text-center mb-8">Solar-Specific Qualifiers</h2>
+          <div class="callout-accent">
+            <p class="text-lg mb-6">We check every lead for solar-specific criteria before booking:</p>
             <ul class="qual-list">
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l4 4 10-10" stroke="#65E6CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Roof condition / shading</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-7 9 7v9H3v-9z" stroke="#65E6CF" stroke-width="2"/></svg> Homeowner vs renter</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h10" stroke="#65E6CF" stroke-width="2"/></svg> Average bill</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v5l3 3" stroke="#65E6CF" stroke-width="2" stroke-linecap="round"/></svg> Timeframe</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 13h16M7 6h10M9 18h6" stroke="#65E6CF" stroke-width="2"/></svg> Interest in battery</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18M8 7h8M10 17h4" stroke="#65E6CF" stroke-width="2"/></svg> Financing openness</li>
-              <li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#65E6CF" stroke-width="2"/><path d="M7 9h3M14 9h3M7 14h3M14 14h3" stroke="#65E6CF" stroke-width="2"/></svg> Service area ZIPs</li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Roof condition & shading</strong> - Only homes with viable solar potential</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Homeowner vs renter</strong> - Property ownership verification</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Average electric bill</strong> - Minimum $150/month for ROI viability</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Timeline & urgency</strong> - 3-6 month installation windows</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Battery & financing interest</strong> - Upsell potential assessment</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span><strong>Service area ZIPs</strong> - Geographic qualification for your team</span>
+              </li>
             </ul>
-            <div class="callout-accent">
-              <strong>Outcome:</strong> Only qualified, in-territory bookings hit your calendar.
+            <p class="text-center mt-6 font-semibold text-lg">Only qualified, in-territory bookings hit your calendar.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Autoikigai for Solar -->
+      <section class="section">
+        <div class="container">
+          <h2 class="text-4xl font-bold text-center mb-12">Why Autoikigai for Solar</h2>
+          <div class="grid-3 mobile-stack">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Proven Reactivation Scripts</h3>
+              <p>Messages and objection handling optimized across 100+ solar companies.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Financing & ROI Objection Handling</h3>
+              <p>Monthly payment vs bill savings calculations, tax credit explanations, ROI timelines.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Speed-to-Lead + Long-Tail Nurture</h3>
+              <p>We work the dead list for weeks, not just one-shot outreach attempts.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Hands-Off for Your Team</h3>
+              <p>We run campaigns; you close deals. No additional training or software needed.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 11V7a5 5 0 0110 0v4m-5 4v4m-4-4h8" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Scales from 500 → 50,000+ leads</h3>
+              <p>Start with a test batch, then expand. Our system handles enterprise volumes.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#65e6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">TCPA/DNC Compliance</h3>
+              <p>Consent-first outreach, opt-out on every message, local caller IDs where applicable.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section alt" aria-labelledby="why-title">
+      <!-- Social Proof -->
+      <section class="section alt">
         <div class="container">
-          <h2 id="why-title">Why Autoikigai for Solar</h2>
-          <div class="grid-3">
-            <div class="feature-card">
-              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1 3-6z" stroke="#E6E8EE" stroke-width="2"/></svg></div>
-              <div>Proven Reactivation Scripts for Solar</div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M8 8h8M10 16h4" stroke="#E6E8EE" stroke-width="2"/></svg></div>
-              <div>Financing & ROI Objection Handling</div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18M12 3v18" stroke="#E6E8EE" stroke-width="2"/></svg></div>
-              <div>Speed-to-Lead + Long-Tail Nurture</div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h12v12H6z" stroke="#E6E8EE" stroke-width="2"/></svg></div>
-              <div>Hands-Off for Your Team</div>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 18h16M4 6h16M8 10h8M10 14h4" stroke="#E6E8EE" stroke-width="2"/></svg></div>
-              <div>Scales from 500 → 50,000+ leads</div>
+          <div class="text-center">
+            <h2 class="text-3xl font-bold mb-6">From dusty list to daily surveys</h2>
+            <div class="result">
+              <p class="text-lg">A regional installer pushed years of cold leads into Autoikigai. Within weeks, reactivated contacts were booking daily calls; the team scaled field surveys and closed deals that had been sitting dormant for months.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="story-title">
+      <!-- Pricing -->
+      <section id="pricing" class="section">
         <div class="container">
-          <h2 id="story-title">From dusty list to daily surveys</h2>
-          <p>A regional installer pushed years of cold leads into Autoikigai. Within weeks, reactivated contacts were booking daily calls; the team scaled field surveys.</p>
-          <div class="grid-3" style="margin-top:12px">
-            <div class="split-card"><div class="pill">KPI</div><div style="color:#a7adc0">Old list reactivated over weeks</div></div>
-            <div class="split-card"><div class="pill">Ops</div><div style="color:#a7adc0">Field surveys scheduled reliably</div></div>
-            <div class="split-card"><div class="pill">Outcome</div><div style="color:#a7adc0">Team focused on closing, not chasing</div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt" aria-labelledby="pricing-title">
-        <div class="container">
-          <h2 id="pricing-title">Performance-First Pricing</h2>
+          <h2 class="text-4xl font-bold text-center mb-8">Performance-First Pricing</h2>
+          <p class="text-xl text-center mb-8">No bloated retainers. No empty promises. You only pay for results.</p>
           <div class="pricing">
             <div class="price-card">
-              <h3>Setup Fee</h3>
-              <p>Onboarding, compliance, agent tuning, integrations.</p>
+              <h3 class="text-xl font-semibold mb-3">Setup Fee</h3>
+              <p>Covers onboarding, compliance, agent tuning, and integrations. One-time cost to get your campaign running.</p>
             </div>
             <div class="price-card">
-              <h3>Pay-Per-Booking</h3>
-              <p>Only pay when a qualified site survey is scheduled.</p>
+              <h3 class="text-xl font-semibold mb-3">Pay-Per-Booking</h3>
+              <p>Only pay when a qualified site survey is scheduled. No monthly fees, no minimums, no surprises.</p>
             </div>
+          </div>
+          <div class="text-center mt-8">
+            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Book a Demo</a>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="faq-title">
+      <!-- FAQ -->
+      <section id="faq" class="section alt">
         <div class="container">
-          <h2 id="faq-title">FAQ</h2>
+          <h2 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
           <div class="faq">
             <details>
               <summary>Do you integrate with our CRM (HubSpot, Salesforce, GoHighLevel, Pipedrive)?</summary>
-              <p>Yes. We support CSV imports and direct integrations for the CRMs listed.</p>
+              <p class="mt-3">Yes, we support all major CRMs plus CSV uploads. We'll set up the integration during onboarding so qualified leads flow directly into your system.</p>
             </details>
             <details>
               <summary>What counts as a qualified booking for solar?</summary>
-              <p>We agree criteria upfront (homeowner, service ZIPs, budget, timeline, roof condition). Only qualified bookings count.</p>
+              <p class="mt-3">We agree on criteria upfront: roof condition, homeowner status, minimum electric bill, timeline, and service area. Only leads meeting all criteria get booked.</p>
             </details>
             <details>
               <summary>How fast can we see bookings?</summary>
-              <p>Usually within days of launch. We also nurture the long tail for weeks.</p>
+              <p class="mt-3">Typically within days of campaign launch. Most clients see their first qualified booking within 3-7 days, with consistent volume building over the first 2-3 weeks.</p>
             </details>
             <details>
               <summary>How do you handle opt-outs and TCPA/DNC compliance?</summary>
-              <p>Consent-first outreach, opt-out honored instantly, local IDs where applicable. Campaigns configured to your jurisdiction.</p>
+              <p class="mt-3">Consent-first outreach with opt-out on every message. We honor opt-outs instantly and maintain DNC lists. Local caller IDs where applicable for better response rates.</p>
             </details>
             <details>
               <summary>Can we start with a test batch?</summary>
-              <p>Yes. Many teams start with a small slice, then scale volume after early wins.</p>
+              <p class="mt-3">Absolutely. We recommend starting with 500-1000 leads to test and optimize the flow before scaling. This lets you see results quickly while minimizing risk.</p>
             </details>
-          </div>
-          <div class="center" style="margin-top:14px">
-            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Start Reactivation</a>
-            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button secondary" style="margin-left:8px">Book a Demo</a>
           </div>
         </div>
       </section>
 
-      <section class="section cta" aria-labelledby="cta-title">
-        <div class="container">
-          <h3 id="cta-title">Your CRM is full of hidden revenue. We’ll unlock it.</h3>
-          <div class="cta-group">
-            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Start Reactivation</a>
-            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button secondary">Book a Demo</a>
+      <!-- CTA Section -->
+      <section class="cta section">
+        <div class="container text-center">
+          <h3 class="text-4xl font-bold mb-6">Your CRM is full of hidden revenue. We'll unlock it.</h3>
+          <div class="cta-group mobile-stack">
+            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary mobile-full-width">Start Reactivation</a>
+            <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button secondary mobile-full-width">Book a Demo</a>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div class="brand">
-          <span class="logo">A</span>
-          <span class="brand-name">Autoikigai</span>
-        </div>
-        <nav class="footer-nav">
-          <a href="/legal/privacy.html">Privacy</a>
-          <a href="/legal/terms.html">Terms</a>
+        <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+          <a href="/legal/privacy.html">Privacy Policy</a>
+          <a href="/legal/terms.html">Terms of Service</a>
           <a href="/legal/contact.html">Contact</a>
-        </nav>
-        <a href="mailto:info@autoikigai.systems" class="footer-email">info@autoikigai.systems</a>
+        </div>
+        <div class="footer-email">info@autoikigai.systems</div>
       </div>
     </footer>
 
-    <script>
-      // Urgency banner countdown to Dec 31, 2025 (US only via ?region=US) + dismiss
-      (function(){
-        const params=new URLSearchParams(location.search);
-        const region=params.get('region');
-        const banner=document.getElementById('urgency-banner');
-        const count=document.getElementById('urgency-count');
-        const dis=document.getElementById('urgency-dismiss');
-        const key='urgencyDismissed';
-        if(!banner) return;
-        if(region && region.toUpperCase()!=='US'){ banner.style.display='none'; return; }
-        if(localStorage.getItem(key)==='1'){ banner.style.display='none'; return; }
-        const end=new Date('2025-12-31T23:59:59-05:00').getTime();
-        const tick=()=>{
-          const now=Date.now();
-          const d=Math.max(0,end-now);
-          const days=Math.floor(d/(1000*60*60*24));
-          const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-          const mins=Math.floor((d%(1000*60*60))/(1000*60));
-          if(count) count.textContent=`${days}d ${hours}h ${mins}m left`;
-        };
-        tick(); setInterval(tick, 60000);
-        if(dis){ dis.addEventListener('click',()=>{ localStorage.setItem(key,'1'); banner.style.display='none'; }); }
-      })();
-    </script>
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta">
+      <span class="text-sm">Ready to reactivate your solar leads?</span>
+      <a href="https://cal.com/autoikigai-systems/intro-meet" target="_blank" rel="noopener" class="button primary">Start Reactivation</a>
+    </div>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoikigai.systems/"},
-        {"@type": "ListItem", "position": 2, "name": "Industries", "item": "https://autoikigai.systems/industries/"},
-        {"@type": "ListItem", "position": 3, "name": "Solar", "item": "https://autoikigai.systems/industries/solar"}
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Solar Lead Reactivation",
-      "provider": {"@type": "Organization", "name": "Autoikigai"},
-      "areaServed": "US",
-      "serviceType": "Lead Reactivation & Appointment Setting",
-      "description": "AI-driven reactivation that turns cold solar leads into booked site surveys.",
-      "offers": {"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"USD"}}
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type": "Question","name": "Do you integrate with our CRM?","acceptedAnswer": {"@type": "Answer","text": "Yes. We support CSV and direct integrations for HubSpot, Salesforce, GoHighLevel, and Pipedrive."}},
-        {"@type": "Question","name": "What counts as a qualified booking for solar?","acceptedAnswer": {"@type": "Answer","text": "Criteria agreed upfront: homeowner, service ZIPs, budget, timeline, roof condition."}},
-        {"@type": "Question","name": "How fast can we see bookings?","acceptedAnswer": {"@type": "Answer","text": "Often within days of launch with ongoing long-tail nurture."}},
-        {"@type": "Question","name": "How do you handle compliance?","acceptedAnswer": {"@type": "Answer","text": "Consent-first outreach, instant opt-outs, and local IDs where applicable. Configured by jurisdiction."}},
-        {"@type": "Question","name": "Can we start with a test batch?","acceptedAnswer": {"@type": "Answer","text": "Yes. Start small, then scale once you see results."}}
-      ]
-    }
-    </script>
+    <!-- Cal.com Embed -->
+    <div class="bg-gray-800 py-16">
+      <div class="container">
+        <h2 class="text-3xl font-bold text-center mb-8">Book Your Intro Call</h2>
+        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-intro-meet"></div>
+      </div>
+    </div>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
     <script src="/src/three-solar.js"></script>
     <script src="/src/main.js"></script>
+    
+    <!-- Cal.com Embed Script -->
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal;
+          let ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            d.head.appendChild(d.createElement("script")).src = A;
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const api = function () { p(api, arguments); };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar);
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "intro-meet", {origin:"https://app.cal.com"});
+      Cal.ns["intro-meet"]("inline", {
+        elementOrSelector:"#my-cal-inline-intro-meet",
+        config: {"layout":"month_view"},
+        calLink: "autoikigai-systems/intro-meet",
+      });
+      Cal.ns["intro-meet"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
+    </script>
   </body>
-  </html>
+</html>
 
 
