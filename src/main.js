@@ -69,8 +69,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   // Accessible Industries dropdown (desktop hover + click, mobile tap to open)
-  const submenuWrap=document.querySelector('.has-submenu');
+  const submenuWrap=document.querySelector('.nav-item.has-submenu');
   const submenuBtn=document.querySelector('.submenu-toggle');
+  console.log('Submenu elements found:', { submenuWrap, submenuBtn });
   if(submenuWrap && submenuBtn){
     const openSub=(state)=>{
       submenuWrap.classList.toggle('submenu-open', state);
