@@ -68,6 +68,35 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   }
 
+  // Accessible Industries dropdown (desktop hover + click, mobile tap to open)
+  const submenuWrap=document.querySelector('.has-submenu');
+  const submenuBtn=document.querySelector('.submenu-toggle');
+  if(submenuWrap && submenuBtn){
+    const openSub=(state)=>{
+      submenuWrap.classList.toggle('submenu-open', state);
+      submenuBtn.setAttribute('aria-expanded', state?'true':'false');
+    };
+    // Click/tap toggle
+    submenuBtn.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      const isOpen=submenuWrap.classList.contains('submenu-open');
+      openSub(!isOpen);
+    });
+    // Hover for desktop
+    if(window.matchMedia('(pointer:fine)').matches){
+      submenuWrap.addEventListener('mouseenter',()=>openSub(true));
+      submenuWrap.addEventListener('mouseleave',()=>openSub(false));
+    }
+    // Close on outside click
+    document.addEventListener('click',(e)=>{
+      if(!submenuWrap.contains(e.target)) openSub(false);
+    });
+    // Close when navigating via submenu links
+    submenuWrap.querySelectorAll('.submenu-link').forEach(l=>{
+      l.addEventListener('click',()=>openSub(false));
+    });
+  }
+
   // Chat demo sequencing (mobile-optimized)
   const chat=document.getElementById('chat-demo');
   if(chat){

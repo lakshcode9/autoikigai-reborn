@@ -22,6 +22,12 @@ a{color:inherit;text-decoration:none}
 .nav-link{position:relative}
 .nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,transparent,rgba(101,230,207,.7),transparent);transform:scaleX(0);transform-origin:center;transition:transform .2s ease}
 .nav-link:hover::after{transform:scaleX(1)}
+.nav-item{position:relative}
+.submenu-toggle{background:transparent;border:none;color:var(--muted);cursor:pointer;display:flex;align-items:center}
+.submenu{position:absolute;top:110%;left:0;min-width:210px;background:rgba(15,17,22,.98);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.35);padding:8px;display:none}
+.submenu-link{display:block;color:#e6e8ee;padding:10px 12px;border-radius:8px}
+.submenu-link:hover{background:rgba(255,255,255,.06)}
+.submenu-open .submenu{display:block}
 .menu-toggle{display:none;position:relative;width:var(--touch-target);height:var(--touch-target);border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.04);align-items:center;justify-content:center;cursor:pointer}
 .menu-toggle span{position:absolute;display:block;width:20px;height:2px;background:#e6e8ee;transition:.25s ease}
 .menu-toggle span:nth-child(1){transform:translateY(-6px)}
@@ -146,6 +152,11 @@ a{color:inherit;text-decoration:none}
   .menu-toggle{display:inline-flex}
   .nav{position:fixed;inset:64px 0 auto 0;display:flex;flex-direction:column;gap:0;padding:0;background:rgba(11,12,16,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transform:translateY(-120%);transition:transform .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.4)}
   .menu-open #primary-nav{transform:none}
+  /* Mobile submenu becomes inline list */
+  .has-submenu{width:100%}
+  .has-submenu .submenu{position:static;display:none;box-shadow:none;border-radius:8px;margin:6px 12px;background:rgba(11,12,16,.9)}
+  .has-submenu.submenu-open .submenu{display:block}
+  .submenu-link{padding:12px 16px}
   .nav-link{padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.05);min-height:56px;justify-content:flex-start}
   .nav-link:last-child{border-bottom:none}
   .hero-art{height:320px}
