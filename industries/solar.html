@@ -103,6 +103,13 @@
         .hero-copy { text-align: center; }
         .cta-group { align-items: stretch; }
       }
+
+      /* Fix: Solar Problem→Outcome text wrapping on small screens */
+      @media (max-width: 640px) {
+        .split { gap: 14px; }
+        .split-card h2 { font-size: 22px; line-height: 1.3; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+        .split-card p { font-size: 15px; line-height: 1.55; }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
