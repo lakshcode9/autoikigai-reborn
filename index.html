@@ -110,7 +110,7 @@
               <p>Qualified prospects scheduled into your team’s calendar.</p>
             </div>
           </div>
-          <div class="flow" id="lead-flow" aria-hidden="true">
+          <div class="flow" id="lead-flow" aria-label="Lead reactivation flow">
             <svg class="flow-svg" viewBox="0 0 1100 160" preserveAspectRatio="xMidYMid meet">
               <defs>
                 <linearGradient id="flowGrad" x1="0%" x2="100%">
@@ -123,9 +123,9 @@
                 </filter>
               </defs>
               <path id="flow-path" d="M40,120 C240,20 380,20 560,120 S880,220 1060,60" stroke="url(#flowGrad)" stroke-width="6" fill="none" opacity=".35" />
-              <circle class="node" cx="60" cy="118" r="10" />
-              <circle class="node" cx="560" cy="120" r="10" />
-              <circle class="node" cx="1040" cy="70" r="10" />
+              <!-- Rebuilt: use three animated dots following the path -->
+              <circle class="dot" r="7" filter="url(#glow)" />
+              <circle class="dot" r="7" filter="url(#glow)" />
               <circle class="dot" r="7" filter="url(#glow)" />
             </svg>
             <div class="flow-labels">
