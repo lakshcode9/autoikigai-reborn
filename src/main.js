@@ -260,89 +260,51 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   // Lead flow animation (SVG path-following) + KPI counters
-  (function initLeadFlow(){
-    const flow = document.getElementById('lead-flow');
-    if(!flow) return;
+  (function initPipeline(){
+    const pipe = document.getElementById('lead-pipeline');
+    if(!pipe) return;
+    const sparks = pipe.querySelectorAll('.spark');
+    const kpis = pipe.querySelectorAll('.kpi span');
 
-    const svg = flow.querySelector('.flow-svg');
-    const path = svg?.querySelector('#flow-path') || svg?.querySelector('path');
-    let dots = Array.from(svg?.querySelectorAll('.dot') || []);
-    const kpiSpans = flow.querySelectorAll('.kpi span');
-
-    // Ensure at least 3 dots for a nice effect
-    if(svg && path && dots.length < 3){
-      const base = dots[0] || document.createElementNS('http://www.w3.org/2000/svg','circle');
-      if(!dots.length){
-        base.setAttribute('class','dot');
-        base.setAttribute('r','7');
-        base.setAttribute('filter','url(#glow)');
-        svg.appendChild(base);
-        dots = [base];
-      }
-      for(let i=dots.length;i<3;i++){
-        const clone = base.cloneNode(true);
-        svg.appendChild(clone);
-        dots.push(clone);
-      }
-    }
-
-    // Animate dots along the path
-    let rafId;
-    const animateAlongPath = ()=>{
-      if(!path || !dots.length) return;
-      const length = path.getTotalLength();
-      const speed = isMobile ? 0.004 : 0.006;
-      const now = performance.now()*speed;
-      dots.forEach((dot, idx)=>{
-        const phase = (now/1000 + idx*0.33)%1; // offset dots
-        const point = path.getPointAtLength(phase*length);
-        dot.style.transform = `translate(${point.x}px, ${point.y}px)`;
+    // Restart spark animations when section becomes visible (better reliability)
+    const restart = ()=>{
+      sparks.forEach(s=>{
+        s.style.animation = 'none';
+        void s.offsetWidth; // reflow
+        s.style.animation = '';
       });
-      rafId = requestAnimationFrame(animateAlongPath);
     };
-
-    // Start/stop based on visibility and motion preference
-    const start = ()=>{
-      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if(!rafId) rafId = requestAnimationFrame(animateAlongPath);
-    };
-    const stop = ()=>{ if(rafId){ cancelAnimationFrame(rafId); rafId = undefined; } };
 
     if('IntersectionObserver' in window){
       const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=> e.isIntersecting ? start() : stop());
-      },{threshold:0.1});
-      obs.observe(flow);
-    } else {
-      start();
+        entries.forEach(e=>{ if(e.isIntersecting) restart(); });
+      },{threshold:0.2});
+      obs.observe(pipe);
     }
 
-    // KPI counters
-    const runCounter = (el)=>{
-      if(el.dataset.running) return; // prevent double-run
-      el.dataset.running = '1';
-      const final = parseInt(el.dataset.value || '0',10);
-      const duration = isMobile ? 2000 : 1500;
-      const startTime = performance.now();
-      const step = (now)=>{
-        const p = Math.min(1,(now - startTime)/duration);
-        el.textContent = String(Math.floor(final * p));
-        if(p<1) requestAnimationFrame(step); else el.textContent = String(final);
+    // Counters
+    const runCounter=(el)=>{
+      if(el.dataset.running) return;
+      el.dataset.running='1';
+      const final=parseInt(el.dataset.value||'0',10);
+      const duration=isMobile?2000:1500;
+      const startTime=performance.now();
+      const step=(now)=>{
+        const p=Math.min(1,(now-startTime)/duration);
+        el.textContent=String(Math.floor(final*p));
+        if(p<1) requestAnimationFrame(step); else el.textContent=String(final);
       };
       requestAnimationFrame(step);
     };
 
     if('IntersectionObserver' in window){
-      const kpiObs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting) { runCounter(e.target); kpiObs.unobserve(e.target); } });
+      const kpiObs=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ runCounter(e.target); kpiObs.unobserve(e.target);} });
       },{threshold:0.4});
-      kpiSpans.forEach(s=>kpiObs.observe(s));
+      kpis.forEach(k=>kpiObs.observe(k));
     } else {
-      kpiSpans.forEach(runCounter);
+      kpis.forEach(runCounter);
     }
-
-    // Cleanup on unload
-    window.addEventListener('beforeunload', stop);
   })();
 
   // Mobile-optimized sticky header
