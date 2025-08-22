@@ -71,6 +71,15 @@ a{color:inherit;text-decoration:none}
 .checks li{margin:10px 0}
 .result{background:rgba(109,106,252,.06);border:1px dashed rgba(109,106,252,.35);padding:16px;border-radius:12px}
 
+.qual-list{list-style:none;margin:0;padding:0}
+.qual-list li{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.qual-list svg{width:18px;height:18px;flex:0 0 18px;opacity:.9}
+.callout-accent{background:linear-gradient(180deg,rgba(109,106,252,.10),rgba(101,230,207,.08));border:1px solid rgba(109,106,252,.35);box-shadow:0 0 0 1px rgba(101,230,207,.12) inset, 0 10px 30px rgba(0,0,0,.25);padding:20px;border-radius:14px}
+.feature-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;transition:transform .2s ease, background .2s ease}
+.feature-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.035)}
+.feature-icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(109,106,252,.25),rgba(101,230,207,.2));margin-bottom:8px}
+.feature-icon svg{width:20px;height:20px;opacity:.95}
+
 .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted);font-weight:600;font-size:.9rem}
 .trust-strip{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:.95rem}
