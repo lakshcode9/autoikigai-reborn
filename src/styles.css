@@ -3,6 +3,12 @@
 html,body{margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% -10%,#1a1e2e 0%,transparent 60%),radial-gradient(1000px 500px at 120% 10%,#0e1530 0%,transparent 60%),var(--bg);color:var(--text);line-height:1.6}
+a:focus-visible,button:focus-visible{outline:2px solid #65e6cf;outline-offset:2px}
+/* Futuristic global background layers */
+body{position:relative}
+body::before{content:"";position:fixed;inset:-20%;z-index:-2;background:radial-gradient(40% 30% at 20% 10%,rgba(109,106,252,.25),transparent 60%),radial-gradient(35% 30% at 80% 0%,rgba(101,230,207,.22),transparent 60%);filter:blur(30px);animation:glowShift 14s ease-in-out infinite alternate}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(to right, rgba(255,255,255,.04) 0 1px, transparent 1px 80px),repeating-linear-gradient(to bottom, rgba(255,255,255,.04) 0 1px, transparent 1px 80px);mask:linear-gradient(180deg,transparent 0%,rgba(255,255,255,.6) 20%,rgba(255,255,255,.6) 80%,transparent 100%);opacity:.08}
+@keyframes glowShift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(2%,-2%,0) scale(1.06)}}
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 .no-scroll{overflow:hidden}
@@ -13,6 +19,9 @@ a{color:inherit;text-decoration:none}
 .brand-logo{height:48px;width:auto;display:block}
 .nav{display:flex;align-items:center;gap:16px}
 .nav-link{color:var(--muted)}
+.nav-link{position:relative}
+.nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,transparent,rgba(101,230,207,.7),transparent);transform:scaleX(0);transform-origin:center;transition:transform .2s ease}
+.nav-link:hover::after{transform:scaleX(1)}
 .menu-toggle{display:none;position:relative;width:40px;height:40px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.04);align-items:center;justify-content:center}
 .menu-toggle span{position:absolute;display:block;width:20px;height:2px;background:#e6e8ee;transition:.25s ease}
 .menu-toggle span:nth-child(1){transform:translateY(-6px)}
@@ -22,7 +31,8 @@ a{color:inherit;text-decoration:none}
 .menu-open .menu-toggle span:nth-child(2){opacity:0}
 .menu-open .menu-toggle span:nth-child(3){transform:rotate(-45deg)}
 .button{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-weight:600;transition:.2s ease}
-.button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}
+.button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(101,230,207,.25) inset,0 0 18px rgba(101,230,207,.18)}
+.button:active{transform:translateY(0)}
 .button-sm{padding:8px 12px;font-size:.9rem}
 .primary{background:linear-gradient(180deg,var(--brand),#4a46f0);border-color:transparent}
 .primary:hover{filter:brightness(1.05)}
@@ -32,6 +42,7 @@ a{color:inherit;text-decoration:none}
 .hero{padding:80px 0;background:radial-gradient(800px 400px at 60% 0%,rgba(109,106,252,.15),transparent 70%)}
 .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
 .hero h1{font-size:48px;line-height:1.1;margin:0 0 16px}
+.hero h1{background:linear-gradient(90deg,#e6e8ee 0%,#65e6cf 40%,#6d6afc 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 30px rgba(109,106,252,.14))}
 .subheadline{color:var(--muted);max-width:52ch;margin:0 0 24px}
 .cta-group{display:flex;gap:12px;flex-wrap:wrap}
 .hero-art{position:relative;height:360px}
@@ -58,6 +69,7 @@ a{color:inherit;text-decoration:none}
 .steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;padding-top:18px}
 .steps::before{content:"";position:absolute;top:0;left:10%;right:10%;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));opacity:.35}
 .step{background:var(--panel);border:1px solid var(--border);padding:18px;border-radius:12px;position:relative}
+.step:hover{box-shadow:0 0 0 1px rgba(109,106,252,.25) inset,0 10px 30px rgba(0,0,0,.35)}
 .step::before{content:"";position:absolute;top:-12px;left:calc(50% - 8px);width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 4px rgba(109,106,252,.18)}
 .step-icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(109,106,252,.2),rgba(101,230,207,.15));margin-bottom:10px}
 .step-icon svg{width:22px;height:22px;opacity:.9}
@@ -65,6 +77,7 @@ a{color:inherit;text-decoration:none}
 
 .pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}
 .price-card{background:var(--panel);border:1px solid var(--border);padding:18px;border-radius:12px}
+.price-card:hover{box-shadow:0 0 0 1px rgba(109,106,252,.25) inset}
 
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .checks{padding-left:18px}
@@ -102,6 +115,7 @@ a{color:inherit;text-decoration:none}
 
 .faq details{background:var(--panel);border:1px solid var(--border);padding:14px 16px;border-radius:12px;margin:10px 0}
 .faq summary{cursor:pointer;font-weight:600}
+.faq details:hover{box-shadow:0 0 0 1px rgba(101,230,207,.2) inset}
 
 .site-footer{border-top:1px solid var(--border);padding:22px 0;background:var(--bg-alt)}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -126,6 +140,8 @@ a{color:inherit;text-decoration:none}
   .chat .bubble{max-width:84%}
   .orb{filter:blur(18px);opacity:.4}
 }
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce){body::before{animation:none}}
 
 /* Sticky mobile CTA */
 .mobile-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px;justify-content:space-between;background:rgba(15,17,22,.9);border:1px solid var(--border);padding:10px;border-radius:12px;backdrop-filter:blur(6px)}
