@@ -169,10 +169,14 @@ document.addEventListener('DOMContentLoaded',()=>{
         const viewportH=window.innerHeight;
         const ctaRect=cta? cta.getBoundingClientRect() : null;
         const footRect=footer? footer.getBoundingClientRect() : null;
+        const embed=document.getElementById('embed');
+        const embedRect=embed? embed.getBoundingClientRect() : null;
         const nearCTA=ctaRect && ctaRect.top < viewportH && ctaRect.bottom > viewportH*0.35;
         const nearFooter=footRect && footRect.top < viewportH;
-        mCta.style.opacity = (nearCTA || nearFooter) ? '0' : '1';
-        mCta.style.pointerEvents = (nearCTA || nearFooter) ? 'none' : 'auto';
+        const nearEmbed=embedRect && embedRect.top < viewportH && embedRect.bottom > 0;
+        const hide = nearCTA || nearFooter || nearEmbed;
+        mCta.style.opacity = hide ? '0' : '1';
+        mCta.style.pointerEvents = hide ? 'none' : 'auto';
       }
     };
     window.addEventListener('scroll', onScroll, {passive:true});
