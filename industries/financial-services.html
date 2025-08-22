@@ -35,6 +35,27 @@
       .headline-sweep{background:linear-gradient(90deg,#e6e8ee 0%,#65e6cf 40%,#6d6afc 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 30px rgba(109,106,252,.14));background-size:200% 100%;animation:sweep 6s ease-in-out infinite}
       @keyframes sweep{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
       #finance-canvas{position:absolute;inset:0;width:100%;height:100%}
+      
+      /* Mobile decluttering - same as main site */
+      @media (max-width: 960px) {
+        /* Hide decorative elements on mobile */
+        .hero-art { display: none; }
+        .orb { display: none; }
+        .three-canvas { display: none; }
+        
+        /* Keep only primary CTA in hero */
+        .cta-group .button:not(.primary) { display: none; }
+        
+        /* Add bottom padding for sticky CTA */
+        main { padding-bottom: 96px; }
+        
+        /* Stack pipeline stages */
+        .pipeline .stages { grid-template-columns: 1fr; }
+        
+        /* Center hero content */
+        .hero-copy { text-align: center; }
+        .cta-group { align-items: stretch; }
+      }
     </style>
     <script type="application/ld+json">
     {

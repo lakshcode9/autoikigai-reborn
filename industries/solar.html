@@ -82,6 +82,27 @@
         .mobile-padding { padding: 1rem; }
         .mobile-margin { margin: 1rem 0; }
       }
+      
+      /* Mobile decluttering - same as main site */
+      @media (max-width: 960px) {
+        /* Hide decorative elements on mobile */
+        .hero-art { display: none; }
+        .orb { display: none; }
+        .three-canvas { display: none; }
+        
+        /* Keep only primary CTA in hero */
+        .cta-group .button:not(.primary) { display: none; }
+        
+        /* Add bottom padding for sticky CTA */
+        main { padding-bottom: 96px; }
+        
+        /* Stack pipeline stages */
+        .pipeline .stages { grid-template-columns: 1fr; }
+        
+        /* Center hero content */
+        .hero-copy { text-align: center; }
+        .cta-group { align-items: stretch; }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
