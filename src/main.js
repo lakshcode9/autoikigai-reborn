@@ -259,60 +259,91 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
   }
 
-  // Simple lead flow animation - bulletproof version
-  try {
-    console.log('=== LEAD FLOW DEBUG ===');
+  // Lead flow animation (SVG path-following) + KPI counters
+  (function initLeadFlow(){
     const flow = document.getElementById('lead-flow');
-    console.log('Lead flow element found:', flow);
-    
-    if (flow) {
-      const svg = flow.querySelector('.flow-svg');
-      const dots = flow.querySelectorAll('.dot');
-      const kpis = flow.querySelectorAll('.kpi span');
-      
-      console.log('Flow elements found:', { svg: !!svg, dots: dots.length, kpis: kpis.length });
-      
-      // Simple dot animation
-      if (dots.length > 0) {
-        let t = 0;
-        const animateDots = () => {
-          t += 0.01;
-          dots.forEach((dot, idx) => {
-            const x = Math.sin(t + idx) * 20;
-            const y = Math.cos(t + idx) * 10;
-            dot.style.transform = `translate(${x}px, ${y}px)`;
-          });
-          requestAnimationFrame(animateDots);
-        };
-        animateDots();
-        console.log('Dot animation started');
+    if(!flow) return;
+
+    const svg = flow.querySelector('.flow-svg');
+    const path = svg?.querySelector('#flow-path') || svg?.querySelector('path');
+    let dots = Array.from(svg?.querySelectorAll('.dot') || []);
+    const kpiSpans = flow.querySelectorAll('.kpi span');
+
+    // Ensure at least 3 dots for a nice effect
+    if(svg && path && dots.length < 3){
+      const base = dots[0] || document.createElementNS('http://www.w3.org/2000/svg','circle');
+      if(!dots.length){
+        base.setAttribute('class','dot');
+        base.setAttribute('r','7');
+        base.setAttribute('filter','url(#glow)');
+        svg.appendChild(base);
+        dots = [base];
       }
-      
-      // Simple KPI counter
-      if (kpis.length > 0) {
-        kpis.forEach((kpi, idx) => {
-          const targetValue = parseInt(kpi.dataset.value) || [5000, 1250, 312][idx] || 1000;
-          let current = 0;
-          const increment = targetValue / 100;
-          
-          const counter = setInterval(() => {
-            current += increment;
-            if (current >= targetValue) {
-              kpi.textContent = targetValue;
-              clearInterval(counter);
-            } else {
-              kpi.textContent = Math.floor(current);
-            }
-          }, 20);
-        });
-        console.log('KPI counters started');
+      for(let i=dots.length;i<3;i++){
+        const clone = base.cloneNode(true);
+        svg.appendChild(clone);
+        dots.push(clone);
       }
-    } else {
-      console.log('Lead flow element NOT found');
     }
-  } catch (error) {
-    console.error('Lead flow animation error:', error);
-  }
+
+    // Animate dots along the path
+    let rafId;
+    const animateAlongPath = ()=>{
+      if(!path || !dots.length) return;
+      const length = path.getTotalLength();
+      const speed = isMobile ? 0.004 : 0.006;
+      const now = performance.now()*speed;
+      dots.forEach((dot, idx)=>{
+        const phase = (now/1000 + idx*0.33)%1; // offset dots
+        const point = path.getPointAtLength(phase*length);
+        dot.style.transform = `translate(${point.x}px, ${point.y}px)`;
+      });
+      rafId = requestAnimationFrame(animateAlongPath);
+    };
+
+    // Start/stop based on visibility and motion preference
+    const start = ()=>{
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if(!rafId) rafId = requestAnimationFrame(animateAlongPath);
+    };
+    const stop = ()=>{ if(rafId){ cancelAnimationFrame(rafId); rafId = undefined; } };
+
+    if('IntersectionObserver' in window){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=> e.isIntersecting ? start() : stop());
+      },{threshold:0.1});
+      obs.observe(flow);
+    } else {
+      start();
+    }
+
+    // KPI counters
+    const runCounter = (el)=>{
+      if(el.dataset.running) return; // prevent double-run
+      el.dataset.running = '1';
+      const final = parseInt(el.dataset.value || '0',10);
+      const duration = isMobile ? 2000 : 1500;
+      const startTime = performance.now();
+      const step = (now)=>{
+        const p = Math.min(1,(now - startTime)/duration);
+        el.textContent = String(Math.floor(final * p));
+        if(p<1) requestAnimationFrame(step); else el.textContent = String(final);
+      };
+      requestAnimationFrame(step);
+    };
+
+    if('IntersectionObserver' in window){
+      const kpiObs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) { runCounter(e.target); kpiObs.unobserve(e.target); } });
+      },{threshold:0.4});
+      kpiSpans.forEach(s=>kpiObs.observe(s));
+    } else {
+      kpiSpans.forEach(runCounter);
+    }
+
+    // Cleanup on unload
+    window.addEventListener('beforeunload', stop);
+  })();
 
   // Mobile-optimized sticky header
   let lastScrollY=window.scrollY;
