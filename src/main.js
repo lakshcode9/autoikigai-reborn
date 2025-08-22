@@ -69,33 +69,62 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   // Accessible Industries dropdown (desktop hover + click, mobile tap to open)
+  console.log('Looking for submenu elements...');
   const submenuWrap=document.querySelector('.nav-item.has-submenu');
   const submenuBtn=document.querySelector('.submenu-toggle');
   console.log('Submenu elements found:', { submenuWrap, submenuBtn });
+  
   if(submenuWrap && submenuBtn){
+    console.log('Setting up submenu functionality...');
     const openSub=(state)=>{
+      console.log('Opening submenu:', state);
       submenuWrap.classList.toggle('submenu-open', state);
       submenuBtn.setAttribute('aria-expanded', state?'true':'false');
+      // Force a repaint
+      submenuWrap.offsetHeight;
     };
+    
     // Click/tap toggle
     submenuBtn.addEventListener('click',(e)=>{
+      console.log('Submenu button clicked!');
       e.stopPropagation();
       const isOpen=submenuWrap.classList.contains('submenu-open');
       openSub(!isOpen);
     });
+    
     // Hover for desktop
     if(window.matchMedia('(pointer:fine)').matches){
-      submenuWrap.addEventListener('mouseenter',()=>openSub(true));
-      submenuWrap.addEventListener('mouseleave',()=>openSub(false));
+      submenuWrap.addEventListener('mouseenter',()=>{
+        console.log('Mouse enter submenu');
+        openSub(true);
+      });
+      submenuWrap.addEventListener('mouseleave',()=>{
+        console.log('Mouse leave submenu');
+        openSub(false);
+      });
     }
+    
     // Close on outside click
     document.addEventListener('click',(e)=>{
-      if(!submenuWrap.contains(e.target)) openSub(false);
+      if(!submenuWrap.contains(e.target)) {
+        console.log('Outside click, closing submenu');
+        openSub(false);
+      }
     });
+    
     // Close when navigating via submenu links
     submenuWrap.querySelectorAll('.submenu-link').forEach(l=>{
-      l.addEventListener('click',()=>openSub(false));
+      l.addEventListener('click',()=>{
+        console.log('Submenu link clicked, closing');
+        openSub(false);
+      });
     });
+    
+    console.log('Submenu setup complete!');
+  } else {
+    console.error('Submenu elements not found!');
+    console.log('Available nav elements:', document.querySelectorAll('.nav-item'));
+    console.log('Available buttons:', document.querySelectorAll('.submenu-toggle'));
   }
 
   // Chat demo sequencing (mobile-optimized)
