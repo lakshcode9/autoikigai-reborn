@@ -261,10 +261,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // Mobile-optimized lead flow animation
   const flow=document.getElementById('lead-flow');
+  console.log('Lead flow element found:', flow);
   if(flow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     const svg=flow.querySelector('.flow-svg');
     const dots=flow.querySelectorAll('.flow .dot');
     const kpis=flow.querySelectorAll('.kpi span');
+    
+    console.log('Flow elements found:', { svg, dots: dots.length, kpis: kpis.length });
     
     if(svg && dots.length && kpis.length){
       const path=svg.querySelector('path');
