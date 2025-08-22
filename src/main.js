@@ -305,6 +305,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     } else {
       kpis.forEach(runCounter);
     }
+
+    // Fallback: ensure counters never remain at 0
+    setTimeout(()=>{
+      kpis.forEach(k=>{ if(!k.dataset.running) runCounter(k); });
+    }, 500);
   })();
 
   // Mobile-optimized sticky header
