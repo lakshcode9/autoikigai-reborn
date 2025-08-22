@@ -13,6 +13,14 @@ a{color:inherit;text-decoration:none}
 .brand-logo{height:48px;width:auto;display:block}
 .nav{display:flex;align-items:center;gap:16px}
 .nav-link{color:var(--muted)}
+.menu-toggle{display:none;position:relative;width:40px;height:40px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.04);align-items:center;justify-content:center}
+.menu-toggle span{position:absolute;display:block;width:20px;height:2px;background:#e6e8ee;transition:.25s ease}
+.menu-toggle span:nth-child(1){transform:translateY(-6px)}
+.menu-toggle span:nth-child(2){opacity:1}
+.menu-toggle span:nth-child(3){transform:translateY(6px)}
+.menu-open .menu-toggle span:nth-child(1){transform:rotate(45deg)}
+.menu-open .menu-toggle span:nth-child(2){opacity:0}
+.menu-open .menu-toggle span:nth-child(3){transform:rotate(-45deg)}
 .button{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-weight:600;transition:.2s ease}
 .button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}
 .button-sm{padding:8px 12px;font-size:.9rem}
@@ -89,6 +97,12 @@ a{color:inherit;text-decoration:none}
   .grid-2{grid-template-columns:1fr}
   .header-inner{height:64px}
   .brand-logo{height:40px}
+  .menu-toggle{display:inline-flex}
+  .nav{position:fixed;inset:64px 0 auto 0;display:flex;flex-direction:column;gap:10px;padding:12px;background:rgba(11,12,16,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);transform:translateY(-120%);transition:transform .25s ease}
+  .menu-open #primary-nav{transform:none}
+  .hero-art{height:420px}
+  .chat .bubble{max-width:84%}
+  .orb{filter:blur(18px);opacity:.4}
 }
 
 /* reveal utility */
