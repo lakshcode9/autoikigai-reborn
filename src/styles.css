@@ -207,8 +207,8 @@ a{color:inherit;text-decoration:none}
   .result{padding:20px}
   .faq details{padding:20px}
   .faq summary{padding:8px 0}
-  /* Ensure content not hidden behind sticky CTA */
-  main{padding-bottom:96px}
+  /* Ensure content flows naturally; no extra bottom padding since CTA is non-fixed */
+  main{padding-bottom:0}
   /* Stack pipeline stages vertically */
   .pipeline .stages{grid-template-columns:1fr}
 }
@@ -258,8 +258,8 @@ a{color:inherit;text-decoration:none}
   .feature-card:hover{transform:none}
 }
 
-/* Sticky mobile CTA */
-.mobile-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px;justify-content:space-between;background:rgba(15,17,22,.95);border:1px solid var(--border);padding:12px;border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+/* Mobile CTA (non-fixed) */
+.mobile-cta{position:static;left:auto;right:auto;bottom:auto;z-index:60;display:none;gap:10px;justify-content:space-between;background:rgba(15,17,22,.95);border:1px solid var(--border);padding:12px;border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.4);margin:16px 12px 0}
 .mobile-cta .button{flex:1;min-height:44px}
 @media (max-width: 960px){.mobile-cta{display:flex}}
 
