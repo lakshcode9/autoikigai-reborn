@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  /* Core Base Colors */
+  --background: #000000;
+  --foreground: #ffffff;
+  
+  /* Brand: Radium Blue */
+  --radium: #00E0FF;
+  --radium-glow: rgba(0, 224, 255, 0.4);
+  
+  /* Modern UI Tokens */
+  --card-bg: #0a0a0a;
+  --card-border: #1a1a1a;
+  --muted: #888888;
+
+  /* Testimonial Component Theme */
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: #1a1a1a;
+  --secondary-foreground: var(--foreground);
+  --muted-foreground: #888888;
+  --accent: var(--radium);
+  --accent-foreground: var(--background);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #222222;
+  --input: #222222;
+  --ring: var(--foreground);
+  --radius: 0rem;
+}
+
+* {
+  font-family: var(--font-bebas), sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Bebas Neue loaded via next/font */
+/* Disket Mono for labels */
+.font-disket {
+  font-family: 'Disket Mono', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--radium);
+}
