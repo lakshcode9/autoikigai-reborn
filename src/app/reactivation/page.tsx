@@ -186,7 +186,82 @@ export default function ReactivationPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* TESTIMONIALS / CASE STUDIES */}
+      <section className="relative z-10 py-32 border-t border-white/5 bg-black">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-24">
+          <div className="text-left mb-16">
+            <h2 className="text-5xl md:text-7xl font-bebas font-bold tracking-tight">FIELD-PROVEN RESULTS</h2>
+            <p className="text-white/50 font-bebas text-lg tracking-wide uppercase">AI IS REPLACING THE 1,000-PERSON SALES TEAM.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {[
+              {
+                sector: "HEALTHCARE / DME (SLEEP CLINICS)",
+                result: "$40M+ REVENUE RECOVERED",
+                metric: "262X ROI",
+                body: "A major provider recovered over $40 million in additional revenue in just 5 months by deploying AI voice agents to handle thousands of patient re-orders and dormant check-ins simultaneously.",
+                quote: "The AI handles everything from outbound reactivation to inbound scheduling. It’s like having a 1,000-person sales team that never sleeps."
+              },
+              {
+                sector: "COMMERCIAL PROPERTY SERVICES",
+                result: "7.0X ROI IMPROVEMENT",
+                metric: "26% CONV RATE",
+                body: "Lead-to-meeting conversion rates jumped from 18% to 26% almost overnight for a property maintenance leader. Response times dropped to under 60 seconds across all unclosed estimates.",
+                quote: "We're closing more commercial contracts with zero extra human effort. The AI reacts faster than any human possibly could."
+              },
+              {
+                sector: "CONTRACTOR / ARBORISTS",
+                result: "60% CONVERSION LIFT",
+                metric: "5X COST REDUCTION",
+                body: "By automating follow-ups for 'dead' tree-care and paving quotes, contractors saw a 60% improvement in conversion rates while reducing cost-per-appointment by 80%.",
+                quote: "We're booking jobs from leads we thought were lost months ago. The system just doesn't quit until the decision is made."
+              },
+              {
+                sector: "COMMERCIAL FIRE & SECURITY",
+                result: "105% OF SALES GOAL",
+                metric: "35% CLOSURE LIFT",
+                body: "Systems specialists hit 105% of their revenue recovery goals within 6 months of deploying AI agents specifically to follow up on inspection renewals and security site audits.",
+                quote: "Recovering just one high-ticket enterprise security contract pays for this system 10x over. It's the highest leverage move we've made."
+              }
+            ].map((study, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-10 border border-white/10 bg-zinc-950 rounded-3xl relative overflow-hidden group hover:border-[#00E0FF]/40 transition-colors"
+              >
+                <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Flame className="w-24 h-24 text-[#00E0FF]" />
+                </div>
+                
+                <div className="space-y-6 relative z-10">
+                  <div className="space-y-1">
+                    <span className="text-[10px] tracking-[0.3em] text-[#00E0FF] font-bold uppercase">{study.sector}</span>
+                    <h3 className="text-3xl font-bebas tracking-wide text-white">{study.result}</h3>
+                  </div>
+                  
+                  <div className="bg-[#00E0FF]/10 inline-flex px-3 py-1 rounded text-[#00E0FF] text-xs font-bold font-mono">
+                    STAT: {study.metric}
+                  </div>
+
+                  <p className="text-white/50 text-base leading-relaxed font-sans">
+                    {study.body}
+                  </p>
+                  
+                  <div className="pt-6 border-t border-white/5">
+                    <p className="text-white italic text-sm font-sans tracking-wide leading-relaxed">
+                      "{study.quote}"
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="relative z-10 py-32 text-center px-8 md:px-20 lg:px-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bebas font-black tracking-tighter mb-12">
