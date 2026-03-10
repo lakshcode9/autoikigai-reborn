@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Flame, Building2, Trees, Stethoscope, Droplets } from "lucide-react";
+import { ArrowRight, ArrowDown, CheckCircle, Flame, Building2, Trees, Stethoscope, Droplets } from "lucide-react";
 import Link from "next/link";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 
@@ -70,7 +70,123 @@ export default function ReactivationPage() {
               BOOK SYSTEM DEPLOYMENT
               <ArrowRight className="w-5 h-5" />
             </a>
+            
+            <a 
+              href="#case-studies" 
+              className="inline-flex items-center justify-center gap-3 px-10 py-5 border border-white/20 hover:bg-white/5 text-white font-bebas font-bold text-lg tracking-widest uppercase rounded-full transition-all transform hover:scale-105"
+            >
+              VIEW INDUSTRY RESULTS
+              <ArrowDown className="w-5 h-5" />
+            </a>
           </motion.div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS / CASE STUDIES - STAGGERED ELEVATED LAYOUT */}
+      <section id="case-studies" className="relative z-10 py-32 border-t border-white/5 bg-zinc-950/80">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-24">
+          <div className="text-center mb-24">
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-bebas font-black tracking-tighter text-white">THEY STOPPED<br/><span className="text-[#00E0FF]">GUESSING.</span></h2>
+            <p className="mt-6 text-white/50 font-bebas text-xl md:text-2xl tracking-widest uppercase max-w-3xl mx-auto">
+              Industry benchmarks of AI replacing the 1,000-person sales team. See what the tech is doing in your exact sector.
+            </p>
+          </div>
+
+          <div className="space-y-32">
+            {[
+              {
+                sector: "HEALTHCARE / DME (SLEEP CLINICS)",
+                company: "Industry AI Benchmark",
+                result: "$40M+ RECOVERED",
+                metric: "262X ROI",
+                body: "A major provider recovered over $40 million in additional revenue in just 5 months by deploying AI voice agents to handle thousands of patient re-orders and dormant check-ins simultaneously.",
+                quote: "The AI handles everything from outbound reactivation to inbound scheduling. It's like having a 1,000-person sales team that never sleeps.",
+                image: "https://loremflickr.com/1200/800/doctor,clinic,medical/all",
+                reverse: false
+              },
+              {
+                sector: "COMMERCIAL PROPERTY SERVICES",
+                company: "Industry AI Benchmark",
+                result: "7.0X ROI IMPROVEMENT",
+                metric: "26% CONV RATE",
+                body: "Lead-to-meeting conversion rates jumped from 18% to 26% almost overnight for a property maintenance leader. Response times dropped to under 60 seconds across all unclosed estimates.",
+                quote: "We're closing more commercial contracts with zero extra human effort. The AI reacts faster than any human possibly could.",
+                image: "https://loremflickr.com/1200/800/office,cleaner,commercial/all",
+                reverse: true
+              },
+              {
+                sector: "CONTRACTOR / ARBORISTS",
+                company: "Industry AI Benchmark",
+                result: "60% CONVERSION LIFT",
+                metric: "5X COST REDUCTION",
+                body: "By automating follow-ups for 'dead' tree-care and paving quotes, contractors saw a 60% improvement in conversion rates while reducing cost-per-appointment by 80%.",
+                quote: "We're booking jobs from leads we thought were lost months ago. The system just doesn't quit until the decision is made.",
+                image: "https://loremflickr.com/1200/800/construction,worker,contractor/all",
+                reverse: false
+              },
+              {
+                sector: "COMMERCIAL FIRE & SECURITY",
+                company: "Industry AI Benchmark",
+                result: "105% OF SALES GOAL",
+                metric: "35% CLOSURE LIFT",
+                body: "Systems specialists hit 105% of their revenue recovery goals within 6 months of deploying AI agents specifically to follow up on inspection renewals and security site audits.",
+                quote: "Recovering just one high-ticket enterprise security contract pays for this system 10x over. It's the highest leverage move we've made.",
+                image: "https://loremflickr.com/1200/800/server,security,technology/all",
+                reverse: true
+              }
+            ].map((study, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${study.reverse ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Image Section */}
+                <div className="w-full lg:w-1/2 relative">
+                  <div className="absolute inset-0 bg-[#00E0FF] blur-2xl opacity-10 rounded-full translate-x-4 translate-y-4" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={study.image} 
+                    alt={`Case Study - ${study.sector}`} 
+                    className="w-full max-h-[500px] object-cover rounded-[2rem] border border-white/10 shadow-2xl relative z-10 grayscale-[0.8] hover:grayscale-0 transition-all duration-700"
+                  />
+                  
+                  {/* Floating Metric Badge over Image */}
+                  <div className={`absolute bottom-10 ${study.reverse ? 'left-[-1rem] lg:left-[-3rem]' : 'right-[-1rem] lg:right-[-3rem]'} z-20 hidden md:block border border-white/10 bg-black/90 backdrop-blur-md p-6 rounded-2xl shadow-[0_0_40px_rgba(0,224,255,0.2)]`}>
+                    <p className="text-white/50 text-[10px] tracking-[0.3em] font-bold uppercase mb-1">VERIFIED METRIC</p>
+                    <p className="text-[#00E0FF] text-5xl font-bebas tracking-wide">{study.metric}</p>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="w-full lg:w-1/2 space-y-8">
+                  <div className="space-y-4">
+                    <span className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded text-[10px] tracking-[0.3em] uppercase text-[#00E0FF]">
+                      {study.sector}
+                    </span>
+                    <div>
+                      <h3 className="text-5xl md:text-7xl lg:text-8xl font-bebas tracking-tight text-white leading-[0.9]">{study.result}</h3>
+                      <p className="text-white/40 font-bebas text-xl tracking-widest mt-2">{study.company}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-white/60 text-lg leading-relaxed font-sans max-w-lg">
+                    {study.body}
+                  </p>
+                  
+                  <div className="pt-8 border-t border-white/10 relative">
+                    <div className="absolute -top-4 left-0 w-8 h-8 rounded-full bg-black border border-white/10 flex items-center justify-center">
+                      <span className="text-[#00E0FF] font-serif text-2xl leading-none">"</span>
+                    </div>
+                    <p className="text-white italic text-xl md:text-2xl font-sans tracking-wide leading-relaxed pl-6 border-l-2 border-[#00E0FF]/30">
+                      {study.quote}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -186,81 +302,6 @@ export default function ReactivationPage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS / CASE STUDIES */}
-      <section className="relative z-10 py-32 border-t border-white/5 bg-black">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-24">
-          <div className="text-left mb-16">
-            <h2 className="text-5xl md:text-7xl font-bebas font-bold tracking-tight">FIELD-PROVEN RESULTS</h2>
-            <p className="text-white/50 font-bebas text-lg tracking-wide uppercase">AI IS REPLACING THE 1,000-PERSON SALES TEAM.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {[
-              {
-                sector: "HEALTHCARE / DME (SLEEP CLINICS)",
-                result: "$40M+ REVENUE RECOVERED",
-                metric: "262X ROI",
-                body: "A major provider recovered over $40 million in additional revenue in just 5 months by deploying AI voice agents to handle thousands of patient re-orders and dormant check-ins simultaneously.",
-                quote: "The AI handles everything from outbound reactivation to inbound scheduling. It’s like having a 1,000-person sales team that never sleeps."
-              },
-              {
-                sector: "COMMERCIAL PROPERTY SERVICES",
-                result: "7.0X ROI IMPROVEMENT",
-                metric: "26% CONV RATE",
-                body: "Lead-to-meeting conversion rates jumped from 18% to 26% almost overnight for a property maintenance leader. Response times dropped to under 60 seconds across all unclosed estimates.",
-                quote: "We're closing more commercial contracts with zero extra human effort. The AI reacts faster than any human possibly could."
-              },
-              {
-                sector: "CONTRACTOR / ARBORISTS",
-                result: "60% CONVERSION LIFT",
-                metric: "5X COST REDUCTION",
-                body: "By automating follow-ups for 'dead' tree-care and paving quotes, contractors saw a 60% improvement in conversion rates while reducing cost-per-appointment by 80%.",
-                quote: "We're booking jobs from leads we thought were lost months ago. The system just doesn't quit until the decision is made."
-              },
-              {
-                sector: "COMMERCIAL FIRE & SECURITY",
-                result: "105% OF SALES GOAL",
-                metric: "35% CLOSURE LIFT",
-                body: "Systems specialists hit 105% of their revenue recovery goals within 6 months of deploying AI agents specifically to follow up on inspection renewals and security site audits.",
-                quote: "Recovering just one high-ticket enterprise security contract pays for this system 10x over. It's the highest leverage move we've made."
-              }
-            ].map((study, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-10 border border-white/10 bg-zinc-950 rounded-3xl relative overflow-hidden group hover:border-[#00E0FF]/40 transition-colors"
-              >
-                <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Flame className="w-24 h-24 text-[#00E0FF]" />
-                </div>
-                
-                <div className="space-y-6 relative z-10">
-                  <div className="space-y-1">
-                    <span className="text-[10px] tracking-[0.3em] text-[#00E0FF] font-bold uppercase">{study.sector}</span>
-                    <h3 className="text-3xl font-bebas tracking-wide text-white">{study.result}</h3>
-                  </div>
-                  
-                  <div className="bg-[#00E0FF]/10 inline-flex px-3 py-1 rounded text-[#00E0FF] text-xs font-bold font-mono">
-                    STAT: {study.metric}
-                  </div>
-
-                  <p className="text-white/50 text-base leading-relaxed font-sans">
-                    {study.body}
-                  </p>
-                  
-                  <div className="pt-6 border-t border-white/5">
-                    <p className="text-white italic text-sm font-sans tracking-wide leading-relaxed">
-                      "{study.quote}"
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="relative z-10 py-32 text-center px-8 md:px-20 lg:px-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
