@@ -28,6 +28,7 @@ export default function Home() {
           <Link href="/" className="text-xl font-bebas tracking-widest hover:text-[#00E0FF] transition-colors">AUTOIKIGAI</Link>
           <div className="flex gap-8 text-sm font-bebas tracking-widest">
             <Link href="/offer" className="text-[#00E0FF] hover:text-white transition-colors">OFFER</Link>
+            <Link href="/reactivation" className="hover:text-[#00E0FF] transition-colors">REACTIVATION</Link>
             <a href="#work" className="hover:text-[#00E0FF] transition-colors">WORK</a>
             <a href="https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses" className="hover:text-[#00E0FF] transition-colors">CONTACT</a>
           </div>
