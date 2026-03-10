@@ -176,19 +176,11 @@ export default function ReactivationPage() {
             You don't need a thousand leads. You just need to close one $40,000 project that fell through the cracks last year to pay for our system for the next decade.
           </p>
           
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-12">
+          <div className="flex justify-center items-center mt-12">
             <div className="p-8 border border-white/20 rounded-2xl bg-black w-full max-w-sm">
               <h3 className="text-xl font-bebas tracking-wide text-white/50 mb-2">SETUP & INTEGRATION</h3>
-              <div className="text-5xl font-bebas font-bold text-white mb-4">$2,000</div>
-              <p className="text-sm text-white/60 font-sans">Full AI agent build, voice cloning, prompt engineering, and CRM plumbing.</p>
-            </div>
-            
-            <div className="text-4xl font-bebas text-[#00E0FF]">+</div>
-            
-            <div className="p-8 border border-[#00E0FF]/50 rounded-2xl bg-[#00E0FF]/10 w-full max-w-sm shadow-[0_0_30px_rgba(0,224,255,0.1)]">
-              <h3 className="text-xl font-bebas tracking-wide text-[#00E0FF] mb-2">MONTHLY RETAINER</h3>
-              <div className="text-5xl font-bebas font-bold text-white mb-4">$1,000<span className="text-xl text-white/50">/mo</span></div>
-              <p className="text-sm text-white/60 font-sans">Covers LLM compute, voice API costs, dedicated telephony lines, and active management.</p>
+              <div className="text-5xl font-bebas font-bold text-white mb-4">STARTING AT $2,000</div>
+              <p className="text-sm text-white/60 font-sans">Full AI agent build, voice cloning, prompt engineering, and CRM plumbing. <span className="italic block mt-2 text-white/40">*Ongoing LLM/telephony usage is billed at cost or via performance commission. Let's discuss a model that brings you the most ROI.</span></p>
             </div>
           </div>
         </div>
