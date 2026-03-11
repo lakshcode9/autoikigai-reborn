@@ -10,6 +10,7 @@ import { Component } from "@/components/ui/animated-menu";
 import { StackedImageHover } from "@/components/ui/hover-deck-fx";
 import { FireSphere } from "@/components/ui/fire-sphere";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import Image from "next/image";
 
 export default function Home() {
   const [unlocked, setUnlocked] = useState(false);
@@ -25,7 +26,16 @@ export default function Home() {
 
         {/* NAV */}
         <nav className="relative z-50 px-8 md:px-20 lg:px-24 py-6 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bebas tracking-widest hover:text-[#00E0FF] transition-colors">AUTOIKIGAI</Link>
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image 
+              src="/autoikigai-logo.png" 
+              alt="AutoIkigai" 
+              width={40} 
+              height={40} 
+              className="rounded-full"
+            />
+            <span className="text-xl font-bebas tracking-widest group-hover:text-[#00E0FF] transition-colors">AUTOIKIGAI</span>
+          </Link>
           <div className="flex gap-8 text-sm font-bebas tracking-widest">
             <Link href="/offer" className="text-[#00E0FF] hover:text-white transition-colors">OFFER</Link>
             <Link href="/reactivation" className="hover:text-[#00E0FF] transition-colors">REACTIVATION</Link>

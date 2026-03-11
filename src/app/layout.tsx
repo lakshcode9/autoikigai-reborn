@@ -11,6 +11,9 @@ const bebas = Bebas_Neue({
 export const metadata = {
   title: "Autoikigai — AI Architecture",
   description: "We architect autonomous AI systems that scale.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
