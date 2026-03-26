@@ -8,6 +8,9 @@ const CRM_TOKEN = urlParams.get('t');
 const CRM_REFRESH = urlParams.get('rt');
 const CRM_USER_ID = urlParams.get('u');
 
+let currentUserProfile = null;
+let currentModalDms = [];
+
 let db;
 try {
     db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -71,7 +74,16 @@ function init() {
     renderNicheTabs();
     renderKanbanBoard();
     renderModalStageOptions();
-    switchNiche('paving');
+    
+    // Fetch profile before initial load
+    if (CRM_USER_ID && db) {
+        db.from('profiles').select('*').eq('id', CRM_USER_ID).single().then(({ data }) => {
+            currentUserProfile = data;
+            switchNiche('paving');
+        });
+    } else {
+        switchNiche('paving');
+    }
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
@@ -102,6 +114,9 @@ function init() {
     window.dragLeave = dragLeave;
     window.drop = drop;
     window.quickAction = quickAction;
+    window.addDmField = addDmField;
+    window.removeDm = removeDm;
+    window.updateDmData = updateDmData;
 }
 
 function renderNicheTabs() {
@@ -151,10 +166,17 @@ async function fetchLeads() {
     showLoader();
     try {
         console.log('[CRM] Fetching leads for', NICHES[activeNiche].table);
-        const { data, error } = await db
+        let query = db
             .from(NICHES[activeNiche].table)
-            .select('*')
+            .select('*, profiles(full_name, email)')
             .order('created_at', { ascending: false });
+            
+        // If not a master user, restrict leads to their own or unassigned
+        if (currentUserProfile && currentUserProfile.role !== 'master') {
+            query = query.or(`assigned_user_id.is.null,assigned_user_id.eq.${CRM_USER_ID}`);
+        }
+
+        const { data, error } = await query;
 
         if (error) throw error;
         
@@ -218,6 +240,13 @@ function createCardElement(lead) {
     const ratingHtml = lead.google_rating ? `<div class="flex items-center text-yellow-500 text-xs font-bold gap-1 mt-1"><i class="ph-fill ph-star"></i> ${lead.google_rating}</div>` : '';
     const lastContacted = lead.last_contacted ? new Date(lead.last_contacted).toLocaleDateString([], {month:'short', day:'numeric'}) : 'Never';
     
+    // Render an assignment tag if someone is working on it
+    let tagHtml = '';
+    if (lead.profiles) {
+        const name = lead.profiles.full_name || lead.profiles.email.split('@')[0];
+        tagHtml = `<div class="mt-2"><span class="bg-[#00E0FF]/15 text-[#00E0FF] border border-[#00E0FF]/20 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider inline-flex items-center gap-1"><i class="ph-fill ph-user"></i> ${escapeHtml(name)}</span></div>`;
+    }
+    
     let actionBtns = '';
     if (lead.stage === 'new' || !lead.stage) {
         actionBtns = `<button onclick="quickAction(event, ${lead.id}, 'contacted')" class="mt-2 text-xs bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white px-2 py-1.5 rounded transition-colors w-full text-center font-semibold">Mark Contacted</button>`;
@@ -249,6 +278,7 @@ function createCardElement(lead) {
                 <i class="ph-bold ph-calendar-plus"></i> ${new Date(lead.created_at).toLocaleDateString([], {month:'short', day:'numeric'})}
             </span>
         </div>
+        ${tagHtml}
         ${actionBtns}
     `;
     return el;
@@ -286,8 +316,11 @@ async function updateLeadStage(leadId, newStage) {
 
     const oldStage = allLeads[leadIndex].stage || 'new';
     const updates = { stage: newStage };
-    if (CRM_USER_ID) {
+    
+    // User tags an unassigned lead by acting on it
+    if (CRM_USER_ID && !allLeads[leadIndex].assigned_user_id) {
         updates.assigned_user_id = CRM_USER_ID;
+        allLeads[leadIndex].profiles = currentUserProfile;
     }
     
     if (newStage === 'contacted' || newStage === 'follow_up' || newStage === 'interested') {
@@ -317,7 +350,7 @@ function openModal(leadId) {
 
     document.getElementById('modal-input-company').value = lead.company_name || '';
     document.getElementById('modal-location').innerHTML = `<i class="ph-fill ph-map-pin"></i> ${escapeHtml(lead.city_state) || '-'}`;
-    document.getElementById('modal-created-at').textContent = new Date(lead.created_at).toLocaleDateString();
+    document.getElementById('modal-created-at').textContent = new Date(lead.created_at).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
     document.getElementById('modal-last-contacted').textContent = lead.last_contacted ? new Date(lead.last_contacted).toLocaleDateString() : 'Never';
     
     document.getElementById('modal-stage-select').value = lead.stage || 'new';
@@ -330,6 +363,31 @@ function openModal(leadId) {
     // Fall back to empty since columns were renamed
     document.getElementById('modal-input-context').value = lead.pain_point_pitch || '';
     
+    // Build array from DB
+    const meta = lead.metadata || {};
+    let dbDms = meta.dms;
+    
+    if (!dbDms || !Array.isArray(dbDms) || dbDms.length === 0) {
+        // Backwards compatibility with the static fields from before arrays were introduced
+        if (lead.owner_gm_name || lead.email_address || meta.dm_phone) {
+            dbDms = [{
+                name: lead.owner_gm_name || '',
+                title: '',
+                phone: meta.dm_phone || '',
+                email: lead.email_address || ''
+            }];
+        } else {
+            dbDms = [];
+        }
+    }
+    
+    currentModalDms = JSON.parse(JSON.stringify(dbDms)); // deep copy
+    renderDms();
+    
+    document.getElementById('modal-check-email').checked = !!lead.metadata?.outreach_email;
+    document.getElementById('modal-check-linkedin').checked = !!lead.metadata?.outreach_linkedin;
+    document.getElementById('modal-check-instagram').checked = !!lead.metadata?.outreach_instagram;
+
     const bd = document.getElementById('modal-header-bg');
     bd.className = `px-8 py-6 border-b border-slate-800 flex justify-between items-start sticky top-0 bg-slate-900/95 backdrop-blur z-20 rounded-t-[1rem] border-t-4 border-${NICHES[activeNiche].color}-500`;
 
@@ -370,22 +428,46 @@ async function saveModalLead() {
         city_state: document.getElementById('modal-input-city-state').value,
         google_rating: document.getElementById('modal-input-rating').value || null,
         pain_point_pitch: document.getElementById('modal-input-context').value,
-        stage: document.getElementById('modal-stage-select').value,
+        stage: document.getElementById('modal-stage-select').value
     };
-    if (CRM_USER_ID) {
+    
+    // Sync array to primary columns
+    if (currentModalDms.length > 0) {
+        updates.owner_gm_name = currentModalDms[0].name;
+        updates.email_address = currentModalDms[0].email;
+    } else {
+        updates.owner_gm_name = '';
+        updates.email_address = '';
+    }
+    
+    const leadIndex = allLeads.findIndex(l => l.id === leadId);
+    if (leadIndex === -1) return;
+    
+    // Merge metadata
+    const currentMeta = allLeads[leadIndex].metadata || {};
+    updates.metadata = {
+        ...currentMeta,
+        dms: currentModalDms,
+        outreach_email: document.getElementById('modal-check-email').checked,
+        outreach_linkedin: document.getElementById('modal-check-linkedin').checked,
+        outreach_instagram: document.getElementById('modal-check-instagram').checked
+    };
+    // Ensure we delete legacy dm_phone if it conflicts (optional, but good for cleanliness)
+    delete updates.metadata.dm_phone;
+    
+    // User claims unassigned lead by saving edits on it
+    if (CRM_USER_ID && !allLeads[leadIndex].assigned_user_id) {
         updates.assigned_user_id = CRM_USER_ID;
+        allLeads[leadIndex].profiles = currentUserProfile;
     }
 
-    const leadIndex = allLeads.findIndex(l => l.id === leadId);
-    if (leadIndex !== -1) {
-        const oldStage = allLeads[leadIndex].stage || 'new';
-        if ((updates.stage === 'contacted' || updates.stage === 'follow_up') && oldStage !== updates.stage) {
-            updates.last_contacted = new Date().toISOString();
-            document.getElementById('modal-last-contacted').textContent = new Date().toLocaleDateString();
-        }
-        allLeads[leadIndex] = { ...allLeads[leadIndex], ...updates };
-        distributeCards(document.getElementById('searchInput').value ? allLeads.filter(l => (l.company_name && l.company_name.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase())) || (l.city_state && l.city_state.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))) : allLeads);
+    const oldStage = allLeads[leadIndex].stage || 'new';
+    if ((updates.stage === 'contacted' || updates.stage === 'follow_up') && oldStage !== updates.stage) {
+        updates.last_contacted = new Date().toISOString();
+        document.getElementById('modal-last-contacted').textContent = new Date().toLocaleDateString();
     }
+    allLeads[leadIndex] = { ...allLeads[leadIndex], ...updates };
+    distributeCards(document.getElementById('searchInput').value ? allLeads.filter(l => (l.company_name && l.company_name.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase())) || (l.city_state && l.city_state.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))) : allLeads);
 
     try {
         const { error } = await db.from(NICHES[activeNiche].table).update(updates).eq('id', leadId);
@@ -496,6 +578,38 @@ function showToast(msg, isError = false) {
     toast.classList.add('show');
     clearTimeout(toastTimeout);
     toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+function renderDms() {
+    const container = document.getElementById('modal-dms-container');
+    container.innerHTML = currentModalDms.map((dm, i) => `
+        <div class="rounded-xl p-4 space-y-2.5 relative group" style="background:var(--card);border:1px solid var(--border)">
+            <button onclick="removeDm(${i})" class="absolute top-2 right-2 text-xs text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity" title="Remove DM"><i class="ph-bold ph-trash"></i></button>
+            <div class="flex items-center gap-3"><i class="ph-fill ph-user w-4 text-zinc-500"></i><input type="text" class="editable-input text-sm font-semibold text-white dm-input" data-index="${i}" data-field="name" value="${escapeHtml(dm.name || '')}" placeholder="Decision Maker Name" oninput="updateDmData(this)"></div>
+            <div class="flex items-center gap-3"><i class="ph-fill ph-briefcase w-4 text-zinc-500"></i><input type="text" class="editable-input text-xs uppercase tracking-wider text-zinc-400 dm-input" data-index="${i}" data-field="title" value="${escapeHtml(dm.title || '')}" placeholder="Job Title (e.g., CEO, Facility Manager)" oninput="updateDmData(this)"></div>
+            <div class="flex items-center gap-3"><i class="ph-fill ph-phone w-4 text-zinc-500"></i><input type="text" class="editable-input text-sm font-mono dm-input" data-index="${i}" data-field="phone" value="${escapeHtml(dm.phone || '')}" placeholder="Direct Phone / Cell" oninput="updateDmData(this)"></div>
+            <div class="flex items-center gap-3"><i class="ph-fill ph-envelope w-4 text-zinc-500"></i><input type="text" class="editable-input text-sm font-mono dm-input" data-index="${i}" data-field="email" value="${escapeHtml(dm.email || '')}" placeholder="Direct Email" oninput="updateDmData(this)"></div>
+        </div>
+    `).join('');
+}
+
+function addDmField() {
+    currentModalDms.push({ name: '', title: '', phone: '', email: '' });
+    renderDms();
+    debouncedSaveModalLead();
+}
+
+function removeDm(i) {
+    currentModalDms.splice(i, 1);
+    renderDms();
+    debouncedSaveModalLead();
+}
+
+function updateDmData(input) {
+    const i = parseInt(input.dataset.index);
+    const field = input.dataset.field;
+    currentModalDms[i][field] = input.value;
+    debouncedSaveModalLead();
 }
 
 if (document.readyState === 'loading') {

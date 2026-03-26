@@ -336,10 +336,36 @@
                     <div>
                         <h4 class="section-label mb-2 flex items-center gap-2"><i class="ph-fill ph-address-book"></i> CONTACT INFO</h4>
                         <div class="rounded-xl p-4 space-y-2.5" style="background:var(--card);border:1px solid var(--border)">
-                            <div class="flex items-center gap-3"><i class="ph-fill ph-phone w-4" style="color:var(--text-muted)"></i><input type="text" id="modal-input-phone" class="editable-input text-sm" style="font-family:'JetBrains Mono'" placeholder="Phone" oninput="debouncedSaveModalLead()"></div>
+                            <div class="flex items-center gap-3"><i class="ph-fill ph-phone w-4" style="color:var(--text-muted)"></i><input type="text" id="modal-input-phone" class="editable-input text-sm" style="font-family:'JetBrains Mono'" placeholder="Company Phone" oninput="debouncedSaveModalLead()"></div>
                             <div class="flex items-center gap-3"><i class="ph-fill ph-globe w-4 cursor-pointer" style="color:var(--cyan)" onclick="openWebsite()"></i><input type="text" id="modal-input-website" class="editable-input text-sm" style="font-family:'JetBrains Mono';color:var(--cyan)" placeholder="Website" oninput="debouncedSaveModalLead()"></div>
                             <div class="flex items-center gap-3"><i class="ph-fill ph-map-pin w-4" style="color:var(--text-muted)"></i><input type="text" id="modal-input-city-state" class="editable-input text-sm" placeholder="City, State" oninput="debouncedSaveModalLead()"></div>
                             <div class="flex items-center gap-3"><i class="ph-fill ph-star w-4" style="color:#FFB020"></i><input type="text" id="modal-input-rating" class="editable-input text-sm" style="font-family:'JetBrains Mono'" placeholder="Rating" oninput="debouncedSaveModalLead()"></div>
+                        </div>
+                    </div>
+                    <div id="decision-maker-section">
+                        <h4 class="section-label mb-2 flex items-center justify-between mt-4">
+                            <span class="flex items-center gap-2"><i class="ph-fill ph-users"></i> DECISION MAKERS</span>
+                            <button onclick="addDmField()" class="text-[#00E0FF] hover:text-white transition-colors"><i class="ph-bold ph-plus"></i> Add DM</button>
+                        </h4>
+                        <div id="modal-dms-container" class="space-y-3">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        
+                        <!-- Outreach Tracking Area -->
+                        <div class="rounded-xl p-4 mt-3 space-y-2 border border-white/5 bg-white/5">
+                            <h5 class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-1">Multi-Touch Outreach</h5>
+                            <label class="flex items-center gap-2 text-xs text-zinc-400 cursor-pointer hover:text-white transition-colors">
+                                <input type="checkbox" id="modal-check-email" class="rounded bg-black border-white/20 text-[#00E0FF] focus:ring-[#00E0FF]/30 accent-[#00E0FF]" onchange="saveModalLead()">
+                                Email Outreach Sent
+                            </label>
+                            <label class="flex items-center gap-2 text-xs text-zinc-400 cursor-pointer hover:text-white transition-colors">
+                                <input type="checkbox" id="modal-check-linkedin" class="rounded bg-black border-white/20 text-[#00E0FF] focus:ring-[#00E0FF]/30 accent-[#00E0FF]" onchange="saveModalLead()">
+                                LinkedIn Outreach Sent
+                            </label>
+                            <label class="flex items-center gap-2 text-xs text-zinc-400 cursor-pointer hover:text-white transition-colors">
+                                <input type="checkbox" id="modal-check-instagram" class="rounded bg-black border-white/20 text-[#00E0FF] focus:ring-[#00E0FF]/30 accent-[#00E0FF]" onchange="saveModalLead()">
+                                IG Company Page Visited/Messaged
+                            </label>
                         </div>
                     </div>
                     <div>

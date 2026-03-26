@@ -11,6 +11,11 @@ export async function signup(formData: FormData) {
   const password = formData.get('password') as string
   const firstName = formData.get('first_name') as string
 
+  // Domain Restrictions
+  if (!email || !email.toLowerCase().endsWith('@autoikigai.systems')) {
+    redirect('/signup?error=' + encodeURIComponent('Only @autoikigai.systems emails are authorized to register.'))
+  }
+
   // Determine the base URL for the redirect
   // Use Vercel URL if present, otherwise local dev
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'

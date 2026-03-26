@@ -14,7 +14,7 @@ export default async function DashboardPage() {
   const { access_token, refresh_token, user } = session
 
   return (
-    <div className="w-full h-screen bg-black overflow-hidden">
+    <div className="w-full h-full bg-black overflow-hidden">
       <iframe 
         src={`/crm/index.html?t=${access_token}&rt=${refresh_token}&u=${user.id}`} 
         className="w-full h-full border-none"
