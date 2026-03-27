@@ -604,7 +604,7 @@ function setAikiExpression(exp) {
 }
 
 async function researchWithAiki() {
-    const leadId = document.getElementById('modal-lead-id').value;
+    const leadId = currentlyEditingLeadId;
     const lead = allLeads.find(l => l.id === leadId);
     if (!lead) return;
 
@@ -652,7 +652,7 @@ async function askAiki() {
     const question = input.value.trim();
     if (!question) return;
 
-    const leadId = document.getElementById('modal-lead-id').value;
+    const leadId = currentlyEditingLeadId;
     const lead = allLeads.find(l => l.id === leadId);
     const contentEl = document.getElementById('aiki-content');
     
