@@ -113,6 +113,9 @@ function init() {
     window.saveModalLead = saveModalLead;
     window.addNote = addNote;
     window.unassignLead = unassignLead;
+window.researchWithAiki = researchWithAiki;
+window.askAiki = askAiki;
+window.setAikiExpression = setAikiExpression;
     window.quickAction = quickAction;
     window.addDmField = addDmField;
     window.removeDm = removeDm;
@@ -401,9 +404,14 @@ function openModal(leadId) {
     document.getElementById('modal-input-rating').value = lead.google_rating || '';
     
     // Fall back to empty since columns were renamed
-    document.getElementById('modal-input-context').value = lead.pain_point_pitch || '';
+    document.getElementById('modal-input-context').value = lead.context || '';
     
-    // Build array from DB
+    // Reset Aiki State
+    setAikiExpression('happy');
+    document.getElementById('aiki-content').innerHTML = `"I'm standing by to research ${lead.company_name}. Click below to pull live web data."`;
+    document.getElementById('aiki-chat-input').value = '';
+    
+    // Render notesarray from DB
     const meta = lead.metadata || {};
     let dbDms = meta.dms;
     
@@ -561,6 +569,105 @@ async function unassignLead(leadId) {
         showToast('Failed to unassign lead', 'error');
     } finally {
         hideLoader();
+    }
+}
+
+// --- AIKI AI ASSISTANT ---
+const AIKI_ASSETS = {
+    happy: 'assets/aiki/happy.png',
+    angry: 'assets/aiki/angry.png',
+    joy: 'assets/aiki/joy.png',
+    sparkle: 'assets/aiki/sparkle.png',
+    thinking: 'aiki-gif.gif' // Using the GIF for research state
+};
+
+function setAikiExpression(exp) {
+    const img = document.getElementById('aiki-avatar');
+    if (!img) return;
+    
+    // Fallback to placeholder if asset not found (user needs to move files)
+    img.src = AIKI_ASSETS[exp] || `https://via.placeholder.com/64?text=${exp}`;
+    
+    if (exp === 'thinking') {
+        img.classList.add('animate-bounce');
+        document.getElementById('aiki-status-dot').classList.replace('bg-cyan-500', 'bg-yellow-500');
+    } else {
+        img.classList.remove('animate-bounce');
+        document.getElementById('aiki-status-dot').classList.replace('bg-yellow-500', 'bg-cyan-500');
+    }
+}
+
+async function researchWithAiki() {
+    const leadId = document.getElementById('modal-lead-id').value;
+    const lead = allLeads.find(l => l.id === leadId);
+    if (!lead) return;
+
+    const contentEl = document.getElementById('aiki-content');
+    const btn = document.getElementById('btn-aiki-research');
+    
+    setAikiExpression('thinking');
+    contentEl.innerHTML = '<span class="text-cyan-400">Aiki is scanning the web for real-time intel...</span>';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="ph-bold ph-spinner-gap animate-spin"></i> ANALYZING...';
+
+    try {
+        const prompt = `Research ${lead.company_name} in ${lead.city_state || 'their local area'}. URL: ${lead.website_url || 'Unknown'}. 
+        Find: 1. Their core specialty. 2. A recent victory or news. 3. A killer one-sentence cold call opener. 
+        Formatting: Use short bullet points. Heading: "AIKI INSIGHT"`;
+
+        const response = await fetch('/api/aiki', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+
+        const result = await response.json();
+        if (result.error) throw new Error(result.error);
+
+        const insight = result.choices[0].message.content;
+        contentEl.innerHTML = `<div class="aiki-result text-[10px] space-y-2">${insight.replace(/\n/g, '<br>')}</div>`;
+        setAikiExpression('sparkle');
+        showToast('Aiki found deep intel!', 'success');
+    } catch (err) {
+        console.error('[Aiki] Research error:', err);
+        contentEl.innerHTML = '<span class="text-red-400">My signals are crossed. Try again in a moment.</span>';
+        setAikiExpression('angry');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ph-bold ph-lightning"></i> Deep Research Company';
+    }
+}
+
+async function askAiki() {
+    const input = document.getElementById('aiki-chat-input');
+    const question = input.value.trim();
+    if (!question) return;
+
+    const leadId = document.getElementById('modal-lead-id').value;
+    const lead = allLeads.find(l => l.id === leadId);
+    const contentEl = document.getElementById('aiki-content');
+    
+    input.value = '';
+    setAikiExpression('thinking');
+    contentEl.innerHTML = `<span class="text-cyan-400 italic">Thinking about "${question}"...</span>`;
+
+    try {
+        const prompt = `Lead: ${lead.company_name}. Question: ${question}. Answer as Aiki, the Cyber-Daruma assistant. Be concise and sharp. Use the live web if needed.`;
+        
+        const response = await fetch('/api/aiki', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+
+        const result = await response.json();
+        if (result.error) throw new Error(result.error);
+
+        contentEl.innerHTML = `<div class="aiki-chat-response text-[11px] border-l-2 border-cyan-500/30 pl-3 py-1 text-zinc-300 font-medium">${result.choices[0].message.content}</div>`;
+        setAikiExpression('joy');
+    } catch (err) {
+        contentEl.innerHTML = '<span class="text-red-400">Connection drop. Try again?</span>';
+        setAikiExpression('angry');
     }
 }
 
