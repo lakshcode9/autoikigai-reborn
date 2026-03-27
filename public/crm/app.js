@@ -494,13 +494,14 @@ async function saveModalLead() {
     // Ensure we delete legacy dm_phone if it conflicts (optional, but good for cleanliness)
     delete updates.metadata.dm_phone;
     
-    // User claims unassigned lead by saving edits on it
-    if (CRM_USER_ID && !allLeads[leadIndex].assigned_user_id) {
-        updates.assigned_user_id = CRM_USER_ID;
-        allLeads[leadIndex].profiles = currentUserProfile;
-    }
-
     const oldStage = allLeads[leadIndex].stage || 'new';
+    if (updates.stage !== oldStage) {
+        // Only auto-assign on STAGE CHANGE if currently unassigned
+        if (CRM_USER_ID && !allLeads[leadIndex].assigned_user_id) {
+            updates.assigned_user_id = CRM_USER_ID;
+            allLeads[leadIndex].profiles = currentUserProfile;
+        }
+    }
     if ((updates.stage === 'contacted' || updates.stage === 'follow_up') && oldStage !== updates.stage) {
         updates.last_contacted = new Date().toISOString();
         document.getElementById('modal-last-contacted').textContent = new Date().toLocaleDateString();
@@ -548,10 +549,8 @@ async function addNote() {
     if (leadIndex === -1) return;
     const lead = allLeads[leadIndex];
 
-    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-    const timestamp = formatter.format(new Date());
-    
-    const formattedNote = `[${timestamp}] ${newContent}`;
+    const userName = currentUserProfile ? (currentUserProfile.full_name || currentUserProfile.email.split('@')[0]) : 'User';
+    const formattedNote = `[${timestamp}, ${userName}] ${newContent}`;
     
     const existingNotes = lead.notes ? lead.notes : '';
     const updatedNotes = existingNotes ? `${existingNotes}\n---\n${formattedNote}` : formattedNote;
