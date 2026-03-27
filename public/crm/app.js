@@ -69,6 +69,7 @@ let activeRegion = 'us';
 let allLeads = [];
 let currentlyEditingLeadId = null;
 let saveTimeout = null;
+let sortableInstances = [];
 
 function init() {
     console.log('[CRM] init() called');
@@ -111,9 +112,6 @@ function init() {
     window.debouncedSaveModalLead = debouncedSaveModalLead;
     window.saveModalLead = saveModalLead;
     window.addNote = addNote;
-    window.allowDrop = allowDrop;
-    window.dragLeave = dragLeave;
-    window.drop = drop;
     window.quickAction = quickAction;
     window.addDmField = addDmField;
     window.removeDm = removeDm;
@@ -160,7 +158,7 @@ function renderKanbanBoard() {
     console.log('[CRM] rendering board columns');
     const container = document.getElementById('kanban-board');
     container.innerHTML = PIPELINE_STAGES.map(stage => `
-        <div class="kanban-column" id="col-${stage.id}" ondragover="allowDrop(event)" ondragleave="dragLeave(event)" ondrop="drop(event, '${stage.id}')">
+        <div class="kanban-column" id="col-${stage.id}">
             <div class="kanban-column-header text-${stage.color}-400">
                 <div class="flex items-center gap-2">
                     <i class="ph-fill ph-${stage.icon}"></i>
@@ -168,9 +166,38 @@ function renderKanbanBoard() {
                 </div>
                 <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full text-xs font-bold" id="col-count-${stage.id}">0</span>
             </div>
-            <div class="kanban-cards scrollbar-hide" id="cards-${stage.id}"></div>
+            <div class="kanban-cards h-full scrollbar-hide py-2" id="cards-${stage.id}"></div>
         </div>
     `).join('');
+
+    initSortable();
+}
+
+function initSortable() {
+    // Destroy previous instances
+    sortableInstances.forEach(s => s.destroy());
+    sortableInstances = [];
+
+    PIPELINE_STAGES.forEach(stage => {
+        const el = document.getElementById(`cards-${stage.id}`);
+        if (!el) return;
+
+        const s = new Sortable(el, {
+            group: 'leads',
+            animation: 200,
+            ghostClass: 'sortable-ghost',
+            dragClass: 'sortable-drag',
+            fallbackOnBody: true,
+            swapThreshold: 0.65,
+            onAdd: async (evt) => {
+                const leadId = parseInt(evt.item.getAttribute('data-id'));
+                const newStage = evt.to.id.replace('cards-', '');
+                console.log(`[CRM] Lead ${leadId} moved to ${newStage}`);
+                await updateLeadStage(leadId, newStage);
+            }
+        });
+        sortableInstances.push(s);
+    });
 }
 
 function renderModalStageOptions() {
@@ -239,8 +266,22 @@ function distributeCards(leadsToRender) {
 
     PIPELINE_STAGES.forEach(s => {
         const cnt = document.getElementById(`col-count-${s.id}`);
-        if(cnt) cnt.textContent = counts[s.id];
+        if(cnt) animateValue(cnt, parseInt(cnt.textContent) || 0, counts[s.id], 400);
     });
+}
+
+function animateValue(obj, start, end, duration) {
+    if (start === end) return;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
 }
 
 function escapeHtml(unsafe) {
@@ -251,15 +292,9 @@ function escapeHtml(unsafe) {
 function createCardElement(lead) {
     const el = document.createElement('div');
     el.className = 'kanban-card group';
-    el.draggable = true;
     el.id = `card-${lead.id}`;
     el.setAttribute('data-id', lead.id);
     
-    el.addEventListener('dragstart', (e) => {
-        el.classList.add('dragging');
-        e.dataTransfer.setData('text/plain', lead.id);
-    });
-    el.addEventListener('dragend', () => el.classList.remove('dragging'));
     el.addEventListener('click', () => openModal(lead.id));
 
     const ratingHtml = lead.google_rating ? `<div class="flex items-center text-yellow-500 text-xs font-bold gap-1 mt-1"><i class="ph-fill ph-star"></i> ${lead.google_rating}</div>` : '';
@@ -307,27 +342,6 @@ function createCardElement(lead) {
         ${actionBtns}
     `;
     return el;
-}
-
-function allowDrop(ev) {
-    ev.preventDefault();
-    ev.currentTarget.classList.add('column-drag-over');
-}
-
-function dragLeave(ev) {
-    ev.currentTarget.classList.remove('column-drag-over');
-}
-
-async function drop(ev, newStage) {
-    ev.preventDefault();
-    ev.currentTarget.classList.remove('column-drag-over');
-    const leadId = parseInt(ev.dataTransfer.getData('text/plain'));
-    if (!leadId) return;
-
-    const lead = allLeads.find(l => l.id === leadId);
-    if (!lead || (lead.stage || 'new') === newStage) return;
-
-    await updateLeadStage(leadId, newStage);
 }
 
 async function quickAction(ev, leadId, newStage) {
