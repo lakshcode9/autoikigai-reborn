@@ -112,6 +112,7 @@ function init() {
     window.debouncedSaveModalLead = debouncedSaveModalLead;
     window.saveModalLead = saveModalLead;
     window.addNote = addNote;
+    window.unassignLead = unassignLead;
     window.quickAction = quickAction;
     window.addDmField = addDmField;
     window.removeDm = removeDm;
@@ -433,6 +434,23 @@ function openModal(leadId) {
     renderNotes(lead.notes);
     renderScript(lead);
 
+    const assignmentEl = document.getElementById('modal-assignment');
+    if (lead.profiles) {
+        assignmentEl.innerHTML = `
+            <div class="bg-white/5 border border-white/10 rounded-full pl-1 pr-3 py-1 flex items-center gap-2 group">
+                <img src="${lead.profiles.avatar_url || 'https://via.placeholder.com/32'}" class="w-6 h-6 rounded-full border border-slate-700">
+                <span class="text-slate-200 font-medium">${lead.profiles.full_name || lead.profiles.email}</span>
+                ${lead.assigned_user_id === CRM_USER_ID ? `
+                    <button onclick="unassignLead('${lead.id}')" class="ml-2 text-[10px] text-red-500 hover:text-red-400 transition-colors uppercase tracking-widest font-black flex items-center gap-1 pl-2 border-l border-white/10">
+                        <i class="ph-bold ph-user-minus"></i> Untag
+                    </button>
+                ` : ''}
+            </div>
+        `;
+    } else {
+        assignmentEl.innerHTML = `<span class="text-slate-500 italic flex items-center gap-1"><i class="ph ph-user"></i> Unassigned</span>`;
+    }
+
     document.getElementById('leadModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -549,6 +567,8 @@ async function addNote() {
     if (leadIndex === -1) return;
     const lead = allLeads[leadIndex];
 
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    const timestamp = formatter.format(new Date());
     const userName = currentUserProfile ? (currentUserProfile.full_name || currentUserProfile.email.split('@')[0]) : 'User';
     const formattedNote = `[${timestamp}, ${userName}] ${newContent}`;
     
