@@ -574,10 +574,10 @@ async function unassignLead(leadId) {
 
 // --- AIKI AI ASSISTANT ---
 const AIKI_ASSETS = {
-    happy: 'assets/aiki/happy.png',
-    angry: 'assets/aiki/angry.png',
-    joy: 'assets/aiki/joy.png',
-    sparkle: 'assets/aiki/sparkle.png',
+    happy: 'assets/aiki/happy.jpg',
+    angry: 'assets/aiki/angry.jpg',
+    joy: 'assets/aiki/joy.jpg',
+    sparkle: 'assets/aiki/sparkle.jpg',
     thinking: 'aiki-gif.gif' // Using the GIF for research state
 };
 
