@@ -541,7 +541,7 @@ async function unassignLead(leadId) {
     const leadIndex = allLeads.findIndex(l => l.id === leadId);
     if (leadIndex === -1) return;
     
-    showLoader(true);
+    showLoader();
     try {
         const { error } = await db.from(getActiveTable())
             .update({ assigned_user_id: null })
@@ -560,7 +560,7 @@ async function unassignLead(leadId) {
         console.error('[CRM] unassign error:', err);
         showToast('Failed to unassign lead', 'error');
     } finally {
-        showLoader(false);
+        hideLoader();
     }
 }
 
