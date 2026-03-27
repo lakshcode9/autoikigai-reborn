@@ -5,7 +5,12 @@ type LeadNicheTable =
   | 'leads_fire_security'
   | 'leads_janitorial'
   | 'leads_sleep_apnea'
-  | 'leads_arborist';
+  | 'leads_arborist'
+  | 'leads_uk_paving'
+  | 'leads_uk_fire_security'
+  | 'leads_uk_janitorial'
+  | 'leads_uk_sleep_apnea'
+  | 'leads_uk_arborist';
 
 /**
  * Updates a lead's stage and tags it with the currently authenticated user's ID.

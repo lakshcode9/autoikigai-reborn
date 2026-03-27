@@ -65,6 +65,7 @@ const PIPELINE_STAGES = [
 ];
 
 let activeNiche = 'paving';
+let activeRegion = 'us';
 let allLeads = [];
 let currentlyEditingLeadId = null;
 let saveTimeout = null;
@@ -117,6 +118,30 @@ function init() {
     window.addDmField = addDmField;
     window.removeDm = removeDm;
     window.updateDmData = updateDmData;
+    window.switchRegion = switchRegion;
+}
+
+function getActiveTable() {
+    const baseTable = NICHES[activeNiche].table;
+    if (activeRegion === 'uk') {
+        return baseTable.replace('leads_', 'leads_uk_');
+    }
+    return baseTable;
+}
+
+async function switchRegion(region) {
+    if (activeRegion === region) return;
+    activeRegion = region;
+    
+    document.getElementById('btn-region-us').className = region === 'us' 
+        ? "px-4 py-1.5 rounded text-xs font-bold transition-colors bg-white/10 text-white shadow-sm border border-white/5" 
+        : "px-4 py-1.5 rounded text-xs font-bold transition-colors text-zinc-500 hover:text-white border border-transparent";
+        
+    document.getElementById('btn-region-uk').className = region === 'uk'
+        ? "px-4 py-1.5 rounded text-xs font-bold transition-colors bg-white/10 text-white shadow-sm border border-white/5"
+        : "px-4 py-1.5 rounded text-xs font-bold transition-colors text-zinc-500 hover:text-white border border-transparent";
+        
+    await fetchLeads();
 }
 
 function renderNicheTabs() {
@@ -165,9 +190,9 @@ async function switchNiche(nicheKey) {
 async function fetchLeads() {
     showLoader();
     try {
-        console.log('[CRM] Fetching leads for', NICHES[activeNiche].table);
+        console.log('[CRM] Fetching leads for', getActiveTable());
         let query = db
-            .from(NICHES[activeNiche].table)
+            .from(getActiveTable())
             .select('*, profiles(full_name, email)')
             .order('created_at', { ascending: false });
             
@@ -331,7 +356,7 @@ async function updateLeadStage(leadId, newStage) {
     distributeCards(document.getElementById('searchInput').value ? allLeads.filter(l => (l.company_name && l.company_name.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase())) || (l.city_state && l.city_state.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))) : allLeads);
 
     try {
-        const { error } = await db.from(NICHES[activeNiche].table).update(updates).eq('id', leadId);
+        const { error } = await db.from(getActiveTable()).update(updates).eq('id', leadId);
         if (error) throw error;
         showToast("Stage updated");
     } catch (err) {
@@ -470,7 +495,7 @@ async function saveModalLead() {
     distributeCards(document.getElementById('searchInput').value ? allLeads.filter(l => (l.company_name && l.company_name.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase())) || (l.city_state && l.city_state.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))) : allLeads);
 
     try {
-        const { error } = await db.from(NICHES[activeNiche].table).update(updates).eq('id', leadId);
+        const { error } = await db.from(getActiveTable()).update(updates).eq('id', leadId);
         if (error) throw error;
         showToast("Saved");
     } catch (err) {
@@ -522,7 +547,7 @@ async function addNote() {
     renderNotes(updatedNotes);
 
     try {
-        const { error } = await db.from(NICHES[activeNiche].table).update({ notes: updatedNotes }).eq('id', currentlyEditingLeadId);
+        const { error } = await db.from(getActiveTable()).update({ notes: updatedNotes }).eq('id', currentlyEditingLeadId);
         if (error) throw error;
         showToast("Note added");
     } catch (err) {
