@@ -537,6 +537,33 @@ async function saveModalLead() {
     }
 }
 
+async function unassignLead(leadId) {
+    const leadIndex = allLeads.findIndex(l => l.id === leadId);
+    if (leadIndex === -1) return;
+    
+    showLoader(true);
+    try {
+        const { error } = await db.from(getActiveTable())
+            .update({ assigned_user_id: null })
+            .eq('id', leadId);
+            
+        if (error) throw error;
+        
+        allLeads[leadIndex].assigned_user_id = null;
+        allLeads[leadIndex].profiles = null;
+        
+        // Refresh UI
+        distributeCards(document.getElementById('searchInput').value ? allLeads.filter(l => (l.company_name && l.company_name.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase())) || (l.city_state && l.city_state.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))) : allLeads);
+        openModal(leadId); // Refresh modal view
+        showToast('Lead unassigned successfully', 'success');
+    } catch (err) {
+        console.error('[CRM] unassign error:', err);
+        showToast('Failed to unassign lead', 'error');
+    } finally {
+        showLoader(false);
+    }
+}
+
 function renderNotes(notesStr) {
     const container = document.getElementById('notes-list');
     if (!notesStr) {
