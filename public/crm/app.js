@@ -190,7 +190,7 @@ function initSortable() {
             fallbackOnBody: true,
             swapThreshold: 0.65,
             onAdd: async (evt) => {
-                const leadId = parseInt(evt.item.getAttribute('data-id'));
+                const leadId = evt.item.getAttribute('data-id');
                 const newStage = evt.to.id.replace('cards-', '');
                 console.log(`[CRM] Lead ${leadId} moved to ${newStage}`);
                 await updateLeadStage(leadId, newStage);
