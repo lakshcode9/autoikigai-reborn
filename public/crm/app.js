@@ -583,17 +583,23 @@ const AIKI_ASSETS = {
 
 function setAikiExpression(exp) {
     const img = document.getElementById('aiki-avatar');
+    const scanner = document.getElementById('aiki-scanner');
+    const dot = document.getElementById('aiki-status-dot');
     if (!img) return;
     
-    // Fallback to placeholder if asset not found (user needs to move files)
     img.src = AIKI_ASSETS[exp] || `https://via.placeholder.com/64?text=${exp}`;
     
     if (exp === 'thinking') {
-        img.classList.add('animate-bounce');
-        document.getElementById('aiki-status-dot').classList.replace('bg-cyan-500', 'bg-yellow-500');
+        img.classList.add('animate-pulse');
+        if (scanner) scanner.classList.add('scanning-line');
+        if (dot) dot.className = 'absolute bottom-0 right-1 w-3 h-3 rounded-full bg-yellow-400 border-2 border-[#050505] z-30 animate-ping';
     } else {
-        img.classList.remove('animate-bounce');
-        document.getElementById('aiki-status-dot').classList.replace('bg-yellow-500', 'bg-cyan-500');
+        img.classList.remove('animate-pulse');
+        if (scanner) scanner.classList.remove('scanning-line');
+        if (dot) {
+            dot.className = 'absolute bottom-0 right-1 w-3 h-3 rounded-full border-2 border-[#050505] z-30 transition-colors duration-500';
+            dot.classList.add(exp === 'angry' ? 'bg-red-500' : (exp === 'joy' || exp === 'sparkle' ? 'bg-cyan-400' : 'bg-cyan-500'));
+        }
     }
 }
 
@@ -606,9 +612,10 @@ async function researchWithAiki() {
     const btn = document.getElementById('btn-aiki-research');
     
     setAikiExpression('thinking');
-    contentEl.innerHTML = '<span class="text-cyan-400">Aiki is scanning the web for real-time intel...</span>';
+    contentEl.innerHTML = '<span class="text-cyan-400 flex items-center gap-2"><i class="ph-bold ph-broadcast animate-pulse"></i> Syncing with neural network...</span>';
     btn.disabled = true;
-    btn.innerHTML = '<i class="ph-bold ph-spinner-gap animate-spin"></i> ANALYZING...';
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    btn.innerHTML = '<i class="ph-bold ph-activity animate-spin"></i> SCANNING WEB...';
 
     try {
         const prompt = `Research ${lead.company_name} in ${lead.city_state || 'their local area'}. URL: ${lead.website_url || 'Unknown'}. 
@@ -625,16 +632,18 @@ async function researchWithAiki() {
         if (result.error) throw new Error(result.error);
 
         const insight = result.choices[0].message.content;
-        contentEl.innerHTML = `<div class="aiki-result text-[10px] space-y-2">${insight.replace(/\n/g, '<br>')}</div>`;
+        contentEl.classList.remove('italic');
+        contentEl.innerHTML = `<div class="aiki-result text-[11px] space-y-3 font-medium text-zinc-100">${insight.replace(/\n/g, '<br>')}</div>`;
         setAikiExpression('sparkle');
-        showToast('Aiki found deep intel!', 'success');
+        showToast('Deep research complete!', 'success');
     } catch (err) {
         console.error('[Aiki] Research error:', err);
-        contentEl.innerHTML = '<span class="text-red-400">My signals are crossed. Try again in a moment.</span>';
+        contentEl.innerHTML = '<span class="text-red-400">My signals are crossed. Connection dropped.</span>';
         setAikiExpression('angry');
     } finally {
         btn.disabled = false;
-        btn.innerHTML = '<i class="ph-bold ph-lightning"></i> Deep Research Company';
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        btn.innerHTML = '<i class="ph-bold ph-lightning"></i> Initialize Deep Research';
     }
 }
 
