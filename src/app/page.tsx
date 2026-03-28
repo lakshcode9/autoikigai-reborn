@@ -405,13 +405,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="relative z-10 py-12 border-t border-white/5 text-center">
-          <p className="text-xs text-white/40 font-bebas tracking-widest uppercase">
-            © 2026 AUTOIKIGAI SYSTEMS. ALL SYSTEMS OPERATIONAL.
-          </p>
-        </footer>
+ 
 
+        {/* AIKI NEURAL OVERSEER - PUBLIC MASCOT */}
+        <div className="fixed bottom-8 right-8 z-[100] group">
+          <motion.div 
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="relative flex flex-col items-end gap-3"
+          >
+            {/* Status Tooltip */}
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 backdrop-blur border border-[#00E0FF]/30 px-3 py-1.5 rounded-lg text-[10px] font-bebas tracking-widest text-[#00E0FF] shadow-[0_0_20px_rgba(0,224,255,0.2)] mb-1">
+              AIKI NEURAL_OVERSEER :: ACTIVE
+            </div>
+            
+            <div className="relative">
+              {/* Pulsing Aura */}
+              <div className="absolute inset-0 bg-[#00E0FF] blur-[25px] opacity-20 group-hover:opacity-40 transition-opacity rounded-full" />
+              
+              {/* Mascot Container */}
+              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-zinc-950 border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center p-2 group-hover:border-[#00E0FF]/50 transition-colors">
+                <img 
+                  src="/aiki-neural-overseer.gif" 
+                  alt="Aiki Neural Overseer" 
+                  className="w-full h-full object-contain mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity"
+                />
+                
+                {/* Status Dot */}
+                <div className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-[#00E0FF] border-2 border-black z-10 shadow-[0_0_10px_rgba(0,224,255,1)] animate-pulse" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </main>
     </>
   );

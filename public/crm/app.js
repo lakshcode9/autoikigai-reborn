@@ -583,22 +583,33 @@ const AIKI_ASSETS = {
 
 function setAikiExpression(exp) {
     const img = document.getElementById('aiki-avatar');
-    const scanner = document.getElementById('aiki-scanner');
     const dot = document.getElementById('aiki-status-dot');
-    if (!img) return;
     
-    img.src = AIKI_ASSETS[exp] || `https://via.placeholder.com/64?text=${exp}`;
+    if (img) {
+        // Use the GIF for thinking, otherwise static PNGs
+        const src = AIKI_ASSETS[exp] || AIKI_ASSETS.happy;
+        img.src = src;
+        
+        // Visual effects for different states
+        if (exp === 'thinking') {
+            img.classList.add('scale-110', 'brightness-125', 'animate-pulse');
+        } else {
+            img.classList.remove('scale-110', 'brightness-125', 'animate-pulse');
+        }
+    }
     
-    if (exp === 'thinking') {
-        img.classList.add('animate-pulse');
-        if (scanner) scanner.classList.add('scanning-line');
-        if (dot) dot.className = 'absolute bottom-0 right-1 w-3 h-3 rounded-full bg-yellow-400 border-2 border-[#050505] z-30 animate-ping';
-    } else {
-        img.classList.remove('animate-pulse');
-        if (scanner) scanner.classList.remove('scanning-line');
-        if (dot) {
-            dot.className = 'absolute bottom-0 right-1 w-3 h-3 rounded-full border-2 border-[#050505] z-30 transition-colors duration-500';
-            dot.classList.add(exp === 'angry' ? 'bg-red-500' : (exp === 'joy' || exp === 'sparkle' ? 'bg-cyan-400' : 'bg-cyan-500'));
+    if (dot) {
+        // Base styles for the status dot
+        dot.className = 'absolute bottom-1 right-1 w-3 h-3 rounded-full border-2 border-[#050505] z-30 transition-all duration-500 shadow-[0_0_10px_rgba(0,224,255,0.4)]';
+        
+        if (exp === 'thinking') {
+            dot.classList.add('bg-cyan-400', 'animate-pulse');
+        } else if (exp === 'angry') {
+            dot.classList.add('bg-red-500');
+        } else if (exp === 'sparkle' || exp === 'joy') {
+            dot.classList.add('bg-emerald-400');
+        } else {
+            dot.classList.add('bg-cyan-500');
         }
     }
 }

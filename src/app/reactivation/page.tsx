@@ -333,12 +333,7 @@ export default function ReactivationPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 py-12 border-t border-white/5 text-center">
-        <p className="text-xs text-white/40 font-bebas tracking-widest uppercase">
-          © 2026 AUTOIKIGAI SYSTEMS. ALL SYSTEMS OPERATIONAL.
-        </p>
-      </footer>
+ 
 
     </main>
   );

@@ -1,5 +1,6 @@
 import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/layout/Footer";
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
@@ -23,8 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={bebas.variable}>
-      <body className="antialiased" suppressHydrationWarning>
-        {children}
+      <body className="antialiased bg-black text-white" suppressHydrationWarning>
+        <div className="flex flex-col min-h-screen">
+          <div className="flex-grow">
+            {children}
+          </div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

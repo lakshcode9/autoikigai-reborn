@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoikigai — Reactivation Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=SF+Pro+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Niche Selector (hidden during Loom - for your setup) -->
+    <div class="niche-selector" id="nicheSelector">
+        <h2>Select Niche for Demo</h2>
+        <div class="niche-buttons">
+            <button onclick="startDemo('paving')" class="niche-btn paving">🛣️ Paving</button>
+            <button onclick="startDemo('fire')" class="niche-btn fire">🔥 Fire & Security</button>
+            <button onclick="startDemo('janitorial')" class="niche-btn janitorial">🧹 Janitorial</button>
+            <button onclick="startDemo('arborist')" class="niche-btn arborist">🌳 Arborist</button>
+            <button onclick="startDemo('sleep')" class="niche-btn sleep">😴 Sleep Apnea</button>
+        </div>
+        <p class="hint">Press <kbd>Space</kbd> to advance messages during demo</p>
+    </div>
+
+    <!-- Main Demo Layout -->
+    <div class="demo-container" id="demoContainer" style="display:none;">
+        
+        <!-- Left Panel: Stats Dashboard -->
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div class="logo-area">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Autoikigai</span>
+                </div>
+                <div class="client-name" id="clientName">Mike's Paving Co.</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Dead Leads Loaded</div>
+                    <div class="stat-value" id="statLeads">247</div>
+                    <div class="stat-sub">from your CRM export</div>
+                </div>
+                <div class="stat-card highlight">
+                    <div class="stat-label">Reactivated</div>
+                    <div class="stat-value" id="statReactivated">0</div>
+                    <div class="stat-sub" id="statReactivatedSub">watching...</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Response Rate</div>
+                    <div class="stat-value" id="statResponse">0%</div>
+                    <div class="stat-sub">industry avg: 3%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Appointments Booked</div>
+                    <div class="stat-value" id="statAppointments">0</div>
+                    <div class="stat-sub" id="statRevenue">$0 revenue</div>
+                </div>
+            </div>
+
+            <!-- Live Feed -->
+            <div class="live-feed">
+                <div class="feed-header">
+                    <span class="live-dot"></span>
+                    <span>Live Activity Feed</span>
+                </div>
+                <div class="feed-items" id="feedItems">
+                    <div class="feed-item">
+                        <span class="feed-time">Just now</span>
+                        <span class="feed-text">System ready. Waiting for sequences to begin...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sequence Visualizer -->
+            <div class="sequence-viz">
+                <div class="seq-header">Reactivation Sequence</div>
+                <div class="seq-steps">
+                    <div class="seq-step active" id="seqStep1">
+                        <div class="seq-dot"></div>
+                        <span>SMS 1 — The Opener</span>
+                    </div>
+                    <div class="seq-step" id="seqStep2">
+                        <div class="seq-dot"></div>
+                        <span>SMS 2 — Value Add</span>
+                    </div>
+                    <div class="seq-step" id="seqStep3">
+                        <div class="seq-dot"></div>
+                        <span>SMS 3 — The Nudge</span>
+                    </div>
+                    <div class="seq-step" id="seqStep4">
+                        <div class="seq-dot"></div>
+                        <span>Lead Responds ✨</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Phone Mockup -->
+        <div class="phone-wrapper">
+            <div class="phone">
+                <div class="phone-notch"></div>
+                <div class="phone-header">
+                    <div class="phone-back">‹</div>
+                    <div class="phone-contact">
+                        <div class="phone-avatar" id="phoneAvatar">JR</div>
+                        <div class="phone-contact-info">
+                            <div class="phone-contact-name" id="phoneContactName">John Rivera</div>
+                            <div class="phone-contact-number" id="phoneContactNumber">+1 (703) 555-0147</div>
+                        </div>
+                    </div>
+                    <div class="phone-call-icon">📞</div>
+                </div>
+                <div class="phone-messages" id="phoneMessages">
+                    <div class="message-date">Today</div>
+                </div>
+                <div class="phone-input">
+                    <div class="phone-input-field">iMessage</div>
+                    <div class="phone-send">▲</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="demo.js"></script>
+</body>
+</html>
