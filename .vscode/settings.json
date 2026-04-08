@@ -1,0 +1,9 @@
+{
+  "markdownlint.config": {
+    "default": false
+  },
+  "markdown.validate.enabled": false,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
+}

@@ -38,6 +38,11 @@ export default async function DashboardLayout({
             <Link href="/dashboard/team" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-sm text-zinc-300 hover:text-white">
               Team
             </Link>
+            {isMaster && (
+              <Link href="/dashboard/analytics" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-sm text-[#00E0FF] hover:text-white">
+                Analytics
+              </Link>
+            )}
           </nav>
         </div>
         
