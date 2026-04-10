@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import AnalyticsCharts from './AnalyticsCharts'
+import { motion } from 'framer-motion'
 
 const LEAD_TABLES = [
   'leads_paving', 'leads_fire_security', 'leads_janitorial',
@@ -19,25 +20,33 @@ function nicheLabel(table: string): string {
 
 export default async function AnalyticsPage() {
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { user }, error: authError } = await supabase.auth.getUser()
 
-  if (!user) redirect('/login')
+  console.log('[Analytics] Auth check:', { user: user?.email, authError })
+
+  if (!user) {
+    console.log('[Analytics] No user, redirecting to login')
+    redirect('/login')
+  }
 
   // Verify master role
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('role')
     .eq('id', user.id)
     .single()
 
+  console.log('[Analytics] Profile check:', { role: profile?.role, profileError })
+
   if (profile?.role !== 'master') {
+    console.log('[Analytics] Not master role, redirecting to dashboard')
     redirect('/dashboard')
   }
 
   // ── Fetch all data in parallel ──────────────────────────────────────
 
   // 1. All audit logs (every stage transition ever)
-  const { data: allLogs } = await supabase
+  const { data: allLogs, error: logsError } = await supabase
     .from('audit_logs')
     .select(`
       id,
@@ -52,21 +61,27 @@ export default async function AnalyticsPage() {
     .eq('action_type', 'update_stage')
     .order('created_at', { ascending: true })
 
+  console.log('[Analytics] Audit logs:', { count: allLogs?.length, error: logsError })
+
   // 2. All profiles
-  const { data: allProfiles } = await supabase
+  const { data: allProfiles, error: profilesError } = await supabase
     .from('profiles')
     .select('id, full_name, email, role')
 
+  console.log('[Analytics] Profiles:', { count: allProfiles?.length, error: profilesError })
+
   // 3. Count assigned leads per user across all tables
   const leadCountPromises = LEAD_TABLES.map(async (table) => {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from(table)
       .select('assigned_user_id', { count: 'exact', head: false })
       .not('assigned_user_id', 'is', null)
+    if (error) console.log(`[Analytics] Error fetching ${table}:`, error)
     return { table, data: data || [] }
   })
 
   const leadCountResults = await Promise.all(leadCountPromises)
+  console.log('[Analytics] Lead counts fetched for', leadCountResults.length, 'tables')
 
   // ── Process data ────────────────────────────────────────────────────
 
@@ -220,19 +235,42 @@ export default async function AnalyticsPage() {
   const hasData = logs.length > 0
 
   return (
-    <div className="p-10 font-sans tracking-tight overflow-y-auto h-full">
-      <header className="mb-10 flex items-end justify-between">
-        <div>
-          <h1 className="text-4xl font-bebas tracking-widest uppercase mb-2 text-[#00E0FF]">
-            Super Admin Analytics
+    <div className="p-4 md:p-8 lg:p-10 font-sans tracking-tight overflow-y-auto h-full bg-black min-h-screen">
+      {/* Header */}
+      <header className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-2xl md:text-4xl font-playfair font-bold mb-2 text-radium">
+            Team Analytics
           </h1>
-          <p className="text-sm text-neutral-500 uppercase tracking-widest font-semibold">
-            Team Performance Dashboard
+          <p className="text-xs md:text-sm text-muted uppercase tracking-widest font-mono-tight">
+            Performance Dashboard
           </p>
-        </div>
-        <div className="text-xs text-zinc-600">
-          Data from {logs.length} audit log entries
-        </div>
+        </motion.div>
+        <motion.div 
+          className="text-xs text-muted-light font-mono-tight"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+            <div className="text-center">
+              <div className="text-radium font-bold">{logs.length}</div>
+              <div className="text-[10px] uppercase">Log Entries</div>
+            </div>
+            <div className="text-center">
+              <div className="text-radium font-bold">{profiles.length}</div>
+              <div className="text-[10px] uppercase">Profiles</div>
+            </div>
+            <div className="text-center">
+              <div className="text-radium font-bold">{users.length}</div>
+              <div className="text-[10px] uppercase">Active Users</div>
+            </div>
+            <div className="text-center">
+              <div className="text-radium font-bold">{totalCallsGlobal}</div>
+              <div className="text-[10px] uppercase">Total Calls</div>
+            </div>
+          </div>
+        </motion.div>
       </header>
 
       {hasData ? (
@@ -244,16 +282,23 @@ export default async function AnalyticsPage() {
           timelineData={timelineData}
         />
       ) : (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="w-20 h-20 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6">
-            <span className="text-3xl text-zinc-600">0</span>
-          </div>
-          <h2 className="text-xl font-semibold text-zinc-300 mb-2">No Activity Yet</h2>
-          <p className="text-sm text-zinc-500 max-w-md">
-            Analytics will appear once agents start moving leads through the pipeline.
-            A &quot;call&quot; is recorded whenever a lead is moved from the &quot;New&quot; stage to any other stage.
+        <motion.div 
+          className="flex flex-col items-center justify-center py-12 md:py-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <motion.div 
+            className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-depth-2 border border-depth-3 flex items-center justify-center mb-4 md:mb-6"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            <span className="text-2xl md:text-3xl text-muted">∅</span>
+          </motion.div>
+          <h2 className="text-lg md:text-2xl font-playfair font-bold text-white mb-2">No Activity Yet</h2>
+          <p className="text-xs md:text-sm text-muted max-w-xs md:max-w-md">
+            Analytics will appear once agents start moving leads through the pipeline. A &quot;call&quot; is recorded whenever a lead is moved from the &quot;New&quot; stage to any other stage.
           </p>
-        </div>
+        </motion.div>
       )}
     </div>
   )
