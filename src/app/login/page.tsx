@@ -2,7 +2,7 @@
 
 import { login } from './actions'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FormField } from '@/components/ui/FormField'
 import { Button } from '@/components/ui/Button'
@@ -10,6 +10,15 @@ import { Button } from '@/components/ui/Button'
 export default function LoginPage(props: { searchParams: Promise<{ error?: string, message?: string }> }) {
   const [formData, setFormData] = useState({ email: '', password: '' })
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
+  const [successMsg, setSuccessMsg] = useState<string | null>(null)
+
+  useEffect(() => {
+    props.searchParams.then(params => {
+      if (params.error) setErrorMsg(decodeURIComponent(params.error))
+      if (params.message) setSuccessMsg(decodeURIComponent(params.message))
+    })
+  }, [props.searchParams])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -75,6 +84,19 @@ export default function LoginPage(props: { searchParams: Promise<{ error?: strin
               AutoIkigai Operations
             </p>
           </motion.div>
+
+          {/* Messages */}
+          {(errorMsg || successMsg) && (
+            <motion.div 
+              className={`p-3 rounded-lg text-sm mb-6 text-center font-mono-tight ${
+                errorMsg ? 'bg-red-500/20 border border-red-500/50 text-red-200' : 'bg-green-500/20 border border-green-500/50 text-green-200'
+              }`}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+            >
+              {errorMsg || successMsg}
+            </motion.div>
+          )}
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
