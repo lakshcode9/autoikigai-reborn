@@ -1,5 +1,6 @@
 import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const bebas = Bebas_Neue({
@@ -10,8 +11,9 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata = {
-  title: "Autoikigai — AI Architecture",
-  description: "We architect autonomous AI systems that scale.",
+  title: "Autoikigai — AI-Powered Client Reactivation",
+  description:
+    "We turn your dead leads into booked appointments using AI voice and SMS agents that run 24/7.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -26,9 +28,8 @@ export default function RootLayout({
     <html lang="en" className={bebas.variable}>
       <body className="antialiased bg-black text-white" suppressHydrationWarning>
         <div className="flex flex-col min-h-screen">
-          <div className="flex-grow">
-            {children}
-          </div>
+          <Navbar />
+          <div className="flex-grow">{children}</div>
           <Footer />
         </div>
       </body>
