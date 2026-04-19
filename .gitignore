@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cloner template (reference only)
+/_cloner_temp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
