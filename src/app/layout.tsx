@@ -1,12 +1,14 @@
-import { Bebas_Neue } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { LenisProvider } from "@/components/layout/LenisProvider";
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
+const ibmPlex = IBM_Plex_Sans({
+  variable: "--font-ibm-plex",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -25,13 +27,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={bebas.variable}>
-      <body className="antialiased bg-black text-white" suppressHydrationWarning>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <div className="flex-grow">{children}</div>
-          <Footer />
-        </div>
+    <html lang="en" className={`${ibmPlex.variable} ${GeistMono.variable}`}>
+      <body className="antialiased" suppressHydrationWarning>
+        <LenisProvider>
+          <div className="page">
+            <div className="frame">
+              <Navbar />
+              <div className="flex-grow">{children}</div>
+              <Footer />
+            </div>
+          </div>
+        </LenisProvider>
       </body>
     </html>
   );

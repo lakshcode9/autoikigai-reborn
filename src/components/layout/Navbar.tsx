@@ -1,170 +1,151 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BOOKING_URL } from "@/lib/content";
 
 const NAV_LINKS = [
-  { label: "SERVICES", href: "/#services" },
-  { label: "WORK", href: "/#case-studies" },
-  { label: "REACTIVATION", href: "/reactivation" },
-  { label: "CONTACT", href: BOOKING_URL, external: true },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/#case-studies" },
+  { label: "Reactivation", href: "/reactivation" },
+  { label: "Contact", href: BOOKING_URL, external: true },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileOpen]);
-
   return (
-    <>
-      <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-black/80 backdrop-blur-md border-b border-white/10"
-            : "bg-transparent border-b border-transparent"
-        }`}
-      >
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/autoikigai-logo.png"
-              alt="AutoIkigai"
-              width={36}
-              height={36}
-              className="rounded-full"
-            />
-            <span className="text-lg font-bebas tracking-widest group-hover:text-[#00E0FF] transition-colors">
-              AUTOIKIGAI
-            </span>
-          </Link>
+    <header
+      className="sticky top-0 z-50 border-b"
+      style={{
+        borderColor: "var(--border-default)",
+        background: "var(--bg-primary)",
+      }}
+    >
+      <div className="flex items-center justify-between px-6 md:px-10 h-14">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/autoikigai-logo.png"
+            alt="Autoikigai"
+            width={24}
+            height={24}
+            className="rounded-full"
+          />
+          <span className="text-sm font-semibold tracking-tight" style={{ color: "var(--text-primary)" }}>
+            Autoikigai
+          </span>
+        </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) =>
-              link.external ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-bebas tracking-widest text-white/70 hover:text-[#00E0FF] transition-colors"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm font-bebas tracking-widest text-white/70 hover:text-[#00E0FF] transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-
-            {/* Desktop CTA */}
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-[#00E0FF] text-black font-bebas font-bold text-sm tracking-widest rounded-full hover:bg-[#00c2dd] transition-colors"
-            >
-              BOOK A CALL
-            </a>
-          </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-white hover:text-[#00E0FF] transition-colors"
-            aria-label="Toggle menu"
+        {/* Desktop nav */}
+        <nav className="hidden sm:flex items-center gap-6">
+          {NAV_LINKS.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mono-link"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.label} href={link.href} className="mono-link">
+                {link.label}
+              </Link>
+            )
+          )}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{ padding: "8px 16px", fontSize: "0.75rem" }}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </nav>
+            Book a free strategy call
+          </a>
+        </nav>
 
-      {/* Mobile Menu Overlay */}
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="sm:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
+              mobileOpen ? "rotate-45 translate-y-[3.25px]" : ""
+            }`}
+            style={{ background: "var(--text-primary)" }}
+          />
+          <span
+            className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
+              mobileOpen ? "-rotate-45 -translate-y-[3.25px]" : ""
+            }`}
+            style={{ background: "var(--text-primary)" }}
+          />
+        </button>
+      </div>
+
+      {/* Mobile dropdown */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="sm:hidden overflow-hidden"
+            style={{
+              borderTop: "1px solid transparent",
+              background: "var(--bg-primary)",
+            }}
           >
-            {NAV_LINKS.map((link, i) =>
-              link.external ? (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-bebas tracking-widest text-white/80 hover:text-[#00E0FF] transition-colors"
-                >
-                  {link.label}
-                </motion.a>
-              ) : (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
+            <div className="py-2">
+              {NAV_LINKS.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-6 py-3 text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
                   <Link
+                    key={link.label}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-2xl font-bebas tracking-widest text-white/80 hover:text-[#00E0FF] transition-colors"
+                    className="block px-6 py-3 text-sm"
+                    style={{ color: "var(--text-secondary)" }}
                   >
                     {link.label}
                   </Link>
-                </motion.div>
-              )
-            )}
-
-            <motion.a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: NAV_LINKS.length * 0.1 }}
-              onClick={() => setMobileOpen(false)}
-              className="mt-4 px-8 py-3 bg-[#00E0FF] text-black font-bebas font-bold text-lg tracking-widest rounded-full hover:bg-[#00c2dd] transition-colors"
-            >
-              BOOK A CALL
-            </motion.a>
+                )
+              )}
+              <div className="px-6 py-3">
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-primary w-full text-center block"
+                  style={{ fontSize: "0.8125rem" }}
+                >
+                  Book a free strategy call
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 }

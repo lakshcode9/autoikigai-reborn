@@ -1,139 +1,274 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Playfair+Display:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM — Adapted from Crator Labs (cratorlabs.ai)
+   Exact variable names and values extracted from production CSS.
+   ============================================================ */
+
 :root {
-  /* Core Base Colors */
-  --background: #000000;
-  --foreground: #ffffff;
-  
-  /* Primary Brand Colors */
-  --radium: #00E0FF;
-  --radium-glow: rgba(0, 224, 255, 0.4);
-  
-  /* Extended Accent Palette - Breaking from Cyan Monotony */
-  --accent-pink: #FF006B;
-  --accent-pink-dark: #C20050;
-  --accent-lime: #B0FF00;
-  --accent-purple: #A855F7;
-  --accent-orange: #FF6B35;
-  
-  /* Depth Gradients */
-  --depth-1: #0a0a0a;
-  --depth-2: #121212;
-  --depth-3: #1a1a1a;
-  --depth-4: #242424;
-  
-  /* Modern UI Tokens */
-  --card-bg: var(--depth-1);
-  --card-border: var(--depth-3);
-  --muted: #666666;
-  --muted-light: #999999;
+  --radius: 0px;
+  --bg-primary: #fff;
+  --bg-elevated: #f5f5f5;
+  --bg-surface: #ebebeb;
+  --text-primary: #323232;
+  --text-secondary: #525252;
+  --text-muted: #5a6a8a;
+  --accent-color: #20368f;
+  --accent-color-hover: #000b4f;
+  --border-default: #ebebeb;
+  --border-subtle: #f5f5f5;
 
-  /* Extended UI Palette */
-  --card: var(--background);
-  --card-foreground: var(--foreground);
-  --popover: var(--background);
-  --popover-foreground: var(--foreground);
-  --primary: var(--foreground);
-  --primary-foreground: var(--background);
-  --secondary: var(--depth-3);
-  --secondary-foreground: var(--foreground);
-  --muted-foreground: var(--muted);
-  --accent: var(--radium);
-  --accent-foreground: var(--background);
-  --success: #10B981;
-  --warning: #F59E0B;
-  --error: #EF4444;
-  --info: var(--radium);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: var(--depth-3);
-  --input: var(--depth-2);
-  --ring: var(--foreground);
-  --radius: 0rem;
-  
-  /* Typography Scale */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
-  --text-7xl: 4.5rem;
-  --text-8xl: 6rem;
-  --text-9xl: 8rem;
+  /* Shadcn compat */
+  --background: #fff;
+  --foreground: #323232;
+  --card: #fff;
+  --card-foreground: #323232;
+  --primary: #323232;
+  --primary-foreground: #fff;
+  --secondary: #ebebeb;
+  --secondary-foreground: #323232;
+  --muted: #ebebeb;
+  --muted-foreground: #5a6a8a;
+  --accent: #20368f;
+  --accent-foreground: #fff;
+  --border: #ebebeb;
+  --input: #ebebeb;
+  --ring: #829cd0;
+
+  /* Legacy tokens for backward compat with /reactivation, /offer pages */
+  --radium: #20368f;
+  --radium-glow: rgba(32, 54, 143, 0.3);
+  --depth-1: #fafafa;
+  --depth-2: #f5f5f5;
+  --depth-3: #ebebeb;
+  --depth-4: #e0e0e0;
 }
 
+/* ============ BASE ============ */
 * {
-  font-family: var(--font-bebas), 'Space Mono', monospace;
+  font-family: var(--font-ibm-plex), system-ui, -apple-system, sans-serif;
 }
 
-/* Typography: System -> Display -> Body hierarchy */
 html {
-  scroll-behavior: smooth;
-}
-
-/* Distinctive serif for headings - Playfair Display */
-.font-playfair {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.font-playfair-600 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-}
-
-/* Monospace system font - Space Mono */
-.font-mono-tight {
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.font-mono-body {
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
 }
 
 body {
-  background: var(--background);
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Bebas Neue loaded via next/font */
-/* Disket Mono for labels */
-.font-disket {
-  font-family: 'Disket Mono', monospace;
+::selection {
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--depth-1);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--depth-4);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--radium);
-  box-shadow: 0 0 6px var(--radium-glow);
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* ============ MOBILE OPTIMIZATION ============ */
-/* Safe area insets for notched devices */
+a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ============ SCROLLBAR — minimal ============ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* ============ PAGE FRAME — Crator's signature bordered container ============ */
+.page {
+  background: #fff;
+  justify-content: center;
+  display: flex;
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+.frame {
+  border-left: 1px solid var(--border-default);
+  border-right: 1px solid var(--border-default);
+  background: var(--bg-primary);
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ============ SECTION — Crator's section padding + dashed bottom border ============ */
+.section {
+  border-bottom: 1px dashed var(--border-default);
+  padding: 80px 40px;
+}
+@media (max-width: 1023px) { .section { padding: 48px 24px; } }
+@media (max-width: 767px) { .section { padding: 40px 16px; } }
+@media (max-width: 375px) { .section { padding: 32px 14px; } }
+
+/* ============ SECTION LABEL — monospace, uppercase, muted ============ */
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+}
+
+/* ============ GRID BORDERED — Crator's dashed-border service cards ============ */
+.grid-bordered {
+  box-sizing: border-box;
+  max-width: 100%;
+  display: grid;
+  border: 1px dashed var(--border-default);
+}
+
+.grid-cell {
+  border: 1px dashed var(--border-default);
+  overflow-wrap: break-word;
+  min-width: 0;
+  padding: 32px;
+}
+@media (max-width: 1023px) { .grid-cell { padding: 24px 20px; } }
+@media (max-width: 767px) { .grid-cell { padding: 20px 16px; } }
+
+/* ============ BUTTONS — exact Crator btn-primary / btn-secondary ============ */
+.btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s;
+  display: inline-flex;
+}
+.btn-primary:hover {
+  background: var(--accent-color-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s;
+  display: inline-flex;
+}
+.btn-secondary:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+
+/* ============ MONO LINK — Crator's nav link style ============ */
+.mono-link {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+.mono-link:hover {
+  color: var(--text-primary);
+}
+
+/* ============ CODE TAG — Crator's timeline badges ============ */
+.code-tag {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  display: inline-block;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+}
+
+/* ============ STEP NUMBER — accent colored mono label ============ */
+.step-number {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+}
+
+/* ============ TEXT ACCENT — navy blue highlight ============ */
+.text-accent {
+  color: var(--accent);
+}
+
+/* ============ TAG PILL — project card tags ============ */
+.tag-pill {
+  display: inline-block;
+  padding: 2px 6px;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.625rem;
+  white-space: nowrap;
+}
+
+/* ============ CARD — project cards with dashed border ============ */
+.card-project {
+  border: 1px dashed var(--border-default);
+  overflow: hidden;
+  transition: opacity 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.card-project:hover {
+  opacity: 0.85;
+}
+
+/* ============ SCROLLBAR HIDE — horizontal scroll carousels ============ */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============ FAQ ============ */
+.faq-item {
+  border-bottom: 1px dashed var(--border-default);
+}
+.faq-question {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.15s;
+}
+.faq-question:hover {
+  color: var(--accent-color);
+}
+
+/* ============ MOBILE ============ */
 @supports (padding: max(0px)) {
   body {
     padding-left: max(0px, env(safe-area-inset-left));
@@ -141,202 +276,17 @@ body {
   }
 }
 
-/* Touch target optimization - minimum 44px for mobile */
 @media (max-width: 768px) {
-  button,
-  a[role="button"],
-  input[type="button"],
-  input[type="submit"],
-  input[type="reset"],
-  input[type="file"]::file-selector-button {
+  button, a[role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
-  
-  /* Mobile-friendly text sizing */
-  html {
-    font-size: 16px; /* Prevents zoom on iOS input focus */
-  }
-  
-  /* Mobile: Reduce excessive padding */
-  body {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  html { font-size: 16px; }
 }
 
-/* Responsive typography - Mobile first */
-@media (max-width: 640px) {
-  h1 { font-size: 1.75rem; line-height: 1.2; }
-  h2 { font-size: 1.5rem; line-height: 1.3; }
-  h3 { font-size: 1.25rem; line-height: 1.4; }
-  h4 { font-size: 1.125rem; line-height: 1.4; }
-  p { font-size: 0.95rem; line-height: 1.6; }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.875rem; }
-  h3 { font-size: 1.5rem; }
-}
-
-@media (min-width: 1025px) {
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2.25rem; }
-  h3 { font-size: 1.875rem; }
-}
-
-/* High-density mobile optimization */
-@media (max-width: 420px) {
-  /* Reduce gaps in grids */
-  .gap-8 { gap: 1rem; }
-  .gap-12 { gap: 1.5rem; }
-  
-  /* Optimize hero section padding */
-  .px-8 { padding-left: 1rem; padding-right: 1rem; }
-  
-  /* Optimize button sizes for small phones */
-  button { padding: 0.75rem 1rem; font-size: 0.875rem; }
-}
-
-/* ============ DISTINCTIVE STYLING ============ */
-/* Input focus: Cyan glow instead of standard blue */
-input:focus,
-textarea:focus,
-select:focus {
+/* ============ INPUT FOCUS ============ */
+input:focus, textarea:focus, select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--background), 
-              0 0 0 3px var(--radium),
-              0 0 12px var(--radium-glow);
-  border-color: var(--radium);
-}
-
-/* Animated background gradients for depth */
-.bg-gradient-radium {
-  background: radial-gradient(
-    135% 135% at 50% 0%,
-    rgba(0, 224, 255, 0.15) 0%,
-    rgba(0, 224, 255, 0) 50%
-  );
-}
-
-/* Card elevation with distinctive glow */
-.card-elevated {
-  border: 1px solid var(--depth-3);
-  background: linear-gradient(135deg, var(--depth-1) 0%, var(--depth-2) 100%);
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.05),
-              0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-.card-elevated:hover {
-  box-shadow: 0 0 30px rgba(0, 224, 255, 0.1),
-              0 12px 40px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-color: rgba(0, 224, 255, 0.3);
-}
-
-/* Animated accent underline */
-.underline-accent {
-  position: relative;
-  display: inline-block;
-}
-
-.underline-accent::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--radium) 0%, transparent 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.underline-accent:hover::after {
-  transform: scaleX(1);
-}
-
-/* Selection styling - match brand */
-::selection {
-  background-color: var(--radium);
-  color: var(--background);
-}
-
-/* Link styling */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:focus-visible {
-  outline: 2px solid var(--radium);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-/* ============ CRATOR-STYLE LAYOUT UTILITIES ============ */
-
-/* Section container — Crator uses ~1200px max-width, centered */
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-@media (min-width: 768px) {
-  .section-container {
-    padding: 0 4rem;
-  }
-}
-
-/* Consistent vertical section spacing */
-.section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-@media (min-width: 768px) {
-  .section-padding {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-}
-
-/* Project card — Crator-style clickable card with image area + content */
-.card-project {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
-
-.card-project:hover {
-  border-color: rgba(0, 224, 255, 0.3);
-  box-shadow: 0 0 30px rgba(0, 224, 255, 0.08);
-  transform: translateY(-2px);
-}
-
-/* Tag pill — small rounded badge for tech tags */
-.tag-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.75rem;
-  border-radius: 9999px;
-  white-space: nowrap;
-}
-
-/* Section label — small uppercase muted label above headings (Crator pattern) */
-.section-label {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--radium);
-  margin-bottom: 0.75rem;
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 3px var(--accent-color);
+  border-color: var(--accent-color);
 }

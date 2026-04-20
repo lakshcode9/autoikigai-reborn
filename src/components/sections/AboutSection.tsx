@@ -6,77 +6,76 @@ import { ABOUT } from "@/lib/content";
 
 export default function AboutSection() {
   return (
-    <section className="relative z-10 py-24 md:py-32 border-t border-white/5">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_1fr] gap-12 lg:gap-20 items-center">
-          {/* Left: Visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center lg:justify-start"
+    <section className="section">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.35fr_1fr] gap-10 lg:gap-16 items-center">
+        {/* Left: Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center lg:justify-start"
+        >
+          <div
+            className="w-32 h-32 md:w-40 md:h-40 overflow-hidden flex items-center justify-center"
+            style={{
+              background: "var(--bg-elevated)",
+              border: "1px dashed var(--border-default)",
+            }}
           >
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-[#00E0FF]/15 blur-[60px] rounded-full" />
-              {/* Logo container */}
-              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-3xl bg-zinc-950 border border-white/10 overflow-hidden flex items-center justify-center shadow-2xl">
-                <Image
-                  src="/autoikigai-logo.png"
-                  alt="Autoikigai"
-                  width={120}
-                  height={120}
-                  className="rounded-full"
-                />
-              </div>
-            </div>
-          </motion.div>
+            <Image
+              src="/autoikigai-logo.png"
+              alt="Autoikigai"
+              width={90}
+              height={90}
+              className="rounded-full"
+            />
+          </div>
+        </motion.div>
 
-          {/* Right: Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="space-y-6"
+        {/* Right: Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <p className="section-label">About</p>
+          <h2
+            className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-4"
+            style={{ color: "var(--text-primary)" }}
           >
-            <p className="section-label font-bebas">ABOUT</p>
-            <h2 className="text-4xl md:text-5xl font-bebas font-bold tracking-tight">
-              Built By Someone Who Ships.
-            </h2>
+            Built by someone who ships.
+          </h2>
 
-            <div className="space-y-2">
-              <p className="text-xl font-bebas font-bold text-white tracking-wide">
-                {ABOUT.founderName}
-              </p>
-              <p className="text-sm font-bebas tracking-[0.15em] text-[#00E0FF] uppercase">
-                {ABOUT.role}
-              </p>
-            </div>
-
-            <p className="text-base text-white/60 leading-relaxed font-bebas tracking-wide max-w-xl">
-              {ABOUT.bio}
+          <div className="mb-4">
+            <p className="text-base font-medium" style={{ color: "var(--text-primary)" }}>
+              {ABOUT.founderName}
             </p>
+            <p className="code-tag mt-1">{ABOUT.role}</p>
+          </div>
 
-            {/* Built with badges */}
-            <div className="pt-4 space-y-3">
-              <p className="text-xs text-white/30 font-bebas tracking-[0.2em] uppercase">
-                Built with
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {ABOUT.builtWith.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-4 py-1.5 bg-white/5 border border-white/10 text-white/50 text-xs font-bebas tracking-wider rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+          <p
+            className="text-[0.8125rem] leading-[1.7] max-w-xl mb-6"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {ABOUT.bio}
+          </p>
+
+          {/* Built with */}
+          <div>
+            <p className="section-label" style={{ marginBottom: "12px" }}>
+              Built with
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {ABOUT.builtWith.map((tech) => (
+                <span key={tech} className="code-tag">
+                  {tech}
+                </span>
+              ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

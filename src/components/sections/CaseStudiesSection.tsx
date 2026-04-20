@@ -1,72 +1,148 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import { StackedImageHover } from "@/components/ui/hover-deck-fx";
 
 export default function CaseStudiesSection() {
-  return (
-    <section
-      id="case-studies"
-      className="relative z-10 py-24 md:py-32 border-t border-white/5"
-    >
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
-        {/* Section header */}
-        <div className="max-w-2xl mb-16">
-          <p className="section-label font-bebas">CLIENT RESULTS</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bebas font-bold tracking-tight mb-4">
-            Real Systems. Real Revenue.
-          </h2>
-          <p className="text-base md:text-lg text-white/60 font-bebas tracking-wide leading-relaxed">
-            Here&apos;s what happens when you stop losing money to dead leads.
-            Every result is verified and backed by real client data.
-          </p>
-        </div>
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-        {/* Card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 320;
+    scrollRef.current.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section id="case-studies" className="section">
+      {/* Header row with scroll buttons */}
+      <div className="flex items-end justify-between mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="section-label">Client Results</p>
+          <h2
+            className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-3"
+            style={{ color: "var(--text-primary)" }}
+          >
+            Real systems. Real revenue.
+          </h2>
+          <p
+            className="text-[0.8125rem] leading-[1.7] max-w-xl"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Here&apos;s what happens when you stop losing money to dead leads.
+          </p>
+        </motion.div>
+
+        {/* Scroll buttons — Crator style */}
+        <div className="hidden md:flex items-center gap-2 shrink-0 ml-4">
+          <button
+            onClick={() => scroll("left")}
+            className="w-9 h-9 flex items-center justify-center transition-colors"
+            style={{
+              border: "1px dashed var(--border-default)",
+              color: "var(--text-muted)",
+              background: "transparent",
+            }}
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="w-9 h-9 flex items-center justify-center transition-colors"
+            style={{
+              border: "1px dashed var(--border-default)",
+              color: "var(--text-muted)",
+              background: "transparent",
+            }}
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Horizontal scroll carousel — Crator's exact pattern */}
+      <div className="overflow-hidden -mx-4 px-0 md:-mx-0">
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide pb-2"
+        >
           {CASE_STUDIES.map((study, i) => (
             <motion.div
               key={study.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="shrink-0"
+              style={{ width: "min(300px, 80vw)" }}
             >
               <Link
                 href={`/work/${study.id}`}
-                className="card-project block group"
+                className="block group"
+                style={{
+                  textDecoration: "none",
+                  border: "1px dashed var(--border-default)",
+                }}
               >
                 {/* Image / metric area */}
-                <div className="relative h-48 md:h-56 bg-gradient-to-br from-[#00E0FF]/10 via-[#00E0FF]/5 to-transparent flex items-center justify-center overflow-hidden">
-                  {/* Large metric number */}
-                  <span className="text-5xl md:text-6xl font-bebas font-bold text-white/10 group-hover:text-[#00E0FF]/20 transition-colors select-none">
+                <div
+                  className="w-full relative overflow-hidden flex items-center justify-center"
+                  style={{
+                    height: "140px",
+                    background: "var(--bg-surface)",
+                    borderBottom: "1px dashed var(--border-default)",
+                  }}
+                >
+                  <span
+                    className="text-3xl font-semibold select-none tracking-tight"
+                    style={{ color: "var(--text-muted)", opacity: 0.3 }}
+                  >
                     {study.metric}
                   </span>
-
-                  {/* Arrow icon on hover */}
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="w-4 h-4 text-[#00E0FF]" />
-                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div
+                  className="p-5 flex flex-col"
+                  style={{ background: "var(--bg-primary)" }}
+                >
                   {/* Company name */}
-                  <p className="text-xs font-bebas tracking-[0.15em] text-[#00E0FF] mb-2 uppercase">
-                    {study.company}
-                  </p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "var(--text-muted)", opacity: 0.7 }}
+                    >
+                      {study.company}
+                    </span>
+                  </div>
 
-                  {/* Description */}
-                  <h3 className="text-lg md:text-xl font-bebas font-bold tracking-tight mb-3 group-hover:text-[#00E0FF] transition-colors">
-                    {study.description}
+                  {/* Title */}
+                  <h3
+                    className="text-[15px] font-medium mb-2 tracking-[-0.02em] group-hover:opacity-70 transition-opacity"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {study.description.length > 80
+                      ? study.description.slice(0, 80) + "..."
+                      : study.description}
                   </h3>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
                     {study.tags.map((tag) => (
-                      <span key={tag} className="tag-pill font-bebas">
+                      <span key={tag} className="tag-pill">
                         {tag}
                       </span>
                     ))}
@@ -77,6 +153,52 @@ export default function CaseStudiesSection() {
           ))}
         </div>
       </div>
+
+      {/* Dollar stack visual below the carousel */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="mt-16 relative flex justify-center items-center h-[280px]"
+      >
+        <StackedImageHover
+          images={[
+            "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
+          ]}
+          width={480}
+          height={200}
+          backgroundColor="transparent"
+          rotateDeg={-10}
+          skewDeg={8}
+          scale={0.85}
+          stepPx={35}
+          minOpacity={0.8}
+          ariaLabel="Revenue generated for clients"
+          className="hover:scale-105 transition-all duration-700"
+        />
+
+        <div
+          className="absolute bottom-4 right-8 px-5 py-2.5"
+          style={{
+            background: "var(--bg-primary)",
+            border: "1px dashed var(--border-default)",
+          }}
+        >
+          <p
+            className="text-xl font-semibold tracking-tight"
+            style={{ color: "var(--text-primary)" }}
+          >
+            $500K+
+          </p>
+          <p className="text-[11px]" style={{ color: "var(--text-muted)" }}>
+            Total client revenue
+          </p>
+        </div>
+      </motion.div>
     </section>
   );
 }

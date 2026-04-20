@@ -1,88 +1,88 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { BOOKING_URL, TRUSTED_BY } from "@/lib/content";
 
 export default function HeroSection() {
   return (
-    <section className="relative z-10 py-20 md:py-28 lg:py-36">
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#00E0FF]/8 blur-[120px] rounded-full" />
-      </div>
-
-      <div className="relative max-w-[1200px] mx-auto px-6 md:px-8">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          {/* Heading */}
+    <section
+      className="relative overflow-hidden flex flex-col justify-center py-20 md:py-28"
+      style={{
+        borderBottom: "1px dashed var(--border-default)",
+        background: "var(--bg-primary)",
+      }}
+    >
+      <div className="relative z-[2] w-full px-4 md:px-10">
+        <div className="max-w-3xl">
+          {/* Heading — left aligned, exact Crator sizing */}
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bebas font-bold tracking-tight leading-[0.95]"
+            transition={{ duration: 0.6 }}
+            className="text-[clamp(2.25rem,7.5vw,3rem)] md:text-[40px] lg:text-[48px] leading-[1.08] tracking-[-0.04em] font-medium mb-6"
+            style={{ color: "var(--text-primary)" }}
           >
-            We Turn Your Dead Leads Into{" "}
-            <span className="text-[#00E0FF]">Booked Appointments</span>
+            We are the <span className="text-accent">AI Reactivation Partner</span>{" "}
+            you need
           </motion.h1>
 
-          {/* Subtext */}
+          {/* Subtitle — monospace-feel body copy */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-base md:text-lg lg:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto font-bebas tracking-wide"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-sm md:text-[1rem] max-w-xl mb-10 leading-[1.7]"
+            style={{ color: "var(--text-muted)" }}
           >
-            Your CRM is a graveyard of unclosed estimates and lapsed clients.
-            Our AI agents run 24/7 to wake them up and book them straight to
-            your calendar.
+            We find where AI moves the needle in your dead lead database, build
+            the reactivation systems, and run them for you.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-3 mb-10 md:mb-16"
           >
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00E0FF] text-black font-bebas font-bold text-sm tracking-widest rounded-full hover:bg-[#00c2dd] transition-colors"
+              className="btn-primary"
             >
-              BOOK A FREE STRATEGY CALL
-              <ArrowRight className="w-4 h-4" />
+              Book a free strategy call
             </a>
-            <a
-              href="#case-studies"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bebas font-bold text-sm tracking-widest rounded-full hover:bg-white/5 transition-colors"
-            >
-              SEE OUR RESULTS
+            <a href="#case-studies" className="btn-secondary bg-white">
+              See our work
             </a>
           </motion.div>
+        </div>
 
-          {/* Trusted By */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="pt-12 space-y-4"
-          >
-            <p className="text-xs text-white/30 font-bebas tracking-[0.2em] uppercase">
+        {/* Trusted by logos */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="flex flex-col md:flex-row gap-10 md:gap-16"
+        >
+          <div>
+            <p className="section-label" style={{ marginBottom: "16px" }}>
               Trusted by
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
               {TRUSTED_BY.map((company) => (
                 <span
                   key={company.name}
-                  className="text-sm font-bebas tracking-wider text-white/40"
+                  className="text-sm font-medium"
+                  style={{ color: "var(--text-muted)", opacity: 0.5 }}
                 >
                   {company.name}
                 </span>
               ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
