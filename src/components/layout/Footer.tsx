@@ -35,7 +35,7 @@ export function Footer() {
         </div>
 
         {/* Right: Links */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 sm:gap-5 flex-wrap justify-center md:justify-start">
           {FOOTER_LINKS.map((link) =>
             link.external ? (
               <a

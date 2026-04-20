@@ -40,7 +40,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map((link) =>
             link.external ? (
               <a
@@ -72,7 +72,7 @@ export function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="sm:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
           aria-label="Toggle menu"
         >
           <span
@@ -98,7 +98,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sm:hidden overflow-hidden"
+            className="md:hidden overflow-hidden"
             style={{
               borderTop: "1px solid transparent",
               background: "var(--bg-primary)",

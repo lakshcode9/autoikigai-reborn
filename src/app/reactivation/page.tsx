@@ -198,8 +198,7 @@ export default function ReactivationPage() {
       {/* ─── PROBLEM / SOLUTION ─── */}
       <section className="section">
         <div
-          className="grid-bordered"
-          style={{ gridTemplateColumns: "1fr 1fr" }}
+          className="grid-bordered grid grid-cols-1 md:grid-cols-2"
         >
           {/* Problem */}
           <div className="grid-cell">
@@ -292,7 +291,7 @@ export default function ReactivationPage() {
         <div
           className="grid-bordered"
           style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))",
           }}
         >
           {NICHES.map((niche, i) => (

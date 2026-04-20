@@ -124,8 +124,7 @@ export default function OfferPage() {
           </h2>
 
           <div
-            className="grid-bordered"
-            style={{ gridTemplateColumns: "1fr 1fr" }}
+            className="grid-bordered grid grid-cols-1 md:grid-cols-2"
           >
             <div className="grid-cell">
               <p
@@ -162,8 +161,7 @@ export default function OfferPage() {
         </h2>
 
         <div
-          className="grid-bordered"
-          style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
+          className="grid-bordered grid grid-cols-1 md:grid-cols-3"
         >
           {SPRINT_STEPS.map((item, i) => (
             <motion.div
@@ -172,7 +170,7 @@ export default function OfferPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="grid-cell flex flex-col justify-between min-h-[280px]"
+              className="grid-cell flex flex-col justify-between min-h-[200px] md:min-h-[280px]"
             >
               <div>
                 <span className="step-number text-2xl block mb-4">
@@ -294,8 +292,29 @@ export default function OfferPage() {
             </p>
           </div>
 
-          {/* Right — Money stack */}
-          <div className="hidden lg:flex flex-col items-center justify-center min-h-[400px] relative">
+          {/* Mobile — revenue summary badge (shown below list on mobile/tablet) */}
+          <div
+            className="lg:hidden mt-6 px-4 py-2 inline-block"
+            style={{
+              background: "var(--bg-elevated)",
+              border: "1px dashed var(--border-default)",
+            }}
+          >
+            <span className="step-number text-lg">$20M+ generated</span>
+            <span
+              className="block text-[0.6875rem]"
+              style={{
+                color: "var(--text-muted)",
+                fontFamily:
+                  "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+              }}
+            >
+              Total client revenue
+            </span>
+          </div>
+
+          {/* Desktop — Money stack */}
+          <div className="hidden lg:flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden">
             <StackedImageHover
               images={[
                 "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
@@ -303,13 +322,13 @@ export default function OfferPage() {
                 "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
                 "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obverse_of_the_series_2009_%24100_Federal_Reserve_Note.jpg",
               ]}
-              width={500}
-              height={210}
+              width={440}
+              height={185}
               backgroundColor="transparent"
               rotateDeg={-12}
               skewDeg={10}
               scale={0.9}
-              stepPx={36}
+              stepPx={32}
               minOpacity={0.8}
               ariaLabel="Revenue generated for clients"
             />

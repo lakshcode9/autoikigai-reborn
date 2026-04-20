@@ -6,13 +6,12 @@ import { BOOKING_URL, TRUSTED_BY } from "@/lib/content";
 export default function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden flex flex-col justify-center py-20 md:py-28"
+      className="section relative overflow-hidden flex flex-col justify-center"
       style={{
-        borderBottom: "1px dashed var(--border-default)",
         background: "var(--bg-primary)",
       }}
     >
-      <div className="relative z-[2] w-full px-4 md:px-10">
+      <div className="relative z-[2] w-full">
         <div className="max-w-3xl">
           {/* Heading — left aligned, exact Crator sizing */}
           <motion.h1

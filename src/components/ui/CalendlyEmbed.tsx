@@ -32,7 +32,7 @@ export function CalendlyEmbed({ className }: { className?: string }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{
-        __html: `<div class="calendly-inline-widget" data-url="${BOOKING_URL}" style="min-width:320px;height:700px;"></div>`,
+        __html: `<div class="calendly-inline-widget" data-url="${BOOKING_URL}" style="min-width:280px;width:100%;height:700px;"></div>`,
       }}
     />
   );

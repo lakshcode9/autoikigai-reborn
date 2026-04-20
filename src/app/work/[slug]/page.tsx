@@ -71,8 +71,7 @@ export default function WorkDetailPage({
 
           {/* Quick stats */}
           <div
-            className="grid-bordered"
-            style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
+            className="grid-bordered grid grid-cols-1 sm:grid-cols-3"
           >
             <div className="grid-cell">
               <Clock
@@ -207,7 +206,7 @@ export default function WorkDetailPage({
         <div
           className="grid-bordered mt-8"
           style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(240px, 100%), 1fr))",
           }}
         >
           {caseStudy.results.secondary.map((result, i) => (

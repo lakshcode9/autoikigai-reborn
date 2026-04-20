@@ -61,6 +61,7 @@ export default function StackedImageHover({
       style={{
         width,
         height,
+        maxWidth: '100%',
         background: backgroundColor,
         transform: `rotate(${rotateDeg}deg) skew(${skewDeg}deg) scale(${scale})`,
       }}
