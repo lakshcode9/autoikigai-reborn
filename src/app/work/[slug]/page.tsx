@@ -24,16 +24,13 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,224,255,0.1),transparent_50%)]" />
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-50 px-6 md:px-16 py-8 flex justify-between items-center border-b border-white/5">
-        <Link href="/#work" className="flex items-center gap-2 text-white/60 hover:text-[#00E0FF] transition-colors group">
+      {/* Back Link */}
+      <div className="relative z-50 px-6 md:px-16 py-4">
+        <Link href="/#case-studies" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00E0FF] transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-sm font-bebas tracking-widest">BACK TO ALL WORK</span>
         </Link>
-        <div className="text-xs font-bebas text-white/40 tracking-widest">
-          CASE STUDY
-        </div>
-      </nav>
+      </div>
 
       {/* Hero Section */}
       <section className="relative z-10 px-6 md:px-16 py-24 md:py-32">

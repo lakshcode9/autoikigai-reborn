@@ -20,25 +20,6 @@ export default function OfferPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,224,255,0.1),transparent_50%)]" />
       </div>
 
-      {/* NAVIGATION */}
-      <nav className="relative z-50 px-8 md:px-20 lg:px-24 py-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image 
-            src="/autoikigai-logo.png" 
-            alt="AutoIkigai" 
-            width={40} 
-            height={40} 
-            className="rounded-full"
-          />
-          <span className="text-xl font-bebas tracking-widest group-hover:text-[#00E0FF] transition-colors">AUTOIKIGAI</span>
-        </Link>
-        <div className="flex gap-8 text-sm font-bebas tracking-widest">
-          <Link href="/" className="hover:text-[#00E0FF] transition-colors">HOME</Link>
-          <Link href="/offer" className="text-[#00E0FF]">OFFER</Link>
-          <a href="https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses" className="hover:text-[#00E0FF] transition-colors">CONTACT</a>
-        </div>
-      </nav>
-
       {/* 1. HERO SECTION */}
       <section className="relative z-10 pt-20 pb-20 px-8 md:px-20 lg:px-24 border-b border-white/5 overflow-hidden">
         {/* Ambient Background */}

@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowDown, CheckCircle, Flame, Building2, Trees, Stethoscope, Droplets } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export default function ReactivationPage() {
@@ -15,26 +13,6 @@ export default function ReactivationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,224,255,0.15),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,224,255,0.1),transparent_50%)]" />
       </div>
-
-      {/* NAV */}
-      <nav className="relative z-50 px-8 md:px-20 lg:px-24 py-6 flex justify-between items-center bg-black/50 backdrop-blur-md border-b border-white/5">
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image 
-            src="/autoikigai-logo.png" 
-            alt="AutoIkigai" 
-            width={40} 
-            height={40} 
-            className="rounded-full"
-          />
-          <span className="text-xl font-bebas tracking-widest group-hover:text-[#00E0FF] transition-colors">AUTOIKIGAI</span>
-        </Link>
-        <div className="flex gap-8 text-sm font-bebas tracking-widest">
-          <Link href="/offer" className="hover:text-[#00E0FF] transition-colors">OFFER</Link>
-          <Link href="/reactivation" className="text-[#00E0FF] hover:text-white transition-colors">REACTIVATION</Link>
-          <Link href="/#work" className="hover:text-[#00E0FF] transition-colors">WORK</Link>
-          <a href="https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses" className="hover:text-[#00E0FF] transition-colors">CONTACT</a>
-        </div>
-      </nav>
 
       {/* HERO SECTION */}
       <section className="relative z-10 px-8 md:px-20 lg:px-24 py-20 min-h-[80vh] flex flex-col justify-center">
