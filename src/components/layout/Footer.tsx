@@ -5,7 +5,7 @@ const FOOTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Reactivation", href: "/reactivation" },
   { label: "Work", href: "/#case-studies" },
-  { label: "Contact", href: "https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses", external: true },
+  { label: "Contact", href: "https://calendly.com/laksh-autoikigai/30min", external: true },
 ];
 
 export function Footer() {

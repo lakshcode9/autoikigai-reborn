@@ -100,4 +100,4 @@ export const ABOUT = {
 
 // --- Shared Links ---
 export const BOOKING_URL =
-  "https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses";
+  "https://calendly.com/laksh-autoikigai/30min";

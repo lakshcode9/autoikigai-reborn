@@ -41,7 +41,7 @@ export function StickyHeader() {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="text-2xl font-bold tracking-tighter-custom">AUTOIKIGAI</div>
         <motion.a
-          href="https://cal.com/ラクシュ-9q0fjl/intro-meeting-for-businesses"
+          href="https://calendly.com/laksh-autoikigai/30min"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
