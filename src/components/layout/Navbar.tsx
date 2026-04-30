@@ -65,7 +65,7 @@ export function Navbar() {
             className="btn-primary"
             style={{ padding: "8px 16px", fontSize: "0.75rem" }}
           >
-            Book a free audit
+            Book a discovery call
           </a>
         </nav>
 
@@ -139,7 +139,7 @@ export function Navbar() {
                   className="btn-primary w-full text-center block"
                   style={{ fontSize: "0.8125rem" }}
                 >
-                  Book a free audit
+                  Book a discovery call
                 </a>
               </div>
             </div>

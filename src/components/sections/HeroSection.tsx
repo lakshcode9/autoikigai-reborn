@@ -51,7 +51,7 @@ export default function HeroSection() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Book a free audit
+              Book a discovery call
             </a>
             <a href="#services" className="btn-secondary bg-white">
               See how it works

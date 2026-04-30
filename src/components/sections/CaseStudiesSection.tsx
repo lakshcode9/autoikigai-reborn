@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import { USE_CASES, BOOKING_URL } from "@/lib/content";
+import { CheckCircle } from "lucide-react";
+import { USE_CASES } from "@/lib/content";
 
 export default function CaseStudiesSection() {
   return (
@@ -61,7 +61,6 @@ export default function CaseStudiesSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-10"
       >
         <p className="section-label">Social Proof</p>
         <h2
@@ -79,42 +78,6 @@ export default function CaseStudiesSection() {
           all handled by AI agents we built and run ourselves. We don&apos;t sell
           what we don&apos;t use.
         </p>
-      </motion.div>
-
-      {/* Case study CTA card */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="p-8 md:p-10"
-        style={{
-          border: "1px dashed var(--border-default)",
-          background: "var(--bg-elevated)",
-        }}
-      >
-        <h3
-          className="text-[18px] md:text-[22px] font-medium mb-3 tracking-[-0.02em]"
-          style={{ color: "var(--text-primary)" }}
-        >
-          Want proof it works for your agency?
-        </h3>
-        <p
-          className="text-[0.8125rem] leading-[1.7] max-w-xl mb-6"
-          style={{ color: "var(--text-muted)" }}
-        >
-          We&apos;re building AI employees for 3 agencies this quarter &mdash;
-          at cost &mdash; in exchange for a documented case study.
-        </p>
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center gap-2"
-        >
-          Apply for a case study spot
-          <ArrowRight className="w-3.5 h-3.5" />
-        </a>
       </motion.div>
     </section>
   );

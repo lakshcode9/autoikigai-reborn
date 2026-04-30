@@ -67,7 +67,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "Setup starts at $2,000. Ongoing maintenance and optimization is a monthly retainer based on complexity. Book an audit and we'll give you exact pricing for your use case.",
+      "The AI Employee Blueprint is $5,000 — a one-week deep dive into your operations with a fully scoped system design. If you move forward, it's credited toward the build. Implementation starts at $5,000+ depending on complexity, with ongoing maintenance as a monthly retainer.",
   },
   {
     question: "How quickly will I see results?",

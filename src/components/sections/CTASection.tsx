@@ -11,31 +11,58 @@ export default function CTASection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center"
+        className="max-w-2xl mx-auto"
       >
-        <h2
-          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-4"
-          style={{ color: "var(--text-primary)" }}
-        >
-          Tell me the task your team hates most.
-        </h2>
+        {/* Price tag */}
+        <div className="text-center mb-8">
+          <p className="section-label" style={{ marginBottom: "16px" }}>
+            Get Started
+          </p>
+          <h2
+            className="text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.03em] font-medium mb-2"
+            style={{ color: "var(--text-primary)" }}
+          >
+            $5,000 &mdash; AI Employee Blueprint
+          </h2>
+        </div>
 
-        <p
-          className="text-[0.8125rem] leading-[1.7] mb-8 max-w-lg mx-auto"
-          style={{ color: "var(--text-muted)" }}
-        >
-          30 minutes. No pitch. You&apos;ll leave knowing exactly what AI can
-          handle in your agency, how long it takes, and what it costs.
-        </p>
+        {/* Description */}
+        <div className="space-y-4 mb-8">
+          <p
+            className="text-[0.8125rem] leading-[1.7]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            We spend one week inside your agency&apos;s operations. You walk
+            away with a complete AI employee architecture &mdash; every workflow
+            mapped, every integration specced, every timeline defined. Ready to
+            deploy.
+          </p>
+          <p
+            className="text-[0.8125rem] leading-[1.7]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            If you move forward with the build, the $5,000 is credited toward
+            your project.
+          </p>
+          <p
+            className="text-[0.875rem] leading-[1.7] font-medium"
+            style={{ color: "var(--text-primary)" }}
+          >
+            This isn&apos;t a free audit. This is engineering.
+          </p>
+        </div>
 
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary"
-        >
-          Book a free audit
-        </a>
+        {/* CTA */}
+        <div className="text-center">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Book a discovery call
+          </a>
+        </div>
       </motion.div>
     </section>
   );
