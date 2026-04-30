@@ -6,7 +6,7 @@ import { ABOUT } from "@/lib/content";
 
 export default function AboutSection() {
   return (
-    <section className="section">
+    <section id="about" className="section">
       <div className="grid grid-cols-1 lg:grid-cols-[0.35fr_1fr] gap-10 lg:gap-16 items-center">
         {/* Left: Logo */}
         <motion.div
@@ -56,10 +56,17 @@ export default function AboutSection() {
           </div>
 
           <p
-            className="text-[0.8125rem] leading-[1.7] max-w-xl mb-6"
+            className="text-[0.8125rem] leading-[1.7] max-w-xl mb-3"
             style={{ color: "var(--text-muted)" }}
           >
             {ABOUT.bio}
+          </p>
+
+          <p
+            className="text-[0.8125rem] leading-[1.7] max-w-xl mb-6"
+            style={{ color: "var(--text-muted)", opacity: 0.7 }}
+          >
+            {ABOUT.japaneseLine}
           </p>
 
           {/* Built with */}

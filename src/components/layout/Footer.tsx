@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Reactivation", href: "/reactivation" },
-  { label: "Work", href: "/#case-studies" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "https://calendly.com/laksh-autoikigai/30min", external: true },
 ];
 
@@ -31,6 +31,12 @@ export function Footer() {
             style={{ color: "var(--text-muted)" }}
           >
             &copy; {new Date().getFullYear()} Autoikigai
+          </span>
+          <span
+            className="text-xs hidden sm:inline"
+            style={{ color: "var(--text-muted)", opacity: 0.6 }}
+          >
+            &mdash; AI Employees for Agencies
           </span>
         </div>
 

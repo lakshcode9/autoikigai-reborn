@@ -20,15 +20,15 @@ export default function ServicesSection() {
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-3"
           style={{ color: "var(--text-primary)" }}
         >
-          We handle everything from audit to deployment.
+          One system. Three weeks. Zero new hires.
         </h2>
         <p
           className="text-[0.8125rem] leading-[1.7] max-w-xl mb-12"
           style={{ color: "var(--text-muted)" }}
         >
-          From mapping your dead leads to deploying AI agents and optimizing
-          campaigns — we handle the entire reactivation pipeline so you can
-          focus on running your business.
+          From mapping your team&apos;s repetitive work to deploying AI
+          employees that handle it &mdash; we build the entire system so you can
+          focus on running your agency.
         </p>
       </motion.div>
 

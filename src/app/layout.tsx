@@ -13,9 +13,9 @@ const ibmPlex = IBM_Plex_Sans({
 });
 
 export const metadata = {
-  title: "Autoikigai — AI-Powered Client Reactivation",
+  title: "Autoikigai \u2014 AI Employees for Agencies",
   description:
-    "We turn your dead leads into booked appointments using AI voice and SMS agents that run 24/7.",
+    "We build AI employees for agencies \u2014 systems that handle outreach, follow-ups, onboarding, and reporting. 24/7, no salary, no sick days.",
   icons: {
     icon: "/favicon.ico",
   },

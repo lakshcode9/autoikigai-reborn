@@ -1,9 +1,9 @@
 // ============================================================
-// Centralized homepage content — Autoikigai (Crator-style layout)
+// Centralized homepage content — Autoikigai (AI Employees for Agencies)
 // All text/data for homepage sections lives here.
 // ============================================================
 
-// --- Services Section (Crator's Audit/Build/Run → Autoikigai's process) ---
+// --- Services Section ---
 export interface Service {
   phase: string;
   title: string;
@@ -13,22 +13,33 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     phase: "Week 1",
-    title: "Audit & Discovery",
+    title: "Audit & Map",
     description:
-      "We plug into your CRM, map your dead lead graveyard, and identify the highest-value reactivation opportunities. You get a clear action plan: which leads to hit first, which channels to use, and projected ROI.",
+      "We look at your team's daily work and find the tasks AI can handle — outreach, follow-ups, lead research, CRM updates, client onboarding, reporting. You get a clear plan: what to automate first, projected time saved, and ROI.",
   },
   {
-    phase: "Week 2–3",
-    title: "Build & Configure",
+    phase: "Week 2-3",
+    title: "Build & Deploy",
     description:
-      "We build your AI reactivation system — custom SMS sequences, AI voice agents, email drips — all wired into your existing CRM. Configured for your specific niche, tone, and compliance requirements.",
+      "We build your AI employee — custom workflows wired into your existing tools (HubSpot, Notion, Slack, Gmail, WhatsApp). Configured for your niche, your tone, your process. Not a template. A system built for how your agency actually works.",
   },
   {
     phase: "Ongoing",
-    title: "Deploy & Optimize",
+    title: "Monitor & Optimize",
     description:
-      "We launch, monitor, and continuously optimize. If response rates dip, we adjust. If a sequence outperforms, we scale it. You get weekly reports and booked appointments — not a handoff.",
+      "Your AI employee reports to you every morning. We monitor performance, fix what breaks, and improve what's working. You get results, not a handoff.",
   },
+];
+
+// --- Use Cases ---
+export const USE_CASES: string[] = [
+  "Research 50 leads per day and enrich them with company data, tech stack, and contact info",
+  "Write personalized cold emails that don't sound like a robot wrote them",
+  "Follow up with every lead 5-7 times without you remembering to",
+  "Update your CRM automatically after every interaction",
+  "Send you a WhatsApp report every morning with what happened overnight",
+  "Onboard new clients with automated welcome sequences and doc collection",
+  "Monitor your inbox and draft replies for your review",
 ];
 
 // --- FAQ Section ---
@@ -39,63 +50,49 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What is Autoikigai and what do you do?",
+    question: "What is Autoikigai?",
     answer:
-      "We're an AI-powered client reactivation agency. We deploy AI voice and SMS agents that contact your old, dead, or lapsed leads and book them directly onto your calendar — generating revenue from contacts you thought were lost.",
+      "We build AI employees for agencies. Systems that handle your team's repetitive work — outreach, follow-ups, onboarding, reporting — so you can scale without hiring.",
   },
   {
-    question: "How is this different from hiring more sales reps?",
+    question: "How is this different from hiring someone?",
     answer:
-      "An AI agent can contact 500 leads in the time it takes a human to call 20. It never gets tired, never forgets to follow up, and works 24/7. You get the output of a 50-person sales team for a fraction of the cost.",
+      "An AI employee costs a fraction of a hire, works 24/7, never quits, and is deployed in 2-3 weeks. No recruiting, no onboarding, no management overhead.",
   },
   {
-    question: "What industries do you work with?",
+    question: "What kind of agencies do you work with?",
     answer:
-      "We specialize in high-ticket local service businesses: commercial paving, fire & security, janitorial services, arborists/tree care, and sleep apnea clinics. Our sequences and AI agents are fine-tuned for each niche.",
+      "Primarily agencies doing $500K-$5M/year — marketing, recruiting, consulting, real estate, staffing. If your team does repetitive work that follows a pattern, we can automate it.",
   },
   {
     question: "How much does it cost?",
     answer:
-      "Setup starts at $2,000 which covers AI agent build, sequence configuration, and CRM integration. Ongoing costs are based on performance — you only pay for leads that actually book appointments.",
+      "Setup starts at $2,000. Ongoing maintenance and optimization is a monthly retainer based on complexity. Book an audit and we'll give you exact pricing for your use case.",
   },
   {
     question: "How quickly will I see results?",
     answer:
-      "Most clients see their first booked appointments within the first week of deployment. Full campaign results (response rates, ROI metrics) stabilize within 30 days.",
+      "Your AI employee is live within 2-3 weeks. Most agencies see measurable time savings in the first week of deployment.",
   },
   {
-    question: "Do I need to change my CRM?",
+    question: "Do I need to change my tools?",
     answer:
-      "No. We integrate with your existing systems — whether that's a spreadsheet, HubSpot, GHL, or any CRM with an API. We plug in, we don't rip and replace.",
+      "No. We plug into whatever you already use — HubSpot, Notion, Slack, Gmail, Google Sheets, Airtable, WhatsApp. No migration required.",
   },
   {
-    question: "What happens after the setup?",
+    question: "What happens if something breaks?",
     answer:
-      "We provide ongoing management, monitoring, and optimization. You receive weekly performance reports and we continuously tune sequences based on response data. We're not a build-and-bounce shop.",
+      "We monitor your AI employee and fix issues proactively. You also get a direct WhatsApp line to us for anything urgent.",
   },
-];
-
-// --- Trusted-by / social proof (Autoikigai's client companies) ---
-export interface TrustedCompany {
-  name: string;
-  logo: string | null;
-}
-
-export const TRUSTED_BY: TrustedCompany[] = [
-  { name: "Connect Group", logo: null },
-  { name: "Crawford Thomas", logo: null },
-  { name: "Vention", logo: null },
-  { name: "ForPlayers", logo: null },
-  { name: "HelpCare AI", logo: null },
-  { name: "FabuLingua", logo: null },
 ];
 
 // --- About / Founder Section ---
 export const ABOUT = {
-  founderName: "Laksh",
+  founderName: "Laksh Pujary",
   role: "Founder",
-  bio: "I build autonomous AI systems for businesses that are tired of losing money to human limitations. Former software architect turned agency founder. I've helped companies generate over $500K+ in recovered revenue using AI agents that never sleep, never forget, and never give up on a lead.",
-  builtWith: ["Supabase", "OpenAI", "n8n", "Twilio"],
+  bio: "I build AI systems that replace repetitive work. Not demos, not decks — production systems that run 24/7. My own agency runs entirely on AI employees I built — from lead research to outreach to CRM updates to daily WhatsApp reports. I decided to build the same for other agencies. If your team is spending hours on work that follows a pattern, I can probably replace it with an AI that does it faster, cheaper, and at 3AM.",
+  japaneseLine: "\u65E5\u672C\u8A9E\u5BFE\u5FDC\u53EF",
+  builtWith: ["Supabase", "OpenAI", "n8n", "WhatsApp", "Gmail", "HubSpot", "Notion", "Slack"],
 };
 
 // --- Shared Links ---
