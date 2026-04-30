@@ -3,6 +3,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { AnnouncementBanner } from "@/components/layout/AnnouncementBanner";
 import { LenisProvider } from "@/components/layout/LenisProvider";
 
 const ibmPlex = IBM_Plex_Sans({
@@ -32,6 +33,7 @@ export default function RootLayout({
         <LenisProvider>
           <div className="page">
             <div className="frame">
+              <AnnouncementBanner />
               <Navbar />
               <div className="flex-grow">{children}</div>
               <Footer />
