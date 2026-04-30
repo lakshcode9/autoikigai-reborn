@@ -86,12 +86,54 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
 ];
 
-// --- About / Founder Section ---
+// --- About / Founders Section ---
+export interface Founder {
+  name: string;
+  role: string;
+  tagline: string;
+  bio: string;
+  funFact: string;
+  image: string | null;
+  imageFallbackBubbles?: string[];
+  socials?: { label: string; url: string }[];
+}
+
+export const FOUNDERS: Founder[] = [
+  {
+    name: "Laksh Pujary",
+    role: "Co-Founder",
+    tagline: "The Brain",
+    bio: "College dropout turned AI systems architect. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
+    funFact: "Mass-deploys AI agents the way normal people order coffee.",
+    image: null,
+    imageFallbackBubbles: [
+      "Not photogenic",
+      "Trust me, I code better than I look",
+      "The AI wouldn't generate my face either",
+      "日本語対応可",
+    ],
+    socials: [
+      { label: "GitHub", url: "https://github.com/lakshcode9" },
+      { label: "Instagram", url: "https://instagram.com/lakshbuilds" },
+      { label: "Web", url: "https://lakshpujary.tech" },
+    ],
+  },
+  {
+    name: "Stefan Skarevski",
+    role: "Co-Founder",
+    tagline: "The Closer",
+    bio: "If Laksh builds it, Stefan sells it. The man who gets on calls and doesn't leave until the deal is done. Part sales strategist, part human lie detector — he knows what your agency needs before you finish explaining it. Closes deals like he closes gym sets: with zero hesitation.",
+    funFact: "Has never lost an arm wrestle or a sales call.",
+    image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
+    socials: [
+      { label: "Instagram", url: "https://instagram.com/skarevskiofficial" },
+    ],
+  },
+];
+
 export const ABOUT = {
-  founderName: "Laksh Pujary",
-  role: "Founder",
-  bio: "I build AI systems that replace repetitive work. Not demos, not decks — production systems that run 24/7. My own agency runs entirely on AI employees I built — from lead research to outreach to CRM updates to daily WhatsApp reports. I decided to build the same for other agencies. If your team is spending hours on work that follows a pattern, I can probably replace it with an AI that does it faster, cheaper, and at 3AM.",
-  japaneseLine: "\u65E5\u672C\u8A9E\u5BFE\u5FDC\u53EF",
+  sectionHeading: "Built by two guys who actually ship.",
+  sectionSubheading: "One builds the AI. The other sells it before the demo is over.",
   builtWith: ["Supabase", "OpenAI", "n8n", "WhatsApp", "Gmail", "HubSpot", "Notion", "Slack"],
 };
 
