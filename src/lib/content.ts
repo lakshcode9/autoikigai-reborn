@@ -107,7 +107,8 @@ export interface Founder {
   name: string;
   role: string;
   tagline: string;
-  oneLiner: string;
+  bio: string;
+  funFact: string;
   image: string | null;
   imageFallbackBubbles?: string[];
   stats: { value: string; label: string }[];
@@ -119,7 +120,8 @@ export const FOUNDERS: Founder[] = [
     name: "Laksh Pujary",
     role: "Co-Founder",
     tagline: "The Brain",
-    oneLiner: "Builds AI that works at 3AM so you don't have to.",
+    bio: "College dropout turned AI systems architect. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
+    funFact: "Mass-deploys AI agents the way normal people order coffee.",
     image: null,
     imageFallbackBubbles: [
       "Not photogenic",
@@ -140,7 +142,8 @@ export const FOUNDERS: Founder[] = [
     name: "Stefan Skarevski",
     role: "Co-Founder",
     tagline: "The Business",
-    oneLiner: "Strategy, partnerships, and making sure we deliver.",
+    bio: "The guy who makes sure the right agencies find us — and that we actually deliver what we promise. Stefan handles strategy, partnerships, and client relationships. He's the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls.",
+    funFact: "Has never lost an arm wrestle. Business meetings included.",
     image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
     stats: [
       { value: "100%", label: "Client retention" },

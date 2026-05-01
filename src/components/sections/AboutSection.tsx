@@ -191,16 +191,39 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
           <span className="code-tag">{founder.role}</span>
         </div>
 
-        {/* One-liner */}
+        {/* Bio */}
         <p
           style={{
             fontSize: "0.8125rem",
-            lineHeight: 1.5,
+            lineHeight: 1.7,
             color: "var(--text-muted)",
           }}
         >
-          {founder.oneLiner}
+          {founder.bio}
         </p>
+
+        {/* Fun Fact */}
+        <div
+          className="inline-flex items-start gap-2 px-3 py-2"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-default)",
+          }}
+        >
+          <span
+            style={{
+              fontFamily:
+                "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+              fontSize: "0.6875rem",
+              color: "var(--text-muted)",
+            }}
+          >
+            <span style={{ color: "var(--accent-color)", fontWeight: 600 }}>
+              //
+            </span>{" "}
+            {founder.funFact}
+          </span>
+        </div>
 
         {/* Stats */}
         <StatRow stats={founder.stats} />
