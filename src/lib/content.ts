@@ -121,9 +121,9 @@ export const FOUNDERS: Founder[] = [
   {
     name: "Stefan Skarevski",
     role: "Co-Founder",
-    tagline: "The Closer",
-    bio: "If Laksh builds it, Stefan sells it. The man who gets on calls and doesn't leave until the deal is done. Part sales strategist, part human lie detector — he knows what your agency needs before you finish explaining it. Closes deals like he closes gym sets: with zero hesitation.",
-    funFact: "Has never lost an arm wrestle or a sales call.",
+    tagline: "The Business",
+    bio: "The guy who makes sure the right agencies find us — and that we actually deliver what we promise. Stefan handles strategy, partnerships, and client relationships. He's the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls.",
+    funFact: "Has never lost an arm wrestle. Business meetings included.",
     image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
     socials: [
       { label: "Instagram", url: "https://instagram.com/skarevskiofficial" },
@@ -133,7 +133,7 @@ export const FOUNDERS: Founder[] = [
 
 export const ABOUT = {
   sectionHeading: "Built by two guys who actually ship.",
-  sectionSubheading: "One builds the AI. The other sells it before the demo is over.",
+  sectionSubheading: "One builds the AI. The other makes sure it reaches the right people.",
   builtWith: ["Supabase", "OpenAI", "n8n", "WhatsApp", "Gmail", "HubSpot", "Notion", "Slack"],
 };
 
