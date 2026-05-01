@@ -6,40 +6,56 @@
 // --- Services Section ---
 export interface Service {
   phase: string;
+  step: string;
   title: string;
-  description: string;
+  shortDesc: string;
+  deliverables: string[];
+  icon: string; // lucide icon name
 }
 
 export const SERVICES: Service[] = [
   {
     phase: "Week 1",
+    step: "01",
     title: "Audit & Map",
-    description:
-      "We look at your team's daily work and find the tasks AI can handle — outreach, follow-ups, lead research, CRM updates, client onboarding, reporting. You get a clear plan: what to automate first, projected time saved, and ROI.",
+    shortDesc: "We find what to automate.",
+    deliverables: ["Task audit", "ROI projection", "System blueprint"],
+    icon: "Search",
   },
   {
     phase: "Week 2-3",
+    step: "02",
     title: "Build & Deploy",
-    description:
-      "We build your AI employee — custom workflows wired into your existing tools (HubSpot, Notion, Slack, Gmail, WhatsApp). Configured for your niche, your tone, your process. Not a template. A system built for how your agency actually works.",
+    shortDesc: "We build your AI employee.",
+    deliverables: ["Custom workflows", "Tool integrations", "Your tone & process"],
+    icon: "Code",
   },
   {
     phase: "Ongoing",
+    step: "03",
     title: "Monitor & Optimize",
-    description:
-      "Your AI employee reports to you every morning. We monitor performance, fix what breaks, and improve what's working. You get results, not a handoff.",
+    shortDesc: "We keep it running.",
+    deliverables: ["Daily reports", "Proactive fixes", "Performance tuning"],
+    icon: "RefreshCw",
   },
 ];
 
-// --- Use Cases ---
-export const USE_CASES: string[] = [
-  "Research 50 leads per day and enrich them with company data, tech stack, and contact info",
-  "Write personalized cold emails that don't sound like a robot wrote them",
-  "Follow up with every lead 5-7 times without you remembering to",
-  "Update your CRM automatically after every interaction",
-  "Send you a WhatsApp report every morning with what happened overnight",
-  "Onboard new clients with automated welcome sequences and doc collection",
-  "Monitor your inbox and draft replies for your review",
+// --- Capabilities ---
+export interface Capability {
+  icon: string; // lucide icon name
+  title: string;
+  metric: string;
+}
+
+export const CAPABILITIES: Capability[] = [
+  { icon: "Users", title: "Lead Research", metric: "50+ leads/day" },
+  { icon: "Mail", title: "Cold Outreach", metric: "Personalized at scale" },
+  { icon: "Repeat", title: "Follow-ups", metric: "5-7x auto sequences" },
+  { icon: "Database", title: "CRM Updates", metric: "Zero manual entry" },
+  { icon: "MessageCircle", title: "WhatsApp Reports", metric: "Daily at 8AM" },
+  { icon: "UserPlus", title: "Client Onboarding", metric: "Fully automated" },
+  { icon: "Inbox", title: "Inbox Monitoring", metric: "Drafts replies for you" },
+  { icon: "Zap", title: "Custom Workflows", metric: "Built for your stack" },
 ];
 
 // --- FAQ Section ---

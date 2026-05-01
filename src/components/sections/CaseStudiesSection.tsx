@@ -1,82 +1,123 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
-import { USE_CASES } from "@/lib/content";
+import {
+  Users,
+  Mail,
+  Repeat,
+  Database,
+  MessageCircle,
+  UserPlus,
+  Inbox,
+  Zap,
+} from "lucide-react";
+import { CAPABILITIES } from "@/lib/content";
+
+const ICON_MAP: Record<string, typeof Users> = {
+  Users,
+  Mail,
+  Repeat,
+  Database,
+  MessageCircle,
+  UserPlus,
+  Inbox,
+  Zap,
+};
 
 export default function CaseStudiesSection() {
   return (
     <section id="how-it-works" className="section">
-      {/* --- Use Cases --- */}
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mb-12"
+        transition={{ duration: 0.4 }}
+        className="mb-10"
       >
         <p className="section-label">Capabilities</p>
         <h2
-          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-3"
+          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
           What your AI employee can do
         </h2>
-        <p
-          className="text-[0.8125rem] leading-[1.7] max-w-xl mb-8"
-          style={{ color: "var(--text-muted)" }}
-        >
-          Every task below is something our AI employees handle today &mdash;
-          running in production, not on a slide deck.
-        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 grid-bordered mb-16">
-        {USE_CASES.map((useCase, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="grid-cell flex items-start gap-3"
-          >
-            <CheckCircle
-              className="w-4 h-4 flex-shrink-0 mt-0.5"
-              style={{ color: "var(--accent-color)" }}
-            />
-            <p
-              className="text-[0.8125rem] leading-[1.7]"
-              style={{ color: "var(--text-secondary)" }}
+      {/* ── Icon grid ── */}
+      <div className="grid grid-cols-2 md:grid-cols-4 grid-bordered">
+        {CAPABILITIES.map((cap, i) => {
+          const Icon = ICON_MAP[cap.icon] || Zap;
+
+          return (
+            <motion.div
+              key={cap.title}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: i * 0.05 }}
+              className="grid-cell flex flex-col items-center text-center gap-3 py-8 md:py-10"
             >
-              {useCase}
-            </p>
-          </motion.div>
-        ))}
+              {/* Icon container */}
+              <div
+                className="flex items-center justify-center w-12 h-12 mb-1"
+                style={{
+                  border: "1px dashed var(--accent-color)",
+                  background: "var(--bg-elevated)",
+                }}
+              >
+                <Icon
+                  className="w-5 h-5"
+                  style={{ color: "var(--accent-color)" }}
+                  strokeWidth={1.5}
+                />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-[0.875rem] font-medium leading-tight"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {cap.title}
+              </h3>
+
+              {/* Metric badge */}
+              <span
+                className="code-tag"
+                style={{
+                  fontSize: "0.5625rem",
+                  color: "var(--accent-color)",
+                  background: "var(--bg-surface)",
+                }}
+              >
+                {cap.metric}
+              </span>
+            </motion.div>
+          );
+        })}
       </div>
 
-      {/* --- Social Proof --- */}
+      {/* ── Social proof — compact ── */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        className="mt-10 pt-8 flex flex-col sm:flex-row sm:items-start gap-3"
+        style={{ borderTop: "1px dashed var(--border-default)" }}
       >
-        <p className="section-label">Social Proof</p>
-        <h2
-          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-4"
-          style={{ color: "var(--text-primary)" }}
-        >
-          Built on real systems, not slides.
-        </h2>
         <p
-          className="text-[0.8125rem] leading-[1.7] max-w-2xl"
+          className="section-label"
+          style={{ marginBottom: 0, whiteSpace: "nowrap" }}
+        >
+          Social Proof
+        </p>
+        <p
+          className="text-[0.8125rem] leading-[1.7] max-w-lg"
           style={{ color: "var(--text-muted)" }}
         >
-          Our own agency runs on AI employees. Lead research, personalized
-          outreach, follow-ups, CRM updates, WhatsApp morning reports &mdash;
-          all handled by AI agents we built and run ourselves. We don&apos;t sell
-          what we don&apos;t use.
+          Our own agency runs on AI employees we built. We don&apos;t sell what
+          we don&apos;t use.
         </p>
       </motion.div>
     </section>

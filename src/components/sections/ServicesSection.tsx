@@ -1,72 +1,170 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Code, RefreshCw } from "lucide-react";
+import { Search, Code, RefreshCw, ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/content";
 
-const ICONS = [Search, Code, RefreshCw];
+const ICON_MAP: Record<string, typeof Search> = {
+  Search,
+  Code,
+  RefreshCw,
+};
 
 export default function ServicesSection() {
   return (
     <section id="services" className="section">
+      {/* Header — tight, no paragraph */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }}
+        className="mb-12"
       >
         <p className="section-label">Services</p>
         <h2
-          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-3"
+          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
           One system. Three weeks. Zero new hires.
         </h2>
-        <p
-          className="text-[0.8125rem] leading-[1.7] max-w-xl mb-12"
-          style={{ color: "var(--text-muted)" }}
-        >
-          From mapping your team&apos;s repetitive work to deploying AI
-          employees that handle it &mdash; we build the entire system so you can
-          focus on running your agency.
-        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 grid-bordered">
+      {/* ── Visual timeline cards ── */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
         {SERVICES.map((service, i) => {
-          const Icon = ICONS[i];
+          const Icon = ICON_MAP[service.icon] || Search;
+          const isLast = i === SERVICES.length - 1;
+
           return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="grid-cell"
+              transition={{ duration: 0.45, delay: i * 0.12 }}
+              className="relative flex flex-col"
+              style={{
+                border: "1px dashed var(--border-default)",
+                marginRight: isLast ? 0 : undefined,
+              }}
             >
-              {/* Header row: icon + timeline badge */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="step-number flex items-center gap-1.5">
-                  <Icon className="w-3.5 h-3.5" />
+              {/* ── Top bar: step number + phase badge ── */}
+              <div
+                className="flex items-center justify-between px-5 py-3"
+                style={{
+                  borderBottom: "1px dashed var(--border-default)",
+                  background: "var(--bg-elevated)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily:
+                      "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+                    fontSize: "0.625rem",
+                    color: "var(--text-muted)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  Step {service.step}
                 </span>
                 <span className="code-tag">{service.phase}</span>
               </div>
 
-              {/* Title */}
-              <h3
-                className="text-[18px] md:text-[20px] font-medium mb-3 tracking-[-0.02em]"
-                style={{ color: "var(--text-primary)" }}
+              {/* ── Visual center: large icon + step number ── */}
+              <div
+                className="flex items-center justify-center py-10 md:py-14 relative"
+                style={{ background: "var(--bg-primary)" }}
               >
-                {service.title}
-              </h3>
+                {/* Giant faded step number */}
+                <div
+                  className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
+                  aria-hidden
+                >
+                  <span
+                    style={{
+                      fontFamily:
+                        "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+                      fontSize: "8rem",
+                      fontWeight: 800,
+                      color: "var(--bg-elevated)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {service.step}
+                  </span>
+                </div>
 
-              {/* Description */}
-              <p
-                className="text-[0.8125rem] leading-[1.7]"
-                style={{ color: "var(--text-muted)" }}
+                {/* Icon on top */}
+                <div
+                  className="relative z-10 flex items-center justify-center w-16 h-16"
+                  style={{
+                    border: "2px solid var(--accent-color)",
+                    background: "var(--bg-primary)",
+                  }}
+                >
+                  <Icon
+                    className="w-7 h-7"
+                    style={{ color: "var(--accent-color)" }}
+                    strokeWidth={1.5}
+                  />
+                </div>
+
+                {/* Connector arrow (not on last) */}
+                {!isLast && (
+                  <div
+                    className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-20 items-center justify-center w-6 h-6"
+                    style={{
+                      background: "var(--bg-primary)",
+                      border: "1px dashed var(--border-default)",
+                    }}
+                  >
+                    <ArrowRight
+                      className="w-3 h-3"
+                      style={{ color: "var(--accent-color)" }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* ── Bottom: title + one-liner + deliverables ── */}
+              <div
+                className="px-5 py-5 flex flex-col gap-3 flex-1"
+                style={{
+                  borderTop: "1px dashed var(--border-default)",
+                }}
               >
-                {service.description}
-              </p>
+                <h3
+                  className="text-[18px] md:text-[20px] font-medium tracking-[-0.02em]"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  {service.title}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: "0.8125rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {service.shortDesc}
+                </p>
+
+                {/* Deliverable pills */}
+                <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
+                  {service.deliverables.map((d) => (
+                    <span
+                      key={d}
+                      className="code-tag"
+                      style={{ fontSize: "0.625rem" }}
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           );
         })}
