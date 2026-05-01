@@ -4,34 +4,35 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ABOUT, FOUNDERS, type Founder } from "@/lib/content";
 
+/* ── Floating speech bubbles for Laksh's missing photo ── */
 function FloatingBubbles({ bubbles }: { bubbles: string[] }) {
-  const positions = [
-    { top: "8%", left: "10%", rotate: -6 },
-    { top: "18%", right: "8%", rotate: 4 },
-    { bottom: "28%", left: "6%", rotate: 3 },
-    { bottom: "10%", right: "12%", rotate: -3 },
+  const configs = [
+    { top: "12%", left: "8%", rotate: -4, delay: 0.4 },
+    { top: "6%", right: "10%", rotate: 3, delay: 0.6 },
+    { bottom: "14%", left: "5%", rotate: 2, delay: 0.8 },
   ];
 
   return (
     <>
       {bubbles.map((text, i) => {
-        const pos = positions[i % positions.length];
+        const { delay, rotate, ...pos } = configs[i % configs.length];
         return (
           <motion.div
             key={i}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 8, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.3 + i * 0.15 }}
-            className="absolute px-3 py-1.5 max-w-[160px] text-center"
+            transition={{ duration: 0.4, delay }}
+            className="absolute px-2.5 py-1 max-w-[150px] text-center"
             style={{
               ...pos,
+              transform: `rotate(${rotate}deg)`,
               background: "var(--bg-primary)",
-              border: "1px dashed var(--border-default)",
+              border: "1px dashed var(--accent-color)",
               fontFamily:
                 "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-              fontSize: "0.625rem",
-              color: "var(--text-muted)",
+              fontSize: "0.5625rem",
+              color: "var(--accent-color)",
               zIndex: 2,
             }}
           >
@@ -43,106 +44,18 @@ function FloatingBubbles({ bubbles }: { bubbles: string[] }) {
   );
 }
 
-function FounderCard({ founder, index }: { founder: Founder; index: number }) {
+/* ── Stat pill row ── */
+function StatRow({ stats }: { stats: Founder["stats"] }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
-      className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-10 items-start"
-      style={{
-        borderBottom:
-          index < FOUNDERS.length - 1
-            ? "1px dashed var(--border-default)"
-            : "none",
-        paddingBottom: index < FOUNDERS.length - 1 ? "48px" : "0",
-        marginBottom: index < FOUNDERS.length - 1 ? "48px" : "0",
-      }}
-    >
-      {/* Photo / Bubbles area */}
-      <div
-        className="relative w-full aspect-square max-w-[280px] mx-auto md:mx-0 overflow-hidden flex items-center justify-center"
-        style={{
-          background: "var(--bg-elevated)",
-          border: "1px dashed var(--border-default)",
-        }}
-      >
-        {founder.image ? (
-          <Image
-            src={founder.image}
-            alt={founder.name}
-            fill
-            className="object-cover"
-            sizes="280px"
-          />
-        ) : (
-          <>
-            {/* Placeholder with floating bubbles */}
-            <div
-              className="flex items-center justify-center w-full h-full"
-              style={{ background: "var(--bg-elevated)" }}
-            >
-              <div
-                className="text-center"
-                style={{
-                  fontFamily:
-                    "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-                  fontSize: "2.5rem",
-                  color: "var(--border-default)",
-                  userSelect: "none",
-                  lineHeight: 1,
-                }}
-              >
-                ?
-              </div>
-            </div>
-            {founder.imageFallbackBubbles && (
-              <FloatingBubbles bubbles={founder.imageFallbackBubbles} />
-            )}
-          </>
-        )}
-      </div>
-
-      {/* Content */}
-      <div>
-        {/* Name + Role + Tagline */}
-        <div className="mb-4">
-          <div className="flex items-center gap-3 flex-wrap mb-1">
-            <h3
-              className="text-[20px] md:text-[24px] font-medium leading-tight"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {founder.name}
-            </h3>
-            <span className="code-tag">{founder.role}</span>
-          </div>
-          <p
-            className="text-[0.8125rem] font-medium tracking-wide"
-            style={{
-              color: "var(--accent-color)",
-              fontFamily:
-                "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-              fontSize: "0.75rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-            }}
-          >
-            {founder.tagline}
-          </p>
-        </div>
-
-        {/* Bio */}
-        <p
-          className="text-[0.8125rem] leading-[1.7] max-w-xl mb-4"
-          style={{ color: "var(--text-muted)" }}
-        >
-          {founder.bio}
-        </p>
-
-        {/* Fun Fact */}
-        <div
-          className="inline-flex items-start gap-2 px-3 py-2 mb-5"
+    <div className="flex gap-1.5 flex-wrap">
+      {stats.map((stat, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
+          className="flex items-center gap-1.5 px-2.5 py-1.5"
           style={{
             background: "var(--bg-surface)",
             border: "1px solid var(--border-default)",
@@ -152,28 +65,160 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
             style={{
               fontFamily:
                 "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-              fontSize: "0.6875rem",
-              color: "var(--text-muted)",
+              fontSize: "0.8125rem",
+              fontWeight: 700,
+              color: "var(--accent-color)",
+              lineHeight: 1,
             }}
           >
-            <span style={{ color: "var(--accent-color)", fontWeight: 600 }}>
-              //
-            </span>{" "}
-            {founder.funFact}
+            {stat.value}
           </span>
+          <span
+            style={{
+              fontFamily:
+                "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+              fontSize: "0.5625rem",
+              color: "var(--text-muted)",
+              lineHeight: 1.2,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            {stat.label}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+/* ── Single founder card ── */
+function FounderCard({ founder, index }: { founder: Founder; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.12 }}
+      className="flex flex-col h-full"
+      style={{
+        border: "1px dashed var(--border-default)",
+      }}
+    >
+      {/* ── Image area ── */}
+      <div
+        className="relative w-full overflow-hidden flex items-center justify-center"
+        style={{
+          aspectRatio: "3 / 4",
+          background: "var(--bg-elevated)",
+          borderBottom: "1px dashed var(--border-default)",
+        }}
+      >
+        {founder.image ? (
+          <Image
+            src={founder.image}
+            alt={founder.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <>
+            <div className="flex flex-col items-center justify-center gap-3 w-full h-full">
+              {/* Big question mark */}
+              <div
+                style={{
+                  fontFamily:
+                    "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+                  fontSize: "5rem",
+                  fontWeight: 200,
+                  color: "var(--border-default)",
+                  userSelect: "none",
+                  lineHeight: 1,
+                }}
+              >
+                ?
+              </div>
+              {/* ASCII art style brackets */}
+              <div
+                style={{
+                  fontFamily:
+                    "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+                  fontSize: "0.625rem",
+                  color: "var(--text-muted)",
+                  opacity: 0.5,
+                  textAlign: "center",
+                  lineHeight: 1.6,
+                }}
+              >
+                {"{"} photo: null {"}"}
+              </div>
+            </div>
+            {founder.imageFallbackBubbles && (
+              <FloatingBubbles bubbles={founder.imageFallbackBubbles} />
+            )}
+          </>
+        )}
+
+        {/* Tagline overlay — bottom left of image */}
+        <div
+          className="absolute bottom-0 left-0 px-3 py-1.5"
+          style={{
+            background: "var(--accent-color)",
+            fontFamily:
+              "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+            fontSize: "0.625rem",
+            fontWeight: 600,
+            color: "#fff",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
+          {founder.tagline}
         </div>
+      </div>
+
+      {/* ── Info strip ── */}
+      <div className="flex flex-col gap-3 p-5">
+        {/* Name + Role */}
+        <div>
+          <h3
+            className="text-[18px] md:text-[22px] font-medium leading-tight mb-0.5"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {founder.name}
+          </h3>
+          <span className="code-tag">{founder.role}</span>
+        </div>
+
+        {/* One-liner */}
+        <p
+          style={{
+            fontSize: "0.8125rem",
+            lineHeight: 1.5,
+            color: "var(--text-muted)",
+          }}
+        >
+          {founder.oneLiner}
+        </p>
+
+        {/* Stats */}
+        <StatRow stats={founder.stats} />
 
         {/* Socials */}
         {founder.socials && founder.socials.length > 0 && (
-          <div className="flex flex-wrap gap-3">
+          <div
+            className="flex gap-3 pt-2"
+            style={{ borderTop: "1px dashed var(--border-default)" }}
+          >
             {founder.socials.map((social) => (
               <a
                 key={social.label}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mono-link hover:underline"
-                style={{ fontSize: "0.6875rem" }}
+                className="mono-link"
+                style={{ fontSize: "0.625rem" }}
               >
                 {social.label} &rarr;
               </a>
@@ -185,52 +230,50 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
   );
 }
 
+/* ── Main section ── */
 export default function AboutSection() {
   return (
     <section id="about" className="section">
-      {/* Header */}
+      {/* Header — tight */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mb-12 md:mb-16"
+        transition={{ duration: 0.4 }}
+        className="mb-10"
       >
         <p className="section-label">The Founders</p>
         <h2
-          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium mb-3"
+          className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          {ABOUT.sectionHeading}
+          Two guys. One builds it. One runs it.
         </h2>
-        <p
-          className="text-[0.8125rem] leading-[1.7] max-w-lg"
-          style={{ color: "var(--text-muted)" }}
-        >
-          {ABOUT.sectionSubheading}
-        </p>
       </motion.div>
 
-      {/* Founder Cards */}
-      <div className="space-y-0">
+      {/* ── Side-by-side cards ── */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 gap-y-6">
         {FOUNDERS.map((founder, i) => (
           <FounderCard key={founder.name} founder={founder} index={i} />
         ))}
       </div>
 
-      {/* Built with */}
+      {/* ── Built with — compact ── */}
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.3 }}
-        className="mt-12 pt-10"
+        className="mt-10 pt-8 flex flex-col sm:flex-row sm:items-center gap-3"
         style={{ borderTop: "1px dashed var(--border-default)" }}
       >
-        <p className="section-label" style={{ marginBottom: "12px" }}>
+        <p
+          className="section-label"
+          style={{ marginBottom: 0, whiteSpace: "nowrap" }}
+        >
           Built with
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {ABOUT.builtWith.map((tech) => (
             <span key={tech} className="code-tag">
               {tech}

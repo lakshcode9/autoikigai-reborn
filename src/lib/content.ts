@@ -91,10 +91,10 @@ export interface Founder {
   name: string;
   role: string;
   tagline: string;
-  bio: string;
-  funFact: string;
+  oneLiner: string;
   image: string | null;
   imageFallbackBubbles?: string[];
+  stats: { value: string; label: string }[];
   socials?: { label: string; url: string }[];
 }
 
@@ -103,28 +103,34 @@ export const FOUNDERS: Founder[] = [
     name: "Laksh Pujary",
     role: "Co-Founder",
     tagline: "The Brain",
-    bio: "College dropout turned AI systems architect. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
-    funFact: "Mass-deploys AI agents the way normal people order coffee.",
+    oneLiner: "Builds AI that works at 3AM so you don't have to.",
     image: null,
     imageFallbackBubbles: [
       "Not photogenic",
-      "Trust me, I code better than I look",
-      "The AI wouldn't generate my face either",
+      "The AI refused to generate my face",
       "日本語対応可",
+    ],
+    stats: [
+      { value: "24/7", label: "Systems uptime" },
+      { value: "0", label: "Demos without code" },
+      { value: "3AM", label: "Deploys happen" },
     ],
     socials: [
       { label: "GitHub", url: "https://github.com/lakshcode9" },
       { label: "Instagram", url: "https://instagram.com/lakshbuilds" },
-      { label: "Web", url: "https://lakshpujary.tech" },
     ],
   },
   {
     name: "Stefan Skarevski",
     role: "Co-Founder",
     tagline: "The Business",
-    bio: "The guy who makes sure the right agencies find us — and that we actually deliver what we promise. Stefan handles strategy, partnerships, and client relationships. He's the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls.",
-    funFact: "Has never lost an arm wrestle. Business meetings included.",
+    oneLiner: "Strategy, partnerships, and making sure we deliver.",
     image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
+    stats: [
+      { value: "100%", label: "Client retention" },
+      { value: "0", label: "Arm wrestles lost" },
+      { value: "∞", label: "Zoom calls survived" },
+    ],
     socials: [
       { label: "Instagram", url: "https://instagram.com/skarevskiofficial" },
     ],
@@ -132,8 +138,6 @@ export const FOUNDERS: Founder[] = [
 ];
 
 export const ABOUT = {
-  sectionHeading: "Built by two guys who actually ship.",
-  sectionSubheading: "One builds the AI. The other makes sure it reaches the right people.",
   builtWith: ["Supabase", "OpenAI", "n8n", "WhatsApp", "Gmail", "HubSpot", "Notion", "Slack"],
 };
 
