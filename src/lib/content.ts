@@ -120,7 +120,7 @@ export const FOUNDERS: Founder[] = [
     name: "Laksh Pujary",
     role: "Co-Founder",
     tagline: "The Brain",
-    bio: "College dropout turned AI systems architect. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
+    bio: "Self-taught AI engineer. College dropout. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
     funFact: "Mass-deploys AI agents the way normal people order coffee.",
     image: null,
     imageFallbackBubbles: [
