@@ -22,8 +22,14 @@ export default function CTASection() {
             className="text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.03em] font-medium mb-2"
             style={{ color: "var(--text-primary)" }}
           >
-            $5,000 &mdash; AI Employee Blueprint
+            AI Employee Blueprint
           </h2>
+          <p
+            className="text-[1.125rem] md:text-[1.25rem] leading-[1.3] tracking-[-0.02em]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Starting at $15,000
+          </p>
         </div>
 
         {/* Description */}
@@ -32,17 +38,17 @@ export default function CTASection() {
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We spend one week inside your agency&apos;s operations. You walk
-            away with a complete AI employee architecture &mdash; every workflow
-            mapped, every integration specced, every timeline defined. Ready to
-            deploy.
+            We go deep into your agency&apos;s operations &mdash; every workflow
+            audited, every integration scoped, every AI employee architected and
+            deployed. You walk away with systems that run without your team
+            touching them.
           </p>
           <p
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            If you move forward with the build, the $5,000 is credited toward
-            your project.
+            Typical engagements range from $15,000 to $30,000+ depending on the
+            number of workflows and integrations. Ongoing maintenance included.
           </p>
           <p
             className="text-[0.875rem] leading-[1.7] font-medium"

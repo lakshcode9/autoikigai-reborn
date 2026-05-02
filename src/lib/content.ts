@@ -83,7 +83,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "The AI Employee Blueprint is $5,000 — a one-week deep dive into your operations with a fully scoped system design. If you move forward, it's credited toward the build. Implementation starts at $5,000+ depending on complexity, with ongoing maintenance as a monthly retainer.",
+      "Engagements start at $15,000. We audit your operations, architect the AI employees, and deploy them — fully built, fully integrated, fully running. Typical projects range from $15,000 to $30,000+ depending on the number of workflows and complexity. Ongoing maintenance is included.",
   },
   {
     question: "How quickly will I see results?",
