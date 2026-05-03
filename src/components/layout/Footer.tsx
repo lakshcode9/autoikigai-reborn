@@ -5,6 +5,7 @@ const FOOTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#about" },
+  { label: "OpenClaw Security", href: "/openclaw-security" },
   { label: "Contact", href: "https://calendly.com/laksh-autoikigai/30min", external: true },
 ];
 
