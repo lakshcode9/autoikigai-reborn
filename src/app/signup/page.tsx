@@ -98,7 +98,7 @@ export default function SignupPage(props: { searchParams: Promise<{ error?: stri
               label="Email Address"
               type="email"
               name="email"
-              placeholder="operator@autoikigai.systems"
+              placeholder="operator@autoikigai.space"
               value={formData.email}
               onChange={handleChange}
               required

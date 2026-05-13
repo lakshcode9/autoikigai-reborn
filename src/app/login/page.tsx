@@ -104,7 +104,7 @@ export default function LoginPage(props: { searchParams: Promise<{ error?: strin
               label="Email Address"
               type="email"
               name="email"
-              placeholder="operator@autoikigai.systems"
+              placeholder="operator@autoikigai.space"
               value={formData.email}
               onChange={handleChange}
               required

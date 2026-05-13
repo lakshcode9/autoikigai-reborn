@@ -17,19 +17,19 @@ export default function ProfileSelector({ profiles }: { profiles: Profile[] }) {
   
   // Always include master explicitly if no profiles fetched (for local dev fallback)
   const masterFallback: Profile = {
-    email: 'laksh@autoikigai.systems',
+    email: 'laksh@autoikigai.space',
     full_name: 'Laksh',
     avatar_url: null,
     role: 'master'
   }
 
   const defaultUsers: Profile[] = [masterFallback, {
-    email: 'caller1@autoikigai.systems',
+    email: 'caller1@autoikigai.space',
     full_name: 'Alpha Dialer',
     avatar_url: null,
     role: 'user'
   }, {
-    email: 'caller2@autoikigai.systems',
+    email: 'caller2@autoikigai.space',
     full_name: 'Beta Dialer',
     avatar_url: null,
     role: 'user'

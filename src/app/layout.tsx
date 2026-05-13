@@ -14,6 +14,7 @@ const ibmPlex = IBM_Plex_Sans({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://autoikigai.space"),
   title: "Autoikigai \u2014 AI Employees for Agencies",
   description:
     "We build AI employees for agencies \u2014 systems that handle outreach, follow-ups, onboarding, and reporting. 24/7, no salary, no sick days.",
