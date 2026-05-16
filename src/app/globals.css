@@ -82,36 +82,27 @@ a:focus-visible {
 ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #aaa; }
 
-/* ============ PAGE FRAME — Crator's signature bordered container ============ */
+/* ============ PAGE FRAME — Full-width container ============ */
 .page {
-  background: #fff;
-  justify-content: center;
-  display: flex;
+  background: var(--bg-primary);
   overflow-x: clip;
   min-height: 100vh;
 }
 
 .frame {
-  border-left: 1px solid var(--border-default);
-  border-right: 1px solid var(--border-default);
   background: var(--bg-primary);
   width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
   min-height: 100vh;
 }
-@media (max-width: 767px) {
-  .frame { border-left: none; border-right: none; }
-}
 
-/* ============ SECTION — Crator's section padding + dashed bottom border ============ */
+/* ============ SECTION — Section padding + dashed bottom border ============ */
 .section {
   border-bottom: 1px dashed var(--border-default);
-  padding: 80px 40px;
+  padding: 80px 60px;
 }
-@media (max-width: 1023px) { .section { padding: 48px 24px; } }
-@media (max-width: 767px) { .section { padding: 40px 16px; } }
-@media (max-width: 479px) { .section { padding: 28px 12px; } }
+@media (max-width: 1023px) { .section { padding: 56px 40px; } }
+@media (max-width: 767px) { .section { padding: 40px 24px; } }
+@media (max-width: 479px) { .section { padding: 28px 16px; } }
 
 /* ============ SECTION LABEL — monospace, uppercase, muted ============ */
 .section-label {
