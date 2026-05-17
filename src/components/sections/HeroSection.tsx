@@ -21,7 +21,7 @@ export default function HeroSection() {
             className="text-[clamp(2.25rem,7.5vw,3rem)] md:text-[40px] lg:text-[48px] leading-[1.08] tracking-[-0.04em] font-medium mb-6"
             style={{ color: "var(--text-primary)" }}
           >
-            Your next hire should be an{" "}
+            Your agency&apos;s next hire should be an{" "}
             <span className="text-accent">AI.</span>
           </motion.h1>
 
@@ -33,9 +33,9 @@ export default function HeroSection() {
             className="text-sm md:text-[1rem] max-w-xl mb-10 leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We build AI employees for agencies &mdash; systems that handle
-            outreach, follow-ups, onboarding, and reporting. 24/7, no salary, no
-            sick days.
+            We build AI employees for insurance agencies. Renewal automation,
+            lapse prevention, CSR task handling, new business intake. 24/7, no
+            salary, no missed follow-ups.
           </motion.p>
 
           {/* CTAs */}
@@ -51,7 +51,7 @@ export default function HeroSection() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Book a discovery call
+              Book a free agency audit
             </a>
             <a href="#services" className="btn-secondary bg-white">
               See how it works

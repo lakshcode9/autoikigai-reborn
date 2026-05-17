@@ -26,7 +26,7 @@ export default function ServicesSection() {
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          One system. Three weeks. Zero new hires.
+          Your agency automated in three weeks.
         </h2>
       </motion.div>
 

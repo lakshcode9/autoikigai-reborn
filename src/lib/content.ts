@@ -1,5 +1,5 @@
 // ============================================================
-// Centralized homepage content — Autoikigai (AI Employees for Agencies)
+// Centralized homepage content — Autoikigai (AI Employees for Insurance Agencies)
 // All text/data for homepage sections lives here.
 // ============================================================
 
@@ -17,25 +17,25 @@ export const SERVICES: Service[] = [
   {
     phase: "Week 1",
     step: "01",
-    title: "Audit & Map",
-    shortDesc: "We find what to automate.",
-    deliverables: ["Task audit", "ROI projection", "System blueprint"],
+    title: "Agency Audit",
+    shortDesc: "We map every workflow bleeding time.",
+    deliverables: ["Renewal process audit", "CSR task analysis", "AMS integration scope"],
     icon: "Search",
   },
   {
     phase: "Week 2-3",
     step: "02",
-    title: "Build & Deploy",
-    shortDesc: "We build your AI employee.",
-    deliverables: ["Custom workflows", "Tool integrations", "Your tone & process"],
+    title: "Build & Integrate",
+    shortDesc: "We build AI employees for your agency.",
+    deliverables: ["Applied Epic / AMS360 / HawkSoft integration", "Automated renewal workflows", "Custom email & SMS sequences"],
     icon: "Code",
   },
   {
     phase: "Ongoing",
     step: "03",
     title: "Monitor & Optimize",
-    shortDesc: "We keep it running.",
-    deliverables: ["Daily reports", "Proactive fixes", "Performance tuning"],
+    shortDesc: "We keep your retention rate climbing.",
+    deliverables: ["Daily performance reports", "Lapse prevention monitoring", "Quarterly workflow optimization"],
     icon: "RefreshCw",
   },
 ];
@@ -48,14 +48,14 @@ export interface Capability {
 }
 
 export const CAPABILITIES: Capability[] = [
-  { icon: "Users", title: "Lead Research", metric: "50+ leads/day" },
-  { icon: "Mail", title: "Cold Outreach", metric: "Personalized at scale" },
-  { icon: "Repeat", title: "Follow-ups", metric: "5-7x auto sequences" },
-  { icon: "Database", title: "CRM Updates", metric: "Zero manual entry" },
-  { icon: "MessageCircle", title: "WhatsApp Reports", metric: "Daily at 8AM" },
-  { icon: "UserPlus", title: "Client Onboarding", metric: "Fully automated" },
-  { icon: "Inbox", title: "Inbox Monitoring", metric: "Drafts replies for you" },
-  { icon: "Zap", title: "Custom Workflows", metric: "Built for your stack" },
+  { icon: "RefreshCw", title: "Renewal Automation", metric: "90-day touchpoint sequences" },
+  { icon: "Shield", title: "Lapse Prevention", metric: "Catch cancellations before they happen" },
+  { icon: "Users", title: "CSR Task Automation", metric: "Certs, endorsements, ID cards" },
+  { icon: "UserPlus", title: "New Business Intake", metric: "ACORD pre-fill from web forms" },
+  { icon: "Mail", title: "Client Communication", metric: "Email + SMS on autopilot" },
+  { icon: "Database", title: "AMS Updates", metric: "Zero manual data entry" },
+  { icon: "TrendingUp", title: "Cross-Sell Detection", metric: "Find gaps in coverage" },
+  { icon: "Zap", title: "Claims Follow-Up", metric: "Automated status updates to clients" },
 ];
 
 // --- FAQ Section ---
@@ -66,39 +66,44 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What is Autoikigai?",
+    question: "What does Autoikigai do for insurance agencies?",
     answer:
-      "We build AI employees for agencies. Systems that handle your team's repetitive work — outreach, follow-ups, onboarding, reporting — so you can scale without hiring.",
+      "We build AI employees that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
   },
   {
-    question: "How is this different from hiring someone?",
+    question: "Which AMS systems do you integrate with?",
     answer:
-      "An AI employee costs a fraction of a hire, works 24/7, never quits, and is deployed in 2-3 weeks. No recruiting, no onboarding, no management overhead.",
+      "Applied Epic, AMS360 (Vertafore), HawkSoft, EZLynx, and QQCatalyst. If your AMS has an API or supports CSV exports, we can work with it. We also integrate with comparative raters and carrier portals.",
   },
   {
-    question: "What kind of agencies do you work with?",
+    question: "How is this different from hiring another CSR?",
     answer:
-      "Primarily agencies doing $500K-$5M/year — marketing, recruiting, consulting, real estate, staffing. If your team does repetitive work that follows a pattern, we can automate it.",
+      "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI employee costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
+  },
+  {
+    question: "What size agencies do you work with?",
+    answer:
+      "Independent agencies writing $1M-$10M in premium. Whether you have 3 people or 30, if your CSRs are drowning in repetitive tasks and your retention rate is under 92%, we can help.",
   },
   {
     question: "How much does it cost?",
     answer:
-      "Engagements start at $15,000. We audit your operations, architect the AI employees, and deploy them — fully built, fully integrated, fully running. Typical projects range from $15,000 to $30,000+ depending on the number of workflows and complexity. Ongoing maintenance is included.",
+      "Engagements start at $15,000 for a core workflow like renewal automation. Full agency buildouts with multiple AI employees range from $15,000 to $30,000+. Ongoing maintenance and optimization included.",
   },
   {
     question: "How quickly will I see results?",
     answer:
-      "Your AI employee is live within 2-3 weeks. Most agencies see measurable time savings in the first week of deployment.",
+      "Your first AI employee is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
   },
   {
-    question: "Do I need to change my tools?",
+    question: "What happens during a carrier download or IVANS feed?",
     answer:
-      "No. We plug into whatever you already use — HubSpot, Notion, Slack, Gmail, Google Sheets, Airtable, WhatsApp. No migration required.",
+      "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the AI employee automatically, triggering the right workflows without manual intervention.",
   },
   {
-    question: "What happens if something breaks?",
+    question: "Will this work with my E&O compliance requirements?",
     answer:
-      "We monitor your AI employee and fix issues proactively. You also get a direct WhatsApp line to us for anything urgent.",
+      "Yes. Every automated touchpoint is logged with timestamps, creating a complete audit trail. We actually reduce E&O exposure by ensuring no renewal or follow-up is ever missed.",
   },
 ];
 
@@ -120,7 +125,7 @@ export const FOUNDERS: Founder[] = [
     name: "Laksh Pujary",
     role: "Co-Founder",
     tagline: "The Brain",
-    bio: "Self-taught AI engineer. College dropout. Builds production AI that runs 24/7 — not demos, not decks. His own agency runs entirely on AI employees he built. From lead research to outreach to CRM updates to daily WhatsApp reports at 3AM. If your team does repetitive work, he's already figured out how to replace it.",
+    bio: "Self-taught AI engineer. College dropout. Builds production AI that runs 24/7 in insurance agencies. From renewal automation to lapse prevention to AMS integration. If your CSRs are doing repetitive work, he has already figured out how to automate it. His systems currently process thousands of policy touchpoints without human intervention.",
     funFact: "Mass-deploys AI agents the way normal people order coffee.",
     image: null,
     imageFallbackBubbles: [
@@ -142,7 +147,7 @@ export const FOUNDERS: Founder[] = [
     name: "Stefan Skarevski",
     role: "Co-Founder",
     tagline: "The Business",
-    bio: "The guy who makes sure the right agencies find us — and that we actually deliver what we promise. Stefan handles strategy, partnerships, and client relationships. He's the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls.",
+    bio: "The guy who makes sure the right agencies find us and that we deliver what we promise. Stefan handles strategy, agency partnerships, and client relationships. He is the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls with agency principals.",
     funFact: "Has never lost an arm wrestle. Business meetings included.",
     image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
     stats: [
@@ -157,7 +162,7 @@ export const FOUNDERS: Founder[] = [
 ];
 
 export const ABOUT = {
-  builtWith: ["Supabase", "OpenAI", "n8n", "WhatsApp", "Gmail", "HubSpot", "Notion", "Slack"],
+  builtWith: ["Applied Epic", "AMS360", "HawkSoft", "EZLynx", "n8n", "OpenAI", "Supabase", "Twilio"],
 };
 
 // --- Shared Links ---

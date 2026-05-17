@@ -19,12 +19,12 @@ export function AnnouncementBanner() {
       }}
     >
       <a
-        href="#lead-generation"
+        href="https://resources.autoikigai.space"
         className="hover:underline underline-offset-2"
         style={{ color: "#fff" }}
       >
-        Now offering done-for-you lead generation — qualified leads delivered to
-        your CRM weekly.{" "}
+        Free resources for insurance agency owners. Renewal systems, CSR
+        workflows, lapse prevention guides.{" "}
         <span className="font-medium">Learn more →</span>
       </a>
       <button

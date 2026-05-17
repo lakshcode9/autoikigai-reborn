@@ -22,7 +22,7 @@ export default function CTASection() {
             className="text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.03em] font-medium mb-2"
             style={{ color: "var(--text-primary)" }}
           >
-            AI Employee Blueprint
+            Agency AI Blueprint
           </h2>
           <p
             className="text-[1.125rem] md:text-[1.25rem] leading-[1.3] tracking-[-0.02em]"
@@ -38,23 +38,24 @@ export default function CTASection() {
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We go deep into your agency&apos;s operations &mdash; every workflow
-            audited, every integration scoped, every AI employee architected and
-            deployed. You walk away with systems that run without your team
-            touching them.
+            We audit your renewal process, CSR workflows, intake systems, and
+            claims follow-up. Then we build AI employees that integrate with
+            your AMS and handle these tasks 24/7. Your team focuses on
+            relationships and complex cases.
           </p>
           <p
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            Typical engagements range from $15,000 to $30,000+ depending on the
-            number of workflows and integrations. Ongoing maintenance included.
+            Typical engagements range from $15,000 to $30,000+ depending on
+            the number of workflows and AMS integrations. Ongoing maintenance
+            and optimization included.
           </p>
           <p
             className="text-[0.875rem] leading-[1.7] font-medium"
             style={{ color: "var(--text-primary)" }}
           >
-            This isn&apos;t a free audit. This is engineering.
+            This is not a free audit. This is engineering for your agency.
           </p>
         </div>
 
@@ -66,7 +67,7 @@ export default function CTASection() {
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Book a discovery call
+            Book a free agency audit
           </a>
         </div>
       </motion.div>

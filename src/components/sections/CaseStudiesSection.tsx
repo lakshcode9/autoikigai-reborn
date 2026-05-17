@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import {
   Users,
   Mail,
-  Repeat,
+  RefreshCw,
   Database,
-  MessageCircle,
+  Shield,
   UserPlus,
-  Inbox,
+  TrendingUp,
   Zap,
 } from "lucide-react";
 import { CAPABILITIES } from "@/lib/content";
@@ -16,11 +16,11 @@ import { CAPABILITIES } from "@/lib/content";
 const ICON_MAP: Record<string, typeof Users> = {
   Users,
   Mail,
-  Repeat,
+  RefreshCw,
   Database,
-  MessageCircle,
+  Shield,
   UserPlus,
-  Inbox,
+  TrendingUp,
   Zap,
 };
 
@@ -40,7 +40,7 @@ export default function CaseStudiesSection() {
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          What your AI employee can do
+          What your AI employee handles
         </h2>
       </motion.div>
 
@@ -116,8 +116,8 @@ export default function CaseStudiesSection() {
           className="text-[0.8125rem] leading-[1.7] max-w-lg"
           style={{ color: "var(--text-muted)" }}
         >
-          Our own agency runs on AI employees we built. We don&apos;t sell what
-          we don&apos;t use.
+          Built for agencies running on Applied Epic, AMS360, HawkSoft, and
+          EZLynx. We integrate with your existing stack.
         </p>
       </motion.div>
     </section>

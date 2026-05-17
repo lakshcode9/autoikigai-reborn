@@ -7,21 +7,21 @@ import { BOOKING_URL } from "@/lib/content";
 const STEPS = [
   {
     icon: Target,
-    title: "We find your ideal clients",
+    title: "We find agencies ready to buy",
     description:
-      "Industry, size, location, tech stack — we build custom prospect lists tailored to your niche.",
+      "Homeowners, commercial, life, auto. We build prospect lists of agency owners who need what you sell.",
   },
   {
     icon: Mail,
     title: "We verify every contact",
     description:
-      "Email validation, phone verification, LinkedIn matching. No bounced emails, no dead numbers.",
+      "Email validation, phone verification, LinkedIn matching. Direct lines to principals and owners, not gatekeepers.",
   },
   {
     icon: UserCheck,
-    title: "We deliver to your CRM",
+    title: "We deliver to your pipeline",
     description:
-      "Qualified leads pushed directly into HubSpot, Notion, or your spreadsheet. Every week.",
+      "Qualified agency leads pushed to your CRM or AMS. Every week. You just close.",
   },
 ];
 
@@ -46,10 +46,9 @@ export default function LeadGenSection() {
           className="text-[0.8125rem] leading-[1.7] max-w-2xl"
           style={{ color: "var(--text-muted)" }}
         >
-          You don&apos;t need to automate everything on day one. We also run
-          done-for-you lead generation &mdash; we find your ideal clients,
-          verify their contact info, and deliver qualified leads straight to
-          your CRM every week. You just close.
+          You do not need to automate everything on day one. We also run
+          done-for-you lead generation for insurance agencies. Qualified
+          prospects delivered to your pipeline every week. You just close.
         </p>
       </motion.div>
 
@@ -97,7 +96,7 @@ export default function LeadGenSection() {
           rel="noopener noreferrer"
           className="btn-primary inline-flex items-center gap-2"
         >
-          Book a discovery call
+          Book a free agency audit
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </motion.div>

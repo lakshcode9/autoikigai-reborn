@@ -15,9 +15,9 @@ const ibmPlex = IBM_Plex_Sans({
 
 export const metadata = {
   metadataBase: new URL("https://autoikigai.space"),
-  title: "Autoikigai \u2014 AI Employees for Agencies",
+  title: "Autoikigai \u2014 AI Employees for Insurance Agencies",
   description:
-    "We build AI employees for agencies \u2014 systems that handle outreach, follow-ups, onboarding, and reporting. 24/7, no salary, no sick days.",
+    "We build AI employees for insurance agencies. Renewal automation, lapse prevention, CSR task handling, new business intake. Integrates with Applied Epic, AMS360, HawkSoft.",
   icons: {
     icon: "/favicon.ico",
   },
