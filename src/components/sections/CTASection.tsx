@@ -28,7 +28,7 @@ export default function CTASection() {
             className="text-[1.125rem] md:text-[1.25rem] leading-[1.3] tracking-[-0.02em]"
             style={{ color: "var(--text-muted)" }}
           >
-            Starting at $15,000
+            Audit starts at $5,000
           </p>
         </div>
 
@@ -39,23 +39,23 @@ export default function CTASection() {
             style={{ color: "var(--text-muted)" }}
           >
             We audit your renewal process, CSR workflows, intake systems, and
-            claims follow-up. Then we build AI employees that integrate with
-            your AMS and handle these tasks 24/7. Your team focuses on
-            relationships and complex cases.
+            claims follow-up. You get a complete blueprint of what to
+            automate, how it integrates with your AMS, and the expected ROI
+            on every workflow.
           </p>
           <p
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            Typical engagements range from $15,000 to $30,000+ depending on
-            the number of workflows and AMS integrations. Ongoing maintenance
-            and optimization included.
+            After the audit, we build and maintain your AI employees for
+            $2,000 to $5,000 per month depending on the number of workflows
+            and integrations. You pay for results, not promises.
           </p>
           <p
             className="text-[0.875rem] leading-[1.7] font-medium"
             style={{ color: "var(--text-primary)" }}
           >
-            This is not a free audit. This is engineering for your agency.
+            This is not a free consultation. This is engineering for your agency.
           </p>
         </div>
 

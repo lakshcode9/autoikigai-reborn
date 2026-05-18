@@ -88,7 +88,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "Engagements start at $15,000 for a core workflow like renewal automation. Full agency buildouts with multiple AI employees range from $15,000 to $30,000+. Ongoing maintenance and optimization included.",
+      "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI employees for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
   },
   {
     question: "How quickly will I see results?",
