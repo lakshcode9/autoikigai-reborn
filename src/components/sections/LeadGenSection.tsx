@@ -96,7 +96,7 @@ export default function LeadGenSection() {
           rel="noopener noreferrer"
           className="btn-primary inline-flex items-center gap-2"
         >
-          Book a free agency audit
+          Book a strategy call
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </motion.div>

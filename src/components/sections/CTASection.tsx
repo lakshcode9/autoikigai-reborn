@@ -55,7 +55,7 @@ export default function CTASection() {
             className="text-[0.875rem] leading-[1.7] font-medium"
             style={{ color: "var(--text-primary)" }}
           >
-            This is not a free consultation. This is engineering for your agency.
+            This is not a sales pitch. This is a strategy session for your agency.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function CTASection() {
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Book a free agency audit
+            Book a strategy call
           </a>
         </div>
       </motion.div>
