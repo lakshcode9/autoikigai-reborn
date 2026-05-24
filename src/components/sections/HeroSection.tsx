@@ -21,8 +21,8 @@ export default function HeroSection() {
             className="text-[clamp(2.25rem,7.5vw,3rem)] md:text-[40px] lg:text-[48px] leading-[1.08] tracking-[-0.04em] font-medium mb-6"
             style={{ color: "var(--text-primary)" }}
           >
-            Your agency&apos;s next hire should be an{" "}
-            <span className="text-accent">AI.</span>
+            Your agency, but{" "}
+            <span className="text-accent">AI-native.</span>
           </motion.h1>
 
           {/* Subtitle */}
