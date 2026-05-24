@@ -40,7 +40,7 @@ export default function CaseStudiesSection() {
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          What your AI employee handles
+          What your AI-native system handles
         </h2>
       </motion.div>
 

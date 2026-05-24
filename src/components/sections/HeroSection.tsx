@@ -33,9 +33,9 @@ export default function HeroSection() {
             className="text-sm md:text-[1rem] max-w-xl mb-10 leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We build AI employees for insurance agencies. Renewal automation,
-            lapse prevention, CSR task handling, new business intake. 24/7, no
-            salary, no missed follow-ups.
+            We build AI-native systems for insurance agencies. Renewal automation,
+            lapse prevention, CSR task handling, new business intake. Always on,
+            always accurate, nothing falls through the cracks.
           </motion.p>
 
           {/* CTAs */}

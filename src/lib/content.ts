@@ -1,5 +1,5 @@
 // ============================================================
-// Centralized homepage content — Autoikigai (AI Employees for Insurance Agencies)
+// Centralized homepage content — Autoikigai (AI-Native Systems for Insurance Agencies)
 // All text/data for homepage sections lives here.
 // ============================================================
 
@@ -26,7 +26,7 @@ export const SERVICES: Service[] = [
     phase: "Week 2-3",
     step: "02",
     title: "Build & Integrate",
-    shortDesc: "We build AI employees for your agency.",
+    shortDesc: "We build AI-native systems for your agency.",
     deliverables: ["Applied Epic / AMS360 / HawkSoft integration", "Automated renewal workflows", "Custom email & SMS sequences"],
     icon: "Code",
   },
@@ -68,7 +68,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What does Autoikigai do for insurance agencies?",
     answer:
-      "We build AI employees that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
+      "We build AI-native systems that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
   },
   {
     question: "Which AMS systems do you integrate with?",
@@ -78,7 +78,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How is this different from hiring another CSR?",
     answer:
-      "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI employee costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
+      "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI-native system costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
   },
   {
     question: "What size agencies do you work with?",
@@ -88,17 +88,17 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI employees for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
+      "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI-native systems for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
   },
   {
     question: "How quickly will I see results?",
     answer:
-      "Your first AI employee is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
+      "Your first AI-native workflow is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
   },
   {
     question: "What happens during a carrier download or IVANS feed?",
     answer:
-      "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the AI employee automatically, triggering the right workflows without manual intervention.",
+      "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the system automatically, triggering the right workflows without manual intervention.",
   },
   {
     question: "Will this work with my E&O compliance requirements?",

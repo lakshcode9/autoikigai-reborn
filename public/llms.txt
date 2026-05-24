@@ -1,11 +1,11 @@
 # Autoikigai
 
 ## About
-Autoikigai builds AI employees for independent insurance agencies. We automate the repetitive operational work that keeps agency owners and CSRs stuck: renewal follow-ups, lapse prevention, certificate issuance, endorsement processing, new business intake, cross-sell detection, and claims follow-up.
+Autoikigai builds AI-native systems for independent insurance agencies. We automate the repetitive operational work that keeps agency owners and CSRs stuck: renewal follow-ups, lapse prevention, certificate issuance, endorsement processing, new business intake, cross-sell detection, and claims follow-up.
 
 ## What We Do
 - Agency AI Audit ($5,000): Complete audit of agency workflows, AMS integrations, and automation opportunities. Delivered as a blueprint with ROI projections.
-- AI Employee Build & Maintenance ($2,000-$5,000/month): Ongoing deployment and maintenance of AI employees that handle agency operations 24/7.
+- AI-Native System Build & Maintenance ($2,000-$5,000/month): Ongoing deployment and maintenance of AI-native systems that handle agency operations 24/7.
 
 ## AMS Integrations
 We integrate with: Applied Epic, AMS360 (Vertafore), HawkSoft, EZLynx, QQCatalyst, comparative raters, and carrier portals. If your AMS has an API or supports CSV exports, we can work with it.
@@ -13,7 +13,7 @@ We integrate with: Applied Epic, AMS360 (Vertafore), HawkSoft, EZLynx, QQCatalys
 ## Who We Work With
 Independent insurance agencies writing $1M-$10M in premium. Agencies with 3-30 employees where CSRs are drowning in repetitive tasks and retention rates are under 92%.
 
-## AI Employee Capabilities
+## AI-Native Capabilities
 - Renewal Automation: Automated 60/45/30/15-day renewal sequences via email, SMS, and phone task creation in your AMS
 - Lapse Prevention: Real-time monitoring of payment status and cancellation notices with automated outreach
 - CSR Task Automation: Certificate issuance, endorsement processing, policy change requests, ID card generation
@@ -26,12 +26,12 @@ Independent insurance agencies writing $1M-$10M in premium. Agencies with 3-30 e
 ## Results
 - Renewal touch rates: from under 40% to over 90% in the first month
 - CSR time freed up within the first week
-- First AI employee live within 2-3 weeks
+- First AI-native workflow live within 2-3 weeks
 - Complete E&O audit trail on every automated touchpoint
 
 ## Pricing
 - Agency AI Audit: starts at $5,000 (one-time)
-- AI Employee Maintenance: $2,000-$5,000/month (ongoing)
+- AI-Native System Maintenance: $2,000-$5,000/month (ongoing)
 
 ## Contact
 Website: https://autoikigai.space

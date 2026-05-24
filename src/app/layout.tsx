@@ -17,9 +17,9 @@ const ibmPlex = IBM_Plex_Sans({
 const siteUrl = "https://autoikigai.space";
 const siteName = "Autoikigai";
 const siteTitle =
-  "Autoikigai — AI Employees for Insurance Agencies | Renewal Automation, CSR Task Handling, Lapse Prevention";
+  "Autoikigai — AI-Native Systems for Insurance Agencies | Renewal Automation, CSR Task Handling, Lapse Prevention";
 const siteDescription =
-  "We build AI employees for independent insurance agencies. Automate renewal follow-ups, CSR tasks, new business intake, lapse prevention, and claims follow-up. Integrates with Applied Epic, AMS360, HawkSoft, EZLynx. Audit starts at $5,000.";
+  "We build AI-native systems for independent insurance agencies. Automate renewal follow-ups, CSR tasks, new business intake, lapse prevention, and claims follow-up. Integrates with Applied Epic, AMS360, HawkSoft, EZLynx. Audit starts at $5,000.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   keywords: [
-    "AI employees for insurance agencies",
+    "AI-native systems for insurance agencies",
     "insurance agency automation",
     "renewal automation insurance",
     "CSR task automation",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Autoikigai — AI Employees for Insurance Agencies",
+        alt: "Autoikigai — AI-Native Systems for Insurance Agencies",
         type: "image/png",
       },
     ],
@@ -126,14 +126,14 @@ const organizationSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "AI Employee Automation for Insurance Agencies",
+  name: "AI-Native Systems for Insurance Agencies",
   provider: {
     "@type": "Organization",
     name: "Autoikigai",
     url: siteUrl,
   },
   description:
-    "Full-service AI automation for independent insurance agencies. We audit your workflows, build AI employees that integrate with your AMS, and maintain them ongoing. Covers renewal automation, lapse prevention, CSR task handling, new business intake, cross-sell detection, and claims follow-up.",
+    "Full-service AI automation for independent insurance agencies. We audit your workflows, build AI-native systems that integrate with your AMS, and maintain them ongoing. Covers renewal automation, lapse prevention, CSR task handling, new business intake, cross-sell detection, and claims follow-up.",
   serviceType: "AI Automation Consulting",
   areaServed: {
     "@type": "Country",
@@ -153,9 +153,9 @@ const serviceSchema = {
       },
       {
         "@type": "Offer",
-        name: "AI Employee Build & Maintenance",
+        name: "AI-Native System Build & Maintenance",
         description:
-          "Ongoing build, deployment, and maintenance of AI employees that handle renewal automation, CSR tasks, lapse prevention, intake, and claims follow-up. Integrates with Applied Epic, AMS360, HawkSoft, EZLynx.",
+          "Ongoing build, deployment, and maintenance of AI-native systems that handle renewal automation, CSR tasks, lapse prevention, intake, and claims follow-up. Integrates with Applied Epic, AMS360, HawkSoft, EZLynx.",
         price: "2000",
         priceCurrency: "USD",
         priceSpecification: {
@@ -180,7 +180,7 @@ const faqSchema = {
       name: "What does Autoikigai do for insurance agencies?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We build AI employees that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
+        text: "We build AI-native systems that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
       },
     },
     {
@@ -196,7 +196,7 @@ const faqSchema = {
       name: "How is this different from hiring another CSR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI employee costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
+        text: "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI-native system costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
       },
     },
     {
@@ -212,7 +212,7 @@ const faqSchema = {
       name: "How much does Autoikigai cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI employees for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
+        text: "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI-native systems for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
       },
     },
     {
@@ -220,7 +220,7 @@ const faqSchema = {
       name: "How quickly will I see results from AI automation?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Your first AI employee is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
+        text: "Your first AI-native workflow is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
       },
     },
     {
@@ -228,7 +228,7 @@ const faqSchema = {
       name: "What happens during a carrier download or IVANS feed?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the AI employee automatically, triggering the right workflows without manual intervention.",
+        text: "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the system automatically, triggering the right workflows without manual intervention.",
       },
     },
     {

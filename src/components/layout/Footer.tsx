@@ -37,7 +37,7 @@ export function Footer() {
             className="text-xs hidden sm:inline"
             style={{ color: "var(--text-muted)", opacity: 0.6 }}
           >
-            &mdash; AI Employees for Insurance Agencies
+            &mdash; AI-Native Systems for Insurance Agencies
           </span>
         </div>
 

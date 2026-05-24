@@ -47,7 +47,7 @@ export default function CTASection() {
             className="text-[0.8125rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            After the audit, we build and maintain your AI employees for
+            After the audit, we build and maintain your AI-native systems for
             $2,000 to $5,000 per month depending on the number of workflows
             and integrations. You pay for results, not promises.
           </p>
