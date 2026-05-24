@@ -6,7 +6,7 @@ const FOOTER_LINKS = [
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#about" },
   { label: "OpenClaw Security", href: "/openclaw-security" },
-  { label: "Contact", href: "https://calendly.com/laksh-autoikigai/30min", external: true },
+  { label: "Contact", href: "/book-a-call" },
 ];
 
 export function Footer() {
@@ -43,23 +43,11 @@ export function Footer() {
 
         {/* Right: Links */}
         <div className="flex items-center gap-3 sm:gap-5 flex-wrap justify-center md:justify-start">
-          {FOOTER_LINKS.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mono-link"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link key={link.label} href={link.href} className="mono-link">
-                {link.label}
-              </Link>
-            )
-          )}
+          {FOOTER_LINKS.map((link) => (
+            <Link key={link.label} href={link.href} className="mono-link">
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

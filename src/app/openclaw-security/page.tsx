@@ -609,8 +609,6 @@ export default function OpenClawSecurityPage() {
           </p>
           <a
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
           >
             Book a setup call

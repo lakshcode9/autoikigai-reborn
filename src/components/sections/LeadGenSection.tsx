@@ -92,8 +92,6 @@ export default function LeadGenSection() {
       >
         <a
           href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
           className="btn-primary inline-flex items-center gap-2"
         >
           Book a strategy call

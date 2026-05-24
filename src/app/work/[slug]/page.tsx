@@ -289,8 +289,6 @@ export default function WorkDetailPage({
           </p>
           <a
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
           >
             Book your systems audit

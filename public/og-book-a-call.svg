@@ -1,0 +1,48 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#162044"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="0" x2="1200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+  </g>
+
+  <!-- Top label -->
+  <text x="80" y="120" font-family="monospace" font-size="14" fill="#5a6a8a" letter-spacing="3" text-transform="uppercase">STRATEGY CALL</text>
+
+  <!-- Dashed line under label -->
+  <line x1="80" y1="140" x2="340" y2="140" stroke="#5a6a8a" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+
+  <!-- Main headline -->
+  <text x="80" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="56" fill="#ffffff" font-weight="600" letter-spacing="-2">Let's look at your</text>
+  <text x="80" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="56" fill="#20368f" font-weight="600" letter-spacing="-2">workflows.</text>
+
+  <!-- Description -->
+  <text x="80" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#8899bb">30 minutes. No pitch deck. No fluff.</text>
+  <text x="80" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#8899bb">Just your agency's operations under a microscope.</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="530" width="1200" height="100" fill="#0d1d3a"/>
+  <line x1="0" y1="530" x2="1200" y2="530" stroke="#20368f" stroke-width="2"/>
+
+  <!-- Logo area -->
+  <rect x="80" y="555" width="32" height="32" rx="6" fill="#20368f"/>
+  <text x="88" y="579" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" font-weight="700">A</text>
+
+  <!-- Brand -->
+  <text x="124" y="577" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#ffffff" font-weight="600">Autoikigai</text>
+
+  <!-- URL -->
+  <text x="1120" y="577" font-family="monospace" font-size="16" fill="#5a6a8a" text-anchor="end">autoikigai.space/book-a-call</text>
+</svg>

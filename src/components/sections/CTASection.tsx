@@ -63,8 +63,6 @@ export default function CTASection() {
         <div className="text-center">
           <a
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
           >
             Book a strategy call

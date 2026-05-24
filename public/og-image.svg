@@ -1,0 +1,48 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#162044"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+  </g>
+
+  <!-- Top label -->
+  <text x="80" y="120" font-family="monospace" font-size="14" fill="#5a6a8a" letter-spacing="3">AI-NATIVE SYSTEMS</text>
+  <line x1="80" y1="140" x2="340" y2="140" stroke="#5a6a8a" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+
+  <!-- Main headline -->
+  <text x="80" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="64" fill="#ffffff" font-weight="600" letter-spacing="-2">Your agency,</text>
+  <text x="80" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="64" fill="#20368f" font-weight="600" letter-spacing="-2">but AI-native.</text>
+
+  <!-- Capabilities -->
+  <text x="80" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#8899bb">Renewal Automation  /  Lapse Prevention  /  CSR Task Handling</text>
+  <text x="80" y="412" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#8899bb">New Business Intake  /  Cross-Sell Detection  /  Claims Follow-Up</text>
+
+  <!-- AMS integrations -->
+  <text x="80" y="470" font-family="monospace" font-size="14" fill="#5a6a8a">Applied Epic  |  AMS360  |  HawkSoft  |  EZLynx  |  QQCatalyst</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="530" width="1200" height="100" fill="#0d1d3a"/>
+  <line x1="0" y1="530" x2="1200" y2="530" stroke="#20368f" stroke-width="2"/>
+
+  <!-- Logo -->
+  <rect x="80" y="555" width="32" height="32" rx="6" fill="#20368f"/>
+  <text x="88" y="579" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" font-weight="700">A</text>
+
+  <!-- Brand -->
+  <text x="124" y="577" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#ffffff" font-weight="600">Autoikigai</text>
+
+  <!-- URL -->
+  <text x="1120" y="577" font-family="monospace" font-size="16" fill="#5a6a8a" text-anchor="end">autoikigai.space</text>
+</svg>

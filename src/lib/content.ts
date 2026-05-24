@@ -166,5 +166,7 @@ export const ABOUT = {
 };
 
 // --- Shared Links ---
-export const BOOKING_URL =
-  "https://calendly.com/laksh-autoikigai/30min";
+export const CAL_LINK =
+  "laksh-autoikigai/insurance-agency-audit-discovery-call-autoikigai";
+export const CAL_URL = `https://cal.com/${CAL_LINK}`;
+export const BOOKING_URL = "/book-a-call";

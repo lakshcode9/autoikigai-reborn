@@ -99,8 +99,6 @@ export default function OfferPage() {
 
           <a
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
           >
             Claim your audit
@@ -373,8 +371,6 @@ export default function OfferPage() {
           </p>
           <a
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
           >
             Book your systems audit

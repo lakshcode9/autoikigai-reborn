@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "Services", href: "/#services" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "About", href: "/#about" },
-  { label: "Contact", href: BOOKING_URL, external: true },
+  { label: "Contact", href: BOOKING_URL },
 ];
 
 export function Navbar() {
@@ -41,32 +41,18 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {NAV_LINKS.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mono-link"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link key={link.label} href={link.href} className="mono-link">
-                {link.label}
-              </Link>
-            )
-          )}
-          <a
+          {NAV_LINKS.map((link) => (
+            <Link key={link.label} href={link.href} className="mono-link">
+              {link.label}
+            </Link>
+          ))}
+          <Link
             href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn-primary"
             style={{ padding: "8px 16px", fontSize: "0.75rem" }}
           >
-            Book a discovery call
-          </a>
+            Book a strategy call
+          </Link>
         </nav>
 
         {/* Mobile hamburger */}
@@ -105,42 +91,26 @@ export function Navbar() {
             }}
           >
             <div className="py-2">
-              {NAV_LINKS.map((link) =>
-                link.external ? (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-6 py-3 text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-6 py-3 text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-6 py-3 text-sm"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <div className="px-6 py-3">
-                <a
+                <Link
                   href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
                   className="btn-primary w-full text-center block"
                   style={{ fontSize: "0.8125rem" }}
                 >
-                  Book a discovery call
-                </a>
+                  Book a strategy call
+                </Link>
               </div>
             </div>
           </motion.div>
