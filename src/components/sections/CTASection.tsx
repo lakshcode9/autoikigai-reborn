@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BOOKING_URL } from "@/lib/content";
+import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
   return (
@@ -11,61 +12,51 @@ export default function CTASection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="max-w-2xl mx-auto"
+        className="max-w-2xl mx-auto text-center"
       >
-        {/* Price tag */}
-        <div className="text-center mb-8">
-          <p className="section-label" style={{ marginBottom: "16px" }}>
-            Get Started
-          </p>
-          <h2
-            className="text-[28px] md:text-[36px] leading-[1.1] tracking-[-0.03em] font-medium mb-2"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Agency AI Blueprint
-          </h2>
-          <p
-            className="text-[1.125rem] md:text-[1.25rem] leading-[1.3] tracking-[-0.02em]"
-            style={{ color: "var(--text-muted)" }}
-          >
-            Audit starts at $5,000
-          </p>
-        </div>
+        <p className="section-label" style={{ marginBottom: "16px" }}>
+          Deploy Your Engine
+        </p>
+
+        <h2
+          className="text-[28px] md:text-[40px] leading-[1.1] tracking-[-0.03em] font-medium mb-4"
+          style={{ color: "var(--text-primary)" }}
+        >
+          Ready to accelerate your Phase II commercialization metrics?
+        </h2>
+
+        <p
+          className="text-[1.125rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.02em] mb-8"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Let’s deploy your outbound engine before your Phase I timeline runs out.
+        </p>
 
         {/* Description */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-8 text-left bg-elevated p-6 border border-dashed border-default">
           <p
-            className="text-[0.8125rem] leading-[1.7]"
+            className="text-[0.875rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We audit your renewal process, CSR workflows, intake systems, and
-            claims follow-up. You get a complete blueprint of what to
-            automate, how it integrates with your AMS, and the expected ROI
-            on every workflow.
+            In 15 minutes, we analyze your target commercial vertical, Phase I timeline, and executive buyer persona to map out a turnkey 30-day outbound campaign.
           </p>
           <p
-            className="text-[0.8125rem] leading-[1.7]"
+            className="text-[0.875rem] leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            After the audit, we build and maintain your AI-native systems for
-            $2,000 to $5,000 per month depending on the number of workflows
-            and integrations. You pay for results, not promises.
-          </p>
-          <p
-            className="text-[0.875rem] leading-[1.7] font-medium"
-            style={{ color: "var(--text-primary)" }}
-          >
-            This is not a sales pitch. This is a strategy session for your agency.
+            No cold calling for your R&amp;D leads. 100% automated domain warmups, contact enrichment, tech-to-exec copywriting, and direct calendar bookings.
           </p>
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div>
           <a
             href={BOOKING_URL}
-            className="btn-primary"
+            className="btn-primary inline-flex items-center gap-2"
+            style={{ padding: "14px 28px", fontSize: "0.875rem" }}
           >
-            Book a strategy call
+            Book a 15-Min Strategy Call
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </motion.div>

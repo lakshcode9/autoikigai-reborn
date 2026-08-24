@@ -4,9 +4,9 @@ import { CalEmbed } from "@/components/ui/CalEmbed";
 const siteUrl = "https://autoikigai.space";
 
 export const metadata: Metadata = {
-  title: "Book a Strategy Call",
+  title: "Book a 15-Min Strategy Call",
   description:
-    "Schedule a 30-minute strategy call with Autoikigai. We'll look at your agency's workflows, identify what can be automated, and map out the next steps.",
+    "Schedule a 15-minute strategy call with Autoikigai. Let's deploy your automated B2B outbound engine before your Phase I timeline runs out.",
   alternates: {
     canonical: `${siteUrl}/book-a-call`,
   },
@@ -15,24 +15,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: `${siteUrl}/book-a-call`,
     siteName: "Autoikigai",
-    title: "Book a Strategy Call | Autoikigai",
+    title: "Book a 15-Min Strategy Call | Autoikigai",
     description:
-      "30-minute strategy call for independent insurance agency owners. We'll audit your workflows and show you what AI-native systems can do for your agency.",
+      "15-minute strategy call for SBIR/STTR Phase I awardees & deep-tech founders. Secure Phase II LOIs without pulling your R&D team into cold sales.",
     images: [
       {
         url: `${siteUrl}/og-book-a-call.png`,
         width: 1200,
         height: 630,
-        alt: "Book a Strategy Call — Autoikigai",
+        alt: "Book a 15-Min Strategy Call — Autoikigai",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Book a Strategy Call | Autoikigai",
+    title: "Book a 15-Min Strategy Call | Autoikigai",
     description:
-      "30-minute strategy call for independent insurance agency owners. We'll audit your workflows and show you what AI-native systems can do for your agency.",
+      "15-minute strategy call for SBIR/STTR Phase I awardees & deep-tech founders. Secure Phase II LOIs without pulling your R&D team into cold sales.",
     images: [`${siteUrl}/og-book-a-call.png`],
   },
 };
@@ -53,18 +53,16 @@ export default function BookACallPage() {
           Strategy Call
         </p>
         <h1
-          className="text-[clamp(1.5rem,5vw,2rem)] leading-[1.15] tracking-[-0.03em] font-medium mb-3"
+          className="text-[clamp(1.5rem,5vw,2.25rem)] leading-[1.15] tracking-[-0.03em] font-medium mb-3"
           style={{ color: "var(--text-primary)" }}
         >
-          Let&apos;s look at your workflows.
+          Ready to accelerate your Phase II commercialization metrics?
         </h1>
         <p
           className="text-sm leading-[1.7]"
           style={{ color: "var(--text-muted)" }}
         >
-          30 minutes. We&apos;ll walk through what your team spends time on,
-          identify what can run on autopilot, and map out next steps. No pitch
-          deck, no fluff.
+          15 minutes. We&apos;ll evaluate your target commercial vertical, Phase I timeline, and executive buyer persona to map out a turnkey outbound campaign.
         </p>
       </div>
 

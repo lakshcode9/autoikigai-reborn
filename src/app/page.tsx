@@ -1,7 +1,7 @@
 import HeroSection from "@/components/sections/HeroSection";
-import ServicesSection from "@/components/sections/ServicesSection";
+import ProblemSection from "@/components/sections/ProblemSection";
+import WhatWeBuildSection from "@/components/sections/WhatWeBuildSection";
 import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
-import LeadGenSection from "@/components/sections/LeadGenSection";
 import AboutSection from "@/components/sections/AboutSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <ServicesSection />
+      <ProblemSection />
+      <WhatWeBuildSection />
       <CaseStudiesSection />
-      <LeadGenSection />
       <AboutSection />
       <FAQSection />
       <CTASection />

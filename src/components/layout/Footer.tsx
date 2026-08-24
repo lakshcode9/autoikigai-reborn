@@ -3,9 +3,10 @@ import Image from "next/image";
 
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
-  { label: "OpenClaw Security", href: "/openclaw-security" },
+  { label: "Problem", href: "/#problem" },
+  { label: "What We Build", href: "/#what-we-build" },
+  { label: "Architecture", href: "/#capabilities" },
+  { label: "Founders", href: "/#about" },
   { label: "Contact", href: "/book-a-call" },
 ];
 
@@ -35,9 +36,9 @@ export function Footer() {
           </span>
           <span
             className="text-xs hidden sm:inline"
-            style={{ color: "var(--text-muted)", opacity: 0.6 }}
+            style={{ color: "var(--text-muted)", opacity: 0.8 }}
           >
-            &mdash; AI-Native Systems for Insurance Agencies
+            &mdash; Automated B2B Outbound Engines for SBIR/STTR &amp; Deep-Tech Founders
           </span>
         </div>
 

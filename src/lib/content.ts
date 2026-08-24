@@ -1,64 +1,108 @@
 // ============================================================
-// Centralized homepage content — Autoikigai (AI-Native Systems for Insurance Agencies)
+// Centralized homepage content — Autoikigai (Automated B2B Outbound Engines)
+// For SBIR/STTR Phase I Awardees & Deep-Tech Founders
 // All text/data for homepage sections lives here.
 // ============================================================
 
-// --- Services Section ---
-export interface Service {
-  phase: string;
-  step: string;
-  title: string;
-  shortDesc: string;
-  deliverables: string[];
-  icon: string; // lucide icon name
+export interface MetricItem {
+  value: string;
+  label: string;
 }
 
-export const SERVICES: Service[] = [
+export const KEY_METRICS: MetricItem[] = [
+  { value: "15–30", label: "Qualified Discovery Calls per Campaign" },
+  { value: "4-Week", label: "Turnkey Setup" },
+  { value: "$0", label: "Internal Sales Headcount" },
+];
+
+export interface ProblemCard {
+  id: string;
+  tag: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export const PROBLEM_CARDS: ProblemCard[] = [
   {
-    phase: "Week 1",
-    step: "01",
-    title: "Agency Audit",
-    shortDesc: "We map every workflow bleeding time.",
-    deliverables: ["Renewal process audit", "CSR task analysis", "AMS integration scope"],
-    icon: "Search",
+    id: "mandate",
+    tag: "The Mandate",
+    title: "Commercialization Proof Mandate",
+    description: "Phase II grants ($1M+) mandate proven commercial traction and enterprise Letters of Intent (LOIs).",
+    icon: "FileText",
   },
   {
-    phase: "Week 2-3",
-    step: "02",
-    title: "Build & Integrate",
-    shortDesc: "We build AI-native systems for your agency.",
-    deliverables: ["Applied Epic / AMS360 / HawkSoft integration", "Automated renewal workflows", "Custom email & SMS sequences"],
-    icon: "Code",
+    id: "gap",
+    tag: "The Gap",
+    title: "Lack of Outbound Infrastructure",
+    description: "Scientists and engineers excel at R&D, but lack cold outbound infrastructure, domain warmups, and sales tracking.",
+    icon: "AlertTriangle",
   },
   {
-    phase: "Ongoing",
-    step: "03",
-    title: "Monitor & Optimize",
-    shortDesc: "We keep your retention rate climbing.",
-    deliverables: ["Daily performance reports", "Lapse prevention monitoring", "Quarterly workflow optimization"],
-    icon: "RefreshCw",
+    id: "drain",
+    tag: "The Drain",
+    title: "Core R&D Milestones Distracted",
+    description: "Running manual cold outreach distracts core technical leads from meeting critical Phase I R&D milestones.",
+    icon: "Clock",
   },
 ];
 
-// --- Capabilities ---
+export interface BuildItem {
+  step: string;
+  title: string;
+  description: string;
+  deliverables: string[];
+  icon: string;
+}
+
+export const WHAT_WE_BUILD: BuildItem[] = [
+  {
+    step: "01",
+    title: "Target Scraping",
+    description: "We pull and enrich direct contacts for VP/Director-level buyers in your target commercial vertical.",
+    deliverables: ["VP/Director Contacts", "Target Commercial Vertical", "Verified Emails & Direct Lines"],
+    icon: "Search",
+  },
+  {
+    step: "02",
+    title: "Outbound Infrastructure",
+    description: "Dedicated secondary domains, SPF/DKIM/DMARC authentication, and multi-channel warmup pipelines (zero risk to your primary domain).",
+    deliverables: ["Secondary Domains", "SPF / DKIM / DMARC Setup", "Warmup Pipelines"],
+    icon: "Shield",
+  },
+  {
+    step: "03",
+    title: "Technical-to-Executive Copywriting",
+    description: "Outreach messaging translated from complex tech specs into executive value propositions.",
+    deliverables: ["Tech-to-Exec Translation", "Pain-Point Positioning", "High-Response Messaging"],
+    icon: "FileCode",
+  },
+  {
+    step: "04",
+    title: "Automated Calendar Routing",
+    description: "Qualified corporate decision-makers book directly onto your calendar for customer discovery and pilot discussions.",
+    deliverables: ["Direct Calendar Sync", "Corporate Decision-Makers", "Discovery & Pilot Hand-off"],
+    icon: "Calendar",
+  },
+];
+
 export interface Capability {
-  icon: string; // lucide icon name
+  icon: string;
   title: string;
   metric: string;
 }
 
 export const CAPABILITIES: Capability[] = [
-  { icon: "RefreshCw", title: "Renewal Automation", metric: "90-day touchpoint sequences" },
-  { icon: "Shield", title: "Lapse Prevention", metric: "Catch cancellations before they happen" },
-  { icon: "Users", title: "CSR Task Automation", metric: "Certs, endorsements, ID cards" },
-  { icon: "UserPlus", title: "New Business Intake", metric: "ACORD pre-fill from web forms" },
-  { icon: "Mail", title: "Client Communication", metric: "Email + SMS on autopilot" },
-  { icon: "Database", title: "AMS Updates", metric: "Zero manual data entry" },
-  { icon: "TrendingUp", title: "Cross-Sell Detection", metric: "Find gaps in coverage" },
-  { icon: "Zap", title: "Claims Follow-Up", metric: "Automated status updates to clients" },
+  { icon: "Target", title: "Target Enrichment", metric: "VP/Director-level buyers" },
+  { icon: "Shield", title: "Outbound Infrastructure", metric: "Zero primary domain risk" },
+  { icon: "FileText", title: "Tech-to-Exec Copywriting", metric: "Specs to value propositions" },
+  { icon: "Calendar", title: "Calendar Routing", metric: "Direct customer discovery calls" },
+  { icon: "Mail", title: "Domain Authentication", metric: "SPF / DKIM / DMARC setup" },
+  { icon: "Database", title: "Pipeline Tracking", metric: "Full discovery analytics" },
+  { icon: "TrendingUp", title: "Phase II LOI Acceleration", metric: "15–30 calls in 30 days" },
+  { icon: "Zap", title: "Turnkey Outbound", metric: "4-Week setup" },
 ];
 
-// --- FAQ Section ---
 export interface FAQItem {
   question: string;
   answer: string;
@@ -66,48 +110,37 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What does Autoikigai do for insurance agencies?",
+    question: "How does Autoikigai help SBIR/STTR Phase I awardees?",
     answer:
-      "We build AI-native systems that handle the repetitive work in your agency: renewal follow-ups, CSR tasks like certificates and endorsements, new business intake, lapse prevention, and cross-sell detection. They integrate directly with your AMS and run 24/7.",
+      "Phase II grants ($1M+) mandate proven commercial traction and enterprise Letters of Intent (LOIs). We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry decision-makers in 30 days, helping you secure your LOIs without pulling your R&D team into cold sales.",
   },
   {
-    question: "Which AMS systems do you integrate with?",
+    question: "Will outbound outreach put our primary corporate domain at risk?",
     answer:
-      "Applied Epic, AMS360 (Vertafore), HawkSoft, EZLynx, and QQCatalyst. If your AMS has an API or supports CSV exports, we can work with it. We also integrate with comparative raters and carrier portals.",
+      "No. We set up dedicated secondary domains, complete with SPF/DKIM/DMARC authentication and multi-channel warmup pipelines. Your primary domain remains 100% isolated and protected.",
   },
   {
-    question: "How is this different from hiring another CSR?",
+    question: "How do you handle messaging for complex or deep-tech products?",
     answer:
-      "A CSR costs $45K-$65K/year, needs training, takes PTO, and handles maybe 200 policies. An AI-native system costs a fraction, works 24/7, handles thousands of policies simultaneously, and never forgets a renewal follow-up.",
+      "We specialize in technical-to-executive copywriting. We translate complex engineering specs, scientific breakthroughs, and technical architectures into clear, compelling executive value propositions that resonate with corporate buyers.",
   },
   {
-    question: "What size agencies do you work with?",
+    question: "How much effort is required from our R&D team?",
     answer:
-      "Independent agencies writing $1M-$10M in premium. Whether you have 3 people or 30, if your CSRs are drowning in repetitive tasks and your retention rate is under 92%, we can help.",
+      "Zero sales workload for your technical leads. We handle prospect scraping, infrastructure setup, copywriting, and warmup. Qualified corporate executives book directly onto your calendar, so your team only spends time on the actual discovery calls.",
   },
   {
-    question: "How much does it cost?",
+    question: "How fast is the deployment process?",
     answer:
-      "The audit starts at $5,000. You get a complete blueprint of every workflow we can automate and the expected ROI. After that, we build and maintain your AI-native systems for $2,000 to $5,000 per month depending on the number of workflows and AMS integrations.",
+      "Our turnkey setup takes 4 weeks. Your campaign goes live within 30 days, filling your calendar with corporate decision-makers for customer discovery and Phase II LOI discussions.",
   },
   {
-    question: "How quickly will I see results?",
+    question: "What happens during the 15-Minute Strategy Call?",
     answer:
-      "Your first AI-native workflow is live within 2-3 weeks. Most agencies see renewal touch rates jump from under 40% to over 90% in the first month. CSR time freed up within the first week.",
-  },
-  {
-    question: "What happens during a carrier download or IVANS feed?",
-    answer:
-      "We integrate with your existing IVANS feeds and carrier downloads. Policy data flows into the system automatically, triggering the right workflows without manual intervention.",
-  },
-  {
-    question: "Will this work with my E&O compliance requirements?",
-    answer:
-      "Yes. Every automated touchpoint is logged with timestamps, creating a complete audit trail. We actually reduce E&O exposure by ensuring no renewal or follow-up is ever missed.",
+      "We review your target commercial vertical, Phase I timeline, and Phase II LOI goals, then outline an automated outbound blueprint tailored specifically for your deep-tech technology.",
   },
 ];
 
-// --- About / Founders Section ---
 export interface Founder {
   name: string;
   role: string;
@@ -123,20 +156,20 @@ export interface Founder {
 export const FOUNDERS: Founder[] = [
   {
     name: "Laksh Pujary",
-    role: "Co-Founder",
+    role: "Co-Founder & Systems Architect",
     tagline: "The Brain",
-    bio: "Self-taught AI engineer. College dropout. Builds production AI that runs 24/7 in insurance agencies. From renewal automation to lapse prevention to AMS integration. If your CSRs are doing repetitive work, he has already figured out how to automate it. His systems currently process thousands of policy touchpoints without human intervention.",
-    funFact: "Mass-deploys AI agents the way normal people order coffee.",
+    bio: "Self-taught AI engineer. Architect of high-deliverability outbound engines, automated contact enrichment pipelines, and tech-to-exec messaging models. Keeps technical teams focused on R&D while automated systems handle cold outreach at enterprise scale.",
+    funFact: "Mass-deploys outbound infrastructure and AI agents faster than ordering coffee.",
     image: null,
     imageFallbackBubbles: [
       "Not photogenic",
-      "The AI refused to generate my face",
+      "Building outbound pipelines",
       "日本語対応可",
     ],
     stats: [
-      { value: "24/7", label: "Systems uptime" },
-      { value: "0", label: "Demos without code" },
-      { value: "3AM", label: "Deploys happen" },
+      { value: "99%+", label: "Deliverability" },
+      { value: "30 Days", label: "Discovery Calls" },
+      { value: "3AM", label: "Engine deploys" },
     ],
     socials: [
       { label: "GitHub", url: "https://github.com/lakshcode9" },
@@ -145,15 +178,15 @@ export const FOUNDERS: Founder[] = [
   },
   {
     name: "Stefan Skarevski",
-    role: "Co-Founder",
+    role: "Co-Founder & Commercial Strategy",
     tagline: "The Business",
-    bio: "The guy who makes sure the right agencies find us and that we deliver what we promise. Stefan handles strategy, agency partnerships, and client relationships. He is the reason the business side runs as smooth as the AI side. Also unreasonably jacked for someone who spends half his day on Zoom calls with agency principals.",
-    funFact: "Has never lost an arm wrestle. Business meetings included.",
+    bio: "Drives commercial strategy, enterprise targeting, and founder partnerships for SBIR/STTR awardees. Ensures cold outbound engines convert corporate VP interest into formal Phase II Letters of Intent and pilot agreements.",
+    funFact: "Has never lost an arm wrestle. Enterprise negotiations included.",
     image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
     stats: [
-      { value: "100%", label: "Client retention" },
+      { value: "100%", label: "Turnkey delivery" },
       { value: "0", label: "Arm wrestles lost" },
-      { value: "∞", label: "Zoom calls survived" },
+      { value: "15–30", label: "Calls / campaign" },
     ],
     socials: [
       { label: "Instagram", url: "https://instagram.com/skarevskiofficial" },
@@ -162,11 +195,11 @@ export const FOUNDERS: Founder[] = [
 ];
 
 export const ABOUT = {
-  builtWith: ["Applied Epic", "AMS360", "HawkSoft", "EZLynx", "n8n", "OpenAI", "Supabase", "Twilio"],
+  builtWith: ["Clay", "Instantly", "Smartlead", "Apollo", "n8n", "OpenAI", "Supabase", "Cal.com"],
 };
 
-// --- Shared Links ---
 export const CAL_LINK =
   "laksh-autoikigai/insurance-agency-audit-discovery-call-autoikigai";
 export const CAL_URL = `https://cal.com/${CAL_LINK}`;
+export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";

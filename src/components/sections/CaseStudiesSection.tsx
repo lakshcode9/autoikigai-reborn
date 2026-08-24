@@ -2,31 +2,31 @@
 
 import { motion } from "framer-motion";
 import {
-  Users,
+  Target,
+  ShieldCheck,
+  FileText,
+  Calendar,
   Mail,
-  RefreshCw,
   Database,
-  Shield,
-  UserPlus,
   TrendingUp,
   Zap,
 } from "lucide-react";
 import { CAPABILITIES } from "@/lib/content";
 
-const ICON_MAP: Record<string, typeof Users> = {
-  Users,
+const ICON_MAP: Record<string, typeof Target> = {
+  Target,
+  ShieldCheck,
+  FileText,
+  Calendar,
   Mail,
-  RefreshCw,
   Database,
-  Shield,
-  UserPlus,
   TrendingUp,
   Zap,
 };
 
 export default function CaseStudiesSection() {
   return (
-    <section id="how-it-works" className="section">
+    <section id="capabilities" className="section">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -35,16 +35,16 @@ export default function CaseStudiesSection() {
         transition={{ duration: 0.4 }}
         className="mb-10"
       >
-        <p className="section-label">Capabilities</p>
+        <p className="section-label">Engine Architecture</p>
         <h2
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          What your AI-native system handles
+          What your B2B outbound engine handles
         </h2>
       </motion.div>
 
-      {/* ── Icon grid ── */}
+      {/* Icon grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 grid-bordered">
         {CAPABILITIES.map((cap, i) => {
           const Icon = ICON_MAP[cap.icon] || Zap;
@@ -97,7 +97,7 @@ export default function CaseStudiesSection() {
         })}
       </div>
 
-      {/* ── Social proof — compact ── */}
+      {/* Technology Stack Footer */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -110,14 +110,13 @@ export default function CaseStudiesSection() {
           className="section-label"
           style={{ marginBottom: 0, whiteSpace: "nowrap" }}
         >
-          Social Proof
+          Outbound Stack
         </p>
         <p
           className="text-[0.8125rem] leading-[1.7] max-w-lg"
           style={{ color: "var(--text-muted)" }}
         >
-          Built for agencies running on Applied Epic, AMS360, HawkSoft, and
-          EZLynx. We integrate with your existing stack.
+          Built with enterprise-grade data enrichment, multi-domain deliverability pipelines, and automated calendar routing.
         </p>
       </motion.div>
     </section>

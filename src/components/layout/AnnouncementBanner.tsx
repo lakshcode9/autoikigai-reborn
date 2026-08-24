@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
+import { PLAYBOOKS_URL } from "@/lib/content";
 
 export function AnnouncementBanner() {
   const [visible, setVisible] = useState(true);
@@ -19,13 +20,14 @@ export function AnnouncementBanner() {
       }}
     >
       <a
-        href="https://resources.autoikigai.space"
+        href={PLAYBOOKS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="hover:underline underline-offset-2"
         style={{ color: "#fff" }}
       >
-        Free resources for insurance agency owners. Renewal systems, CSR
-        workflows, lapse prevention guides.{" "}
-        <span className="font-medium">Learn more →</span>
+        Free Playbooks for SBIR/STTR Phase I Awardees &amp; Deep-Tech Founders. Secure Phase II LOIs faster.{" "}
+        <span className="font-medium">View Playbooks &rarr;</span>
       </a>
       <button
         onClick={() => setVisible(false)}

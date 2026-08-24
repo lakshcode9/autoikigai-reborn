@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BOOKING_URL } from "@/lib/content";
+import { BOOKING_URL, PLAYBOOKS_URL, KEY_METRICS } from "@/lib/content";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -12,48 +13,102 @@ export default function HeroSection() {
       }}
     >
       <div className="relative z-[2] w-full">
-        <div className="max-w-3xl">
-          {/* Heading */}
+        <div className="max-w-4xl">
+          {/* Top Badge / Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6 inline-flex"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span
+                className="text-xs md:text-sm font-medium"
+                style={{ color: "var(--text-muted)" }}
+              >
+                For <span className="text-accent font-semibold">SBIR/STTR Phase I Awardees &amp; Deep-Tech Founders</span>
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[clamp(2.25rem,7.5vw,3rem)] md:text-[40px] lg:text-[48px] leading-[1.08] tracking-[-0.04em] font-medium mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[clamp(2.25rem,6vw,3.5rem)] md:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-0.04em] font-medium mb-6 max-w-4xl"
             style={{ color: "var(--text-primary)" }}
           >
-            Your agency, but{" "}
-            <span className="text-accent">AI-native.</span>
+            Secure Your Phase II LOIs Without Pulling Your R&amp;D Team Into Cold Sales.
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sm md:text-[1rem] max-w-xl mb-10 leading-[1.7]"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base md:text-[1.125rem] max-w-2xl mb-8 leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We build AI-native systems for insurance agencies. Renewal automation,
-            lapse prevention, CSR task handling, new business intake. Always on,
-            always accurate, nothing falls through the cracks.
+            We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry executives in 30 days.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-3 mb-10 md:mb-16"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-3 mb-12 md:mb-16"
           >
             <a
               href={BOOKING_URL}
-              className="btn-primary"
+              className="btn-primary inline-flex items-center gap-2"
             >
-              Book a strategy call
+              Book a 15-Min Strategy Call
+              <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#services" className="btn-secondary bg-white">
-              See how it works
+            <a
+              href={PLAYBOOKS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary inline-flex items-center gap-2 bg-white"
+            >
+              <BookOpen className="w-4 h-4" />
+              View Free Playbooks
             </a>
+          </motion.div>
+
+          {/* Key Metrics Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-3 grid-bordered"
+          >
+            {KEY_METRICS.map((metric, i) => (
+              <div
+                key={i}
+                className="grid-cell flex flex-col justify-center py-6 px-6"
+                style={{ background: "var(--bg-elevated)" }}
+              >
+                <span
+                  className="text-2xl md:text-3xl font-bold tracking-tight mb-1"
+                  style={{
+                    color: "var(--accent-color)",
+                    fontFamily: "var(--font-geist-mono), monospace",
+                  }}
+                >
+                  {metric.value}
+                </span>
+                <span
+                  className="text-xs md:text-sm font-medium leading-snug"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {metric.label}
+                </span>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

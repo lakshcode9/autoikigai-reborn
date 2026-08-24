@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BOOKING_URL } from "@/lib/content";
 
 const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: BOOKING_URL },
+  { label: "Problem", href: "/#problem" },
+  { label: "What We Build", href: "/#what-we-build" },
+  { label: "Engine Architecture", href: "/#capabilities" },
+  { label: "Founders", href: "/#about" },
 ];
 
 export function Navbar() {
@@ -51,7 +51,7 @@ export function Navbar() {
             className="btn-primary"
             style={{ padding: "8px 16px", fontSize: "0.75rem" }}
           >
-            Book a strategy call
+            Book a 15-Min Strategy Call
           </Link>
         </nav>
 
@@ -109,7 +109,7 @@ export function Navbar() {
                   className="btn-primary w-full text-center block"
                   style={{ fontSize: "0.8125rem" }}
                 >
-                  Book a strategy call
+                  Book a 15-Min Strategy Call
                 </Link>
               </div>
             </div>
