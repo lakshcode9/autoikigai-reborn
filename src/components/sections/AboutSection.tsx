@@ -219,7 +219,7 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
             }}
           >
             <span style={{ color: "var(--accent-color)", fontWeight: 600 }}>
-              //
+              {"//"}
             </span>{" "}
             {founder.funFact}
           </span>

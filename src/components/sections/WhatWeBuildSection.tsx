@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { WHAT_WE_BUILD } from "@/lib/content";
-import { Search, Shield, FileCode, Calendar, ArrowRight } from "lucide-react";
+import { Search, Shield, FileCode, Calendar } from "lucide-react";
 
 const ICON_MAP: Record<string, typeof Search> = {
   Search,
@@ -35,7 +35,6 @@ export default function WhatWeBuildSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
         {WHAT_WE_BUILD.map((item, i) => {
           const Icon = ICON_MAP[item.icon] || Search;
-          const isLast = i === WHAT_WE_BUILD.length - 1;
 
           return (
             <motion.div
