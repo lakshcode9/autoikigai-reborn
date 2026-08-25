@@ -199,7 +199,7 @@ export const ABOUT = {
 };
 
 export const CAL_LINK =
-  "laksh-autoikigai/insurance-agency-audit-discovery-call-autoikigai";
+  "laksh-autoikigai/sbir-phase-audit-discovery-call-autoikigai";
 export const CAL_URL = `https://cal.com/${CAL_LINK}`;
 export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";
