@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "Problem", href: "/#problem" },
   { label: "What We Build", href: "/#what-we-build" },
   { label: "Engine Architecture", href: "/#capabilities" },
-  { label: "Founders", href: "/#about" },
+  { label: "About", href: "/#about" },
 ];
 
 export function Navbar() {

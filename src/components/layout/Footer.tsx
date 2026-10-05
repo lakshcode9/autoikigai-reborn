@@ -6,7 +6,7 @@ const FOOTER_LINKS = [
   { label: "Problem", href: "/#problem" },
   { label: "What We Build", href: "/#what-we-build" },
   { label: "Architecture", href: "/#capabilities" },
-  { label: "Founders", href: "/#about" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/book-a-call" },
 ];
 

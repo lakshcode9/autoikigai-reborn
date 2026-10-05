@@ -156,7 +156,7 @@ export interface Founder {
 export const FOUNDERS: Founder[] = [
   {
     name: "Laksh Pujary",
-    role: "Co-Founder & Systems Architect",
+    role: "Founder & Systems Architect",
     tagline: "The Brain",
     bio: "Self-taught AI engineer. Architect of high-deliverability outbound engines, automated contact enrichment pipelines, and tech-to-exec messaging models. Keeps technical teams focused on R&D while automated systems handle cold outreach at enterprise scale.",
     funFact: "Mass-deploys outbound infrastructure and AI agents faster than ordering coffee.",
@@ -174,22 +174,6 @@ export const FOUNDERS: Founder[] = [
     socials: [
       { label: "GitHub", url: "https://github.com/lakshcode9" },
       { label: "Instagram", url: "https://instagram.com/lakshbuilds" },
-    ],
-  },
-  {
-    name: "Stefan Skarevski",
-    role: "Co-Founder & Commercial Strategy",
-    tagline: "The Business",
-    bio: "Drives commercial strategy, enterprise targeting, and founder partnerships for SBIR/STTR awardees. Ensures cold outbound engines convert corporate VP interest into formal Phase II Letters of Intent and pilot agreements.",
-    funFact: "Has never lost an arm wrestle. Enterprise negotiations included.",
-    image: "/skarevskiofficial_3687604576832686549_73724088050_1_2025-07-29.jpg",
-    stats: [
-      { value: "100%", label: "Turnkey delivery" },
-      { value: "0", label: "Arm wrestles lost" },
-      { value: "15–30", label: "Calls / campaign" },
-    ],
-    socials: [
-      { label: "Instagram", url: "https://instagram.com/skarevskiofficial" },
     ],
   },
 ];

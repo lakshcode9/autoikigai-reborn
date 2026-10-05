@@ -265,17 +265,17 @@ export default function AboutSection() {
         transition={{ duration: 0.4 }}
         className="mb-10"
       >
-        <p className="section-label">The Founders</p>
+        <p className="section-label">The Founder</p>
         <h2
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          Two guys. One builds it. One runs it.
+          Engineering automated B2B outbound engines.
         </h2>
       </motion.div>
 
-      {/* ── Side-by-side cards ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6 gap-y-6">
+      {/* ── Founder card ── */}
+      <div className="max-w-xl">
         {FOUNDERS.map((founder, i) => (
           <FounderCard key={founder.name} founder={founder} index={i} />
         ))}
