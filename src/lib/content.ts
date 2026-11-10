@@ -1,6 +1,6 @@
 // ============================================================
-// Centralized homepage content — Autoikigai (Automated B2B Outbound Engines)
-// For SBIR/STTR Phase I Awardees & Deep-Tech Founders
+// Centralized homepage content — Autoikigai
+// Done-for-you B2B lead generation agency
 // All text/data for homepage sections lives here.
 // ============================================================
 
@@ -10,9 +10,9 @@ export interface MetricItem {
 }
 
 export const KEY_METRICS: MetricItem[] = [
-  { value: "15–30", label: "Qualified Discovery Calls per Campaign" },
-  { value: "4-Week", label: "Turnkey Setup" },
-  { value: "$0", label: "Internal Sales Headcount" },
+  { value: "14", label: "Days to first emails" },
+  { value: "0", label: "SDRs to hire" },
+  { value: "Pay-per-meeting", label: "Pricing model" },
 ];
 
 export interface ProblemCard {
@@ -25,25 +25,25 @@ export interface ProblemCard {
 
 export const PROBLEM_CARDS: ProblemCard[] = [
   {
-    id: "mandate",
-    tag: "The Mandate",
-    title: "Commercialization Proof Mandate",
-    description: "Phase II grants ($1M+) mandate proven commercial traction and enterprise Letters of Intent (LOIs).",
-    icon: "FileText",
+    id: "referrals",
+    tag: "The Reality",
+    title: "Referrals Have Run Dry",
+    description: "Your network got you here, but it won't double your pipeline. Waiting for inbound leads means lumpy revenue and missed quarters.",
+    icon: "Users",
   },
   {
-    id: "gap",
-    tag: "The Gap",
-    title: "Lack of Outbound Infrastructure",
-    description: "Scientists and engineers excel at R&D, but lack cold outbound infrastructure, domain warmups, and sales tracking.",
+    id: "hiring",
+    tag: "The Cost",
+    title: "Hiring an SDR Is a Gamble",
+    description: "$60k+ per year, 3-6 months to ramp, and no guarantee they'll book a single meeting. Most founders can't afford that risk.",
+    icon: "DollarSign",
+  },
+  {
+    id: "diy",
+    tag: "The Trap",
+    title: "DIY Cold Email Backfires",
+    description: "You tried it yourself. Your main domain got flagged, replies went to spam, and you burned hours that should've gone to clients.",
     icon: "AlertTriangle",
-  },
-  {
-    id: "drain",
-    tag: "The Drain",
-    title: "Core R&D Milestones Distracted",
-    description: "Running manual cold outreach distracts core technical leads from meeting critical Phase I R&D milestones.",
-    icon: "Clock",
   },
 ];
 
@@ -55,34 +55,68 @@ export interface BuildItem {
   icon: string;
 }
 
-export const WHAT_WE_BUILD: BuildItem[] = [
+export const HOW_IT_WORKS: BuildItem[] = [
   {
     step: "01",
-    title: "Target Scraping",
-    description: "We pull and enrich direct contacts for VP/Director-level buyers in your target commercial vertical.",
-    deliverables: ["VP/Director Contacts", "Target Commercial Vertical", "Verified Emails & Direct Lines"],
+    title: "Pipeline Audit",
+    description: "We review your current offer, buyers, and sales process to find what's working and what's missing.",
+    deliverables: ["Offer review", "Buyer analysis", "Process gaps"],
     icon: "Search",
   },
   {
     step: "02",
-    title: "Outbound Infrastructure",
-    description: "Dedicated secondary domains, SPF/DKIM/DMARC authentication, and multi-channel warmup pipelines (zero risk to your primary domain).",
-    deliverables: ["Secondary Domains", "SPF / DKIM / DMARC Setup", "Warmup Pipelines"],
-    icon: "Shield",
+    title: "ICP & Offer",
+    description: "We build your target list and sharpen your offer until it's hard to ignore.",
+    deliverables: ["Target company list", "Buyer personas", "Offer positioning"],
+    icon: "Target",
   },
   {
     step: "03",
-    title: "Technical-to-Executive Copywriting",
-    description: "Outreach messaging translated from complex tech specs into executive value propositions.",
-    deliverables: ["Tech-to-Exec Translation", "Pain-Point Positioning", "High-Response Messaging"],
-    icon: "FileCode",
+    title: "Infrastructure",
+    description: "Separate sending domains with SPF/DKIM/DMARC and proper warmup. Your main domain stays untouched.",
+    deliverables: ["Sending domains", "DNS authentication", "Inbox warmup"],
+    icon: "Shield",
   },
   {
     step: "04",
-    title: "Automated Calendar Routing",
-    description: "Qualified corporate decision-makers book directly onto your calendar for customer discovery and pilot discussions.",
-    deliverables: ["Direct Calendar Sync", "Corporate Decision-Makers", "Discovery & Pilot Hand-off"],
+    title: "Messaging",
+    description: "We write the sequences and A/B test them. One email, one idea. No fluff.",
+    deliverables: ["Cold email sequences", "LinkedIn messages", "A/B testing"],
+    icon: "FileText",
+  },
+  {
+    step: "05",
+    title: "Launch & Booking",
+    description: "Replies handled within hours. Qualified prospects booked onto your calendar.",
+    deliverables: ["Reply management", "Lead qualification", "Calendar bookings"],
     icon: "Calendar",
+  },
+];
+
+// Legacy export for backward compatibility
+export const WHAT_WE_BUILD = HOW_IT_WORKS;
+
+export interface WhyPillar {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export const WHY_AUTOIKIGAI: WhyPillar[] = [
+  {
+    icon: "Wallet",
+    title: "Cheaper Than a Hire",
+    description: "One fee covers everything: strategy, infrastructure, copywriting, and booking. No SDR salary, no tool stack, no data subscriptions.",
+  },
+  {
+    icon: "Zap",
+    title: "Fast Start",
+    description: "First emails go out in 14 days. No 3-month ramp time. No training. No guesswork.",
+  },
+  {
+    icon: "ShieldCheck",
+    title: "Risk on Us",
+    description: "You pay per qualified meeting. No meetings, no bill.",
   },
 ];
 
@@ -92,15 +126,16 @@ export interface Capability {
   metric: string;
 }
 
+// Hidden for now - no client results yet
 export const CAPABILITIES: Capability[] = [
-  { icon: "Target", title: "Target Enrichment", metric: "VP/Director-level buyers" },
-  { icon: "Shield", title: "Outbound Infrastructure", metric: "Zero primary domain risk" },
-  { icon: "FileText", title: "Tech-to-Exec Copywriting", metric: "Specs to value propositions" },
-  { icon: "Calendar", title: "Calendar Routing", metric: "Direct customer discovery calls" },
-  { icon: "Mail", title: "Domain Authentication", metric: "SPF / DKIM / DMARC setup" },
-  { icon: "Database", title: "Pipeline Tracking", metric: "Full discovery analytics" },
-  { icon: "TrendingUp", title: "Phase II LOI Acceleration", metric: "15–30 calls in 30 days" },
-  { icon: "Zap", title: "Turnkey Outbound", metric: "4-Week setup" },
+  { icon: "Target", title: "Target Enrichment", metric: "Decision-maker contacts" },
+  { icon: "Shield", title: "Domain Protection", metric: "Zero primary domain risk" },
+  { icon: "FileText", title: "Copywriting", metric: "Tested sequences" },
+  { icon: "Calendar", title: "Calendar Routing", metric: "Direct bookings" },
+  { icon: "Mail", title: "DNS Setup", metric: "SPF / DKIM / DMARC" },
+  { icon: "Database", title: "Pipeline Tracking", metric: "Full analytics" },
+  { icon: "TrendingUp", title: "Reply Management", metric: "Same-day responses" },
+  { icon: "Zap", title: "Fast Launch", metric: "14-day setup" },
 ];
 
 export interface FAQItem {
@@ -110,34 +145,28 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "How does Autoikigai help SBIR/STTR Phase I awardees?",
-    answer:
-      "Phase II grants ($1M+) mandate proven commercial traction and enterprise Letters of Intent (LOIs). We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry decision-makers in 30 days, helping you secure your LOIs without pulling your R&D team into cold sales.",
+    question: "Will this hurt my main email domain?",
+    answer: "No. We set up separate sending domains with proper SPF, DKIM, and DMARC authentication. Your main domain is never used for cold outreach. If something goes wrong with a sending domain, your company email stays clean.",
   },
   {
-    question: "Will outbound outreach put our primary corporate domain at risk?",
-    answer:
-      "No. We set up dedicated secondary domains, complete with SPF/DKIM/DMARC authentication and multi-channel warmup pipelines. Your primary domain remains 100% isolated and protected.",
+    question: "How much of my time does this take?",
+    answer: "About 2 hours upfront for the audit call and offer review. After that, you just show up to the meetings we book. We handle everything else: list building, infrastructure, copywriting, replies, and scheduling.",
   },
   {
-    question: "How do you handle messaging for complex or deep-tech products?",
-    answer:
-      "We specialize in technical-to-executive copywriting. We translate complex engineering specs, scientific breakthroughs, and technical architectures into clear, compelling executive value propositions that resonate with corporate buyers.",
+    question: "What counts as a qualified meeting?",
+    answer: "A decision-maker at a company matching your agreed ICP who shows up to the call. We define this together before we start. If they no-show or aren't a fit, it doesn't count.",
   },
   {
-    question: "How much effort is required from our R&D team?",
-    answer:
-      "Zero sales workload for your technical leads. We handle prospect scraping, infrastructure setup, copywriting, and warmup. Qualified corporate executives book directly onto your calendar, so your team only spends time on the actual discovery calls.",
+    question: "How fast will I see meetings?",
+    answer: "First emails go out within 14 days of signing. Most clients see their first qualified meetings within 3-4 weeks. Results depend on your offer, ICP, and market.",
   },
   {
-    question: "How fast is the deployment process?",
-    answer:
-      "Our turnkey setup takes 4 weeks. Your campaign goes live within 30 days, filling your calendar with corporate decision-makers for customer discovery and Phase II LOI discussions.",
+    question: "What if no meetings come in?",
+    answer: "You pay per qualified meeting. No meetings, no bill. We only win when you win.",
   },
   {
-    question: "What happens during the 15-Minute Strategy Call?",
-    answer:
-      "We review your target commercial vertical, Phase I timeline, and Phase II LOI goals, then outline an automated outbound blueprint tailored specifically for your deep-tech technology.",
+    question: "Do you lock me into a contract?",
+    answer: "The pilot runs month-to-month. You can stop anytime. We keep clients by getting results, not by locking them in.",
   },
 ];
 
@@ -146,7 +175,7 @@ export interface Founder {
   role: string;
   tagline: string;
   bio: string;
-  funFact: string;
+  funFact: string | null;
   image: string | null;
   imageFallbackBubbles?: string[];
   stats: { value: string; label: string }[];
@@ -156,20 +185,19 @@ export interface Founder {
 export const FOUNDERS: Founder[] = [
   {
     name: "Laksh Pujary",
-    role: "Founder & Systems Architect",
-    tagline: "The Brain",
-    bio: "Self-taught AI engineer. Architect of high-deliverability outbound engines, automated contact enrichment pipelines, and tech-to-exec messaging models. Keeps technical teams focused on R&D while automated systems handle cold outreach at enterprise scale.",
-    funFact: "Mass-deploys outbound infrastructure and AI agents faster than ordering coffee.",
+    role: "Founder",
+    tagline: "Your Outbound Partner",
+    bio: "I build and run cold outbound systems for B2B founders. I handle the infrastructure, copywriting, and lead qualification so you can focus on closing deals. I work with every client personally.",
+    funFact: null,
     image: null,
     imageFallbackBubbles: [
-      "Not photogenic",
-      "Building outbound pipelines",
-      "日本語対応可",
+      "Clay",
+      "Instantly / Smartlead",
+      "Apollo + n8n",
     ],
     stats: [
-      { value: "99%+", label: "Deliverability" },
-      { value: "30 Days", label: "Discovery Calls" },
-      { value: "3AM", label: "Engine deploys" },
+      { value: "14", label: "Days to launch" },
+      { value: "1:1", label: "Client work" },
     ],
     socials: [
       { label: "GitHub", url: "https://github.com/lakshcode9" },
@@ -179,11 +207,13 @@ export const FOUNDERS: Founder[] = [
 ];
 
 export const ABOUT = {
-  builtWith: ["Clay", "Instantly", "Smartlead", "Apollo", "n8n", "OpenAI", "Supabase", "Cal.com"],
+  builtWith: ["Clay", "Instantly", "Smartlead", "Apollo", "n8n"],
 };
 
-export const CAL_LINK =
-  "laksh-autoikigai/sbir-phase-audit-discovery-call-autoikigai";
+export const CAL_LINK = "laksh-autoikigai/autoikigai-application";
 export const CAL_URL = `https://cal.com/${CAL_LINK}`;
 export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";
+
+// Guarantee text - used in Hero and CTA for consistency
+export const GUARANTEE_TEXT = "You pay per qualified meeting. No meetings, no bill.";

@@ -8,8 +8,9 @@ import { BOOKING_URL } from "@/lib/content";
 
 const NAV_LINKS = [
   { label: "Problem", href: "/#problem" },
-  { label: "What We Build", href: "/#what-we-build" },
-  { label: "Engine Architecture", href: "/#capabilities" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Why Us", href: "/#why" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#about" },
 ];
 
@@ -51,7 +52,7 @@ export function Navbar() {
             className="btn-primary"
             style={{ padding: "8px 16px", fontSize: "0.75rem" }}
           >
-            Book a 15-Min Strategy Call
+            Apply Now
           </Link>
         </nav>
 
@@ -109,7 +110,7 @@ export function Navbar() {
                   className="btn-primary w-full text-center block"
                   style={{ fontSize: "0.8125rem" }}
                 >
-                  Book a 15-Min Strategy Call
+                  Apply Now
                 </Link>
               </div>
             </div>

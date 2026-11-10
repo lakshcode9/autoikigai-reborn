@@ -4,9 +4,9 @@ import { CalEmbed } from "@/components/ui/CalEmbed";
 const siteUrl = "https://autoikigai.space";
 
 export const metadata: Metadata = {
-  title: "Book a 15-Min Strategy Call",
+  title: "Apply to Work With Us",
   description:
-    "Schedule a 15-minute strategy call with Autoikigai. Let's deploy your automated B2B outbound engine before your Phase I timeline runs out.",
+    "Apply for a B2B lead generation pilot with Autoikigai. Qualified sales meetings on your calendar without hiring SDRs.",
   alternates: {
     canonical: `${siteUrl}/book-a-call`,
   },
@@ -15,24 +15,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: `${siteUrl}/book-a-call`,
     siteName: "Autoikigai",
-    title: "Book a 15-Min Strategy Call | Autoikigai",
+    title: "Apply to Work With Us | Autoikigai",
     description:
-      "15-minute strategy call for SBIR/STTR Phase I awardees & deep-tech founders. Secure Phase II LOIs without pulling your R&D team into cold sales.",
+      "Apply for a B2B lead generation pilot. Done-for-you cold email and LinkedIn outbound for B2B SaaS, agencies, and consultancies.",
     images: [
       {
         url: `${siteUrl}/og-book-a-call.png`,
         width: 1200,
         height: 630,
-        alt: "Book a 15-Min Strategy Call — Autoikigai",
+        alt: "Apply to Work With Us — Autoikigai",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Book a 15-Min Strategy Call | Autoikigai",
+    title: "Apply to Work With Us | Autoikigai",
     description:
-      "15-minute strategy call for SBIR/STTR Phase I awardees & deep-tech founders. Secure Phase II LOIs without pulling your R&D team into cold sales.",
+      "Apply for a B2B lead generation pilot. Done-for-you cold email and LinkedIn outbound for B2B SaaS, agencies, and consultancies.",
     images: [`${siteUrl}/og-book-a-call.png`],
   },
 };
@@ -50,19 +50,19 @@ export default function BookACallPage() {
     >
       <div className="max-w-2xl mb-8">
         <p className="section-label" style={{ marginBottom: "12px" }}>
-          Strategy Call
+          Apply
         </p>
         <h1
           className="text-[clamp(1.5rem,5vw,2.25rem)] leading-[1.15] tracking-[-0.03em] font-medium mb-3"
           style={{ color: "var(--text-primary)" }}
         >
-          Ready to accelerate your Phase II commercialization metrics?
+          Let&apos;s see if we&apos;re a fit
         </h1>
         <p
           className="text-sm leading-[1.7]"
           style={{ color: "var(--text-muted)" }}
         >
-          15 minutes. We&apos;ll evaluate your target commercial vertical, Phase I timeline, and executive buyer persona to map out a turnkey outbound campaign.
+          Book a call. We&apos;ll review your offer, ICP, and sales process, then tell you if and how we can help.
         </p>
       </div>
 

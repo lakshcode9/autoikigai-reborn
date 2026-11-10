@@ -4,10 +4,10 @@ import Image from "next/image";
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Problem", href: "/#problem" },
-  { label: "What We Build", href: "/#what-we-build" },
-  { label: "Architecture", href: "/#capabilities" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#about" },
-  { label: "Contact", href: "/book-a-call" },
+  { label: "Apply", href: "/book-a-call" },
 ];
 
 export function Footer() {
@@ -38,7 +38,7 @@ export function Footer() {
             className="text-xs hidden sm:inline"
             style={{ color: "var(--text-muted)", opacity: 0.8 }}
           >
-            &mdash; Automated B2B Outbound Engines for SBIR/STTR &amp; Deep-Tech Founders
+            &mdash; Done-for-you B2B lead generation
           </span>
         </div>
 

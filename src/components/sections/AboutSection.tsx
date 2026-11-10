@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ABOUT, FOUNDERS, type Founder } from "@/lib/content";
 
-/* ── Floating speech bubbles for Laksh's missing photo ── */
+/* ── Floating bubbles for tool stack ── */
 function FloatingBubbles({ bubbles }: { bubbles: string[] }) {
   const configs = [
     { top: "12%", left: "8%", rotate: -4, delay: 0.4 },
@@ -139,20 +139,6 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
               >
                 ?
               </div>
-              {/* ASCII art style brackets */}
-              <div
-                style={{
-                  fontFamily:
-                    "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-                  fontSize: "0.625rem",
-                  color: "var(--text-muted)",
-                  opacity: 0.5,
-                  textAlign: "center",
-                  lineHeight: 1.6,
-                }}
-              >
-                {"{"} photo: null {"}"}
-              </div>
             </div>
             {founder.imageFallbackBubbles && (
               <FloatingBubbles bubbles={founder.imageFallbackBubbles} />
@@ -202,29 +188,6 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
           {founder.bio}
         </p>
 
-        {/* Fun Fact */}
-        <div
-          className="inline-flex items-start gap-2 px-3 py-2"
-          style={{
-            background: "var(--bg-surface)",
-            border: "1px solid var(--border-default)",
-          }}
-        >
-          <span
-            style={{
-              fontFamily:
-                "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
-              fontSize: "0.6875rem",
-              color: "var(--text-muted)",
-            }}
-          >
-            <span style={{ color: "var(--accent-color)", fontWeight: 600 }}>
-              {"//"}
-            </span>{" "}
-            {founder.funFact}
-          </span>
-        </div>
-
         {/* Stats */}
         <StatRow stats={founder.stats} />
 
@@ -265,12 +228,12 @@ export default function AboutSection() {
         transition={{ duration: 0.4 }}
         className="mb-10"
       >
-        <p className="section-label">The Founder</p>
+        <p className="section-label">About</p>
         <h2
           className="text-[24px] md:text-[32px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          Engineering automated B2B outbound engines.
+          Who runs your outbound
         </h2>
       </motion.div>
 
@@ -294,7 +257,7 @@ export default function AboutSection() {
           className="section-label"
           style={{ marginBottom: 0, whiteSpace: "nowrap" }}
         >
-          Built with
+          Tools I use
         </p>
         <div className="flex flex-wrap gap-1.5">
           {ABOUT.builtWith.map((tech) => (

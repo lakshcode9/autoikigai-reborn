@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BOOKING_URL, PLAYBOOKS_URL, KEY_METRICS } from "@/lib/content";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { BOOKING_URL, KEY_METRICS, GUARANTEE_TEXT } from "@/lib/content";
+import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -27,7 +27,7 @@ export default function HeroSection() {
                 className="text-xs md:text-sm font-medium"
                 style={{ color: "var(--text-muted)" }}
               >
-                For <span className="text-accent font-semibold">SBIR/STTR Phase I Awardees &amp; Deep-Tech Founders</span>
+                For <span className="text-accent font-semibold">B2B founders selling $5k+ deals</span>
               </span>
             </div>
           </motion.div>
@@ -40,7 +40,7 @@ export default function HeroSection() {
             className="text-[clamp(2.25rem,6vw,3.5rem)] md:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-0.04em] font-medium mb-6 max-w-4xl"
             style={{ color: "var(--text-primary)" }}
           >
-            Secure Your Phase II LOIs Without Pulling Your R&amp;D Team Into Cold Sales.
+            Qualified sales meetings on your calendar. Without hiring SDRs.
           </motion.h1>
 
           {/* Subheadline */}
@@ -51,7 +51,7 @@ export default function HeroSection() {
             className="text-base md:text-[1.125rem] max-w-2xl mb-8 leading-[1.7]"
             style={{ color: "var(--text-muted)" }}
           >
-            We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry executives in 30 days.
+            Done-for-you cold email and LinkedIn outbound for B2B SaaS, agencies, consultancies, and IT services firms.
           </motion.p>
 
           {/* CTAs */}
@@ -59,24 +59,24 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-3 mb-12 md:mb-16"
+            className="flex flex-col gap-3 mb-12 md:mb-16"
           >
-            <a
-              href={BOOKING_URL}
-              className="btn-primary inline-flex items-center gap-2"
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={BOOKING_URL}
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                Apply to work with us
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+            {/* Guarantee line */}
+            <p
+              className="text-sm"
+              style={{ color: "var(--text-muted)" }}
             >
-              Book a 15-Min Strategy Call
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href={PLAYBOOKS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary inline-flex items-center gap-2 bg-white"
-            >
-              <BookOpen className="w-4 h-4" />
-              View Free Playbooks
-            </a>
+              {GUARANTEE_TEXT}
+            </p>
           </motion.div>
 
           {/* Key Metrics Banner */}

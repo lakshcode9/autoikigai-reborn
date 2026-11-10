@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BOOKING_URL } from "@/lib/content";
+import { BOOKING_URL, GUARANTEE_TEXT } from "@/lib/content";
 import { ArrowRight } from "lucide-react";
 
 export default function CTASection() {
@@ -15,49 +15,39 @@ export default function CTASection() {
         className="max-w-2xl mx-auto text-center"
       >
         <p className="section-label" style={{ marginBottom: "16px" }}>
-          Deploy Your Engine
+          Get Started
         </p>
 
         <h2
           className="text-[28px] md:text-[40px] leading-[1.1] tracking-[-0.03em] font-medium mb-4"
           style={{ color: "var(--text-primary)" }}
         >
-          Ready to accelerate your Phase II commercialization metrics?
+          Stop waiting for leads. Start booking meetings.
         </h2>
 
         <p
           className="text-[1.125rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.02em] mb-8"
           style={{ color: "var(--text-muted)" }}
         >
-          Let’s deploy your outbound engine before your Phase I timeline runs out.
+          Apply for a pilot and see qualified prospects on your calendar within weeks.
         </p>
 
-        {/* Description */}
-        <div className="space-y-4 mb-8 text-left bg-elevated p-6 border border-dashed border-default">
-          <p
-            className="text-[0.875rem] leading-[1.7]"
-            style={{ color: "var(--text-muted)" }}
-          >
-            In 15 minutes, we analyze your target commercial vertical, Phase I timeline, and executive buyer persona to map out a turnkey 30-day outbound campaign.
-          </p>
-          <p
-            className="text-[0.875rem] leading-[1.7]"
-            style={{ color: "var(--text-muted)" }}
-          >
-            No cold calling for your R&amp;D leads. 100% automated domain warmups, contact enrichment, tech-to-exec copywriting, and direct calendar bookings.
-          </p>
-        </div>
-
         {/* CTA */}
-        <div>
+        <div className="flex flex-col items-center gap-3">
           <a
             href={BOOKING_URL}
             className="btn-primary inline-flex items-center gap-2"
             style={{ padding: "14px 28px", fontSize: "0.875rem" }}
           >
-            Book a 15-Min Strategy Call
+            Apply to work with us
             <ArrowRight className="w-4 h-4" />
           </a>
+          <p
+            className="text-sm"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {GUARANTEE_TEXT}
+          </p>
         </div>
       </motion.div>
     </section>

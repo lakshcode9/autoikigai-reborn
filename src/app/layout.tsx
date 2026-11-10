@@ -16,10 +16,9 @@ const ibmPlex = IBM_Plex_Sans({
 
 const siteUrl = "https://autoikigai.space";
 const siteName = "Autoikigai";
-const siteTitle =
-  "Autoikigai — Automated B2B Outbound Engines for SBIR/STTR Phase I Awardees & Deep-Tech Founders";
+const siteTitle = "Autoikigai - Done-for-you B2B lead generation";
 const siteDescription =
-  "We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry executives in 30 days to secure your Phase II LOIs.";
+  "Qualified sales meetings on your calendar without hiring SDRs. Done-for-you cold email and LinkedIn outbound. Pay per meeting.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,20 +28,18 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   keywords: [
-    "SBIR Phase II LOI",
-    "STTR Phase I commercialization",
-    "deep-tech B2B outbound engine",
-    "automated customer discovery",
-    "Phase II grant commercial traction",
-    "deep tech enterprise LOI",
-    "B2B cold outbound for scientists",
-    "technical to executive copywriting",
-    "outbound infrastructure secondary domains",
-    "SPF DKIM DMARC warmup pipeline",
-    "automated calendar routing discovery calls",
-    "deep tech commercialization",
-    "SBIR grant letters of intent",
-    "customer discovery interviews",
+    "B2B lead generation",
+    "cold email agency",
+    "outbound sales",
+    "sales meetings",
+    "SDR alternative",
+    "LinkedIn outbound",
+    "lead generation agency",
+    "B2B SaaS leads",
+    "done for you outbound",
+    "cold email infrastructure",
+    "pay per meeting",
+    "qualified meetings",
   ],
   authors: [{ name: "Autoikigai", url: siteUrl }],
   creator: "Autoikigai",
@@ -65,7 +62,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Autoikigai — Automated Outbound Engines for SBIR/STTR & Deep-Tech Founders",
+        alt: "Autoikigai - Done-for-you B2B lead generation",
         type: "image/png",
       },
     ],
@@ -100,7 +97,7 @@ const organizationSchema = {
   name: "Autoikigai",
   url: siteUrl,
   logo: `${siteUrl}/favicon.ico`,
-  description: siteDescription,
+  description: "Done-for-you B2B lead generation agency. We book qualified sales meetings on your calendar through cold email and LinkedIn outbound.",
   foundingDate: "2026",
   sameAs: [
     "https://www.linkedin.com/company/autoikigai",
@@ -120,15 +117,15 @@ const organizationSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Automated B2B Outbound Engines for SBIR/STTR Phase I Awardees",
+  name: "B2B Lead Generation",
   provider: {
     "@type": "Organization",
     name: "Autoikigai",
     url: siteUrl,
   },
   description:
-    "We build automated B2B outbound engines that target, engage, and book 15–30 enterprise customer discovery interviews with industry executives in 30 days. Designed for SBIR/STTR Phase I Awardees & Deep-Tech Founders seeking Phase II LOIs.",
-  serviceType: "B2B Outbound Engineering & Commercialization",
+    "Done-for-you cold email and LinkedIn outbound that books qualified sales meetings on your calendar. For B2B SaaS, agencies, consultancies, and IT services firms.",
+  serviceType: "B2B Lead Generation & Outbound Sales",
   areaServed: {
     "@type": "Country",
     name: "United States",

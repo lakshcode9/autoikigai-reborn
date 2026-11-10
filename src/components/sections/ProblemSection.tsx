@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { PROBLEM_CARDS } from "@/lib/content";
-import { FileText, AlertTriangle, Clock } from "lucide-react";
+import { Users, DollarSign, AlertTriangle } from "lucide-react";
 
-const ICON_MAP: Record<string, typeof FileText> = {
-  FileText,
+const ICON_MAP: Record<string, typeof Users> = {
+  Users,
+  DollarSign,
   AlertTriangle,
-  Clock,
 };
 
 export default function ProblemSection() {
@@ -25,14 +25,14 @@ export default function ProblemSection() {
           className="text-[24px] md:text-[34px] leading-[1.1] tracking-[-0.03em] font-medium max-w-2xl"
           style={{ color: "var(--text-primary)" }}
         >
-          The Commercialization Bottleneck for Phase I Awardees
+          You close deals. You just need more at-bats.
         </h2>
       </motion.div>
 
       {/* 3 Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 grid-bordered">
         {PROBLEM_CARDS.map((card, i) => {
-          const Icon = ICON_MAP[card.icon] || FileText;
+          const Icon = ICON_MAP[card.icon] || Users;
 
           return (
             <motion.div

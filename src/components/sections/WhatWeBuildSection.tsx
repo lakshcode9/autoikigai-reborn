@@ -1,19 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { WHAT_WE_BUILD } from "@/lib/content";
-import { Search, Shield, FileCode, Calendar } from "lucide-react";
+import { HOW_IT_WORKS } from "@/lib/content";
+import { Search, Target, Shield, FileText, Calendar } from "lucide-react";
 
 const ICON_MAP: Record<string, typeof Search> = {
   Search,
+  Target,
   Shield,
-  FileCode,
+  FileText,
   Calendar,
 };
 
 export default function WhatWeBuildSection() {
   return (
-    <section id="what-we-build" className="section">
+    <section id="how-it-works" className="section">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -22,18 +23,18 @@ export default function WhatWeBuildSection() {
         transition={{ duration: 0.4 }}
         className="mb-12"
       >
-        <p className="section-label">What We Build</p>
+        <p className="section-label">How It Works</p>
         <h2
           className="text-[24px] md:text-[34px] leading-[1.1] tracking-[-0.03em] font-medium"
           style={{ color: "var(--text-primary)" }}
         >
-          Automated B2B Outbound Engines
+          From zero to booked meetings in 5 steps
         </h2>
       </motion.div>
 
-      {/* 4 Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
-        {WHAT_WE_BUILD.map((item, i) => {
+      {/* 5 Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0">
+        {HOW_IT_WORKS.map((item, i) => {
           const Icon = ICON_MAP[item.icon] || Search;
 
           return (
@@ -68,7 +69,6 @@ export default function WhatWeBuildSection() {
                 >
                   Step {item.step}
                 </span>
-                <span className="code-tag">Module {item.step}</span>
               </div>
 
               {/* Visual center: large icon + step background number */}

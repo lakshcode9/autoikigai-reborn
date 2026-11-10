@@ -1,38 +1,44 @@
 # Autoikigai
 
 ## About
-Autoikigai builds AI-native systems for independent insurance agencies. We automate the repetitive operational work that keeps agency owners and CSRs stuck: renewal follow-ups, lapse prevention, certificate issuance, endorsement processing, new business intake, cross-sell detection, and claims follow-up.
+Autoikigai is a done-for-you B2B lead generation agency. We build and run outbound systems (cold email and LinkedIn) that put qualified sales meetings on our clients' calendars. Clients do not hire SDRs, buy tools, or learn deliverability — we handle all of it.
 
 ## What We Do
-- Agency AI Audit ($5,000): Complete audit of agency workflows, AMS integrations, and automation opportunities. Delivered as a blueprint with ROI projections.
-- AI-Native System Build & Maintenance ($2,000-$5,000/month): Ongoing deployment and maintenance of AI-native systems that handle agency operations 24/7.
-
-## AMS Integrations
-We integrate with: Applied Epic, AMS360 (Vertafore), HawkSoft, EZLynx, QQCatalyst, comparative raters, and carrier portals. If your AMS has an API or supports CSV exports, we can work with it.
+We run the full outbound process:
+- Target list building and enrichment
+- Sending domain setup with SPF/DKIM/DMARC
+- Inbox warmup (your main domain is never at risk)
+- Cold email and LinkedIn sequence writing
+- A/B testing and optimization
+- Reply management within hours
+- Lead qualification
+- Calendar booking with qualified prospects
 
 ## Who We Work With
-Independent insurance agencies writing $1M-$10M in premium. Agencies with 3-30 employees where CSRs are drowning in repetitive tasks and retention rates are under 92%.
+Founders of B2B companies with 5-50 employees who sell a service or software worth at least $5,000 per customer per year:
+- B2B SaaS companies
+- Agencies
+- Consultancies
+- IT services firms
 
-## AI-Native Capabilities
-- Renewal Automation: Automated 60/45/30/15-day renewal sequences via email, SMS, and phone task creation in your AMS
-- Lapse Prevention: Real-time monitoring of payment status and cancellation notices with automated outreach
-- CSR Task Automation: Certificate issuance, endorsement processing, policy change requests, ID card generation
-- New Business Intake: Application processing, quote comparison, submission to carriers, follow-up sequences
-- Cross-Sell Detection: Policy gap analysis across book of business with automated recommendation campaigns
-- Claims Follow-Up: Status tracking, adjuster communication, client updates, documentation reminders
-- AMS Updates: Activity logging, suspense management, data entry, attachment filing
-- Client Communication: Personalized email, SMS, and letter generation for any touchpoint
+They close deals well once on a call. Their problem is not enough calls.
 
-## Results
-- Renewal touch rates: from under 40% to over 90% in the first month
-- CSR time freed up within the first week
-- First AI-native workflow live within 2-3 weeks
-- Complete E&O audit trail on every automated touchpoint
+## How It Works
+1. Pipeline Audit: We review your current offer, buyers, and sales process
+2. ICP & Offer: We build your target list and sharpen your offer
+3. Infrastructure: Separate sending domains, proper DNS authentication, warmup
+4. Messaging: We write the sequences and A/B test them
+5. Launch & Booking: Replies handled within hours, qualified prospects booked onto your calendar
+
+## Timeline
+- First emails out in 14 days
+- Most clients see first qualified meetings within 3-4 weeks
 
 ## Pricing
-- Agency AI Audit: starts at $5,000 (one-time)
-- AI-Native System Maintenance: $2,000-$5,000/month (ongoing)
+Custom pricing based on your goals, determined after a discovery call. Pay-per-meeting model available. Monthly retainer options available after pilot.
+
+Qualified meeting = A decision-maker at a company matching your agreed ICP who shows up to the call.
 
 ## Contact
 Website: https://autoikigai.space
-Resources: https://resources.autoikigai.space
+Apply: https://autoikigai.space/book-a-call

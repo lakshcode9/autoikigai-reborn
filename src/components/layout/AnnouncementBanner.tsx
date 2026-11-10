@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { X } from "lucide-react";
-import { PLAYBOOKS_URL } from "@/lib/content";
+// Hidden for now - re-enable when we have resources for the new positioning
+// import { useState } from "react";
+// import { X } from "lucide-react";
+// import { PLAYBOOKS_URL } from "@/lib/content";
 
 export function AnnouncementBanner() {
+  // Hidden until we have B2B lead gen resources
+  return null;
+
+  // Uncomment below to re-enable the banner
+  /*
   const [visible, setVisible] = useState(true);
 
   if (!visible) return null;
@@ -26,8 +32,8 @@ export function AnnouncementBanner() {
         className="hover:underline underline-offset-2"
         style={{ color: "#fff" }}
       >
-        Free Playbooks for SBIR/STTR Phase I Awardees &amp; Deep-Tech Founders. Secure Phase II LOIs faster.{" "}
-        <span className="font-medium">View Playbooks &rarr;</span>
+        Free resources for B2B founders.{" "}
+        <span className="font-medium">View Resources &rarr;</span>
       </a>
       <button
         onClick={() => setVisible(false)}
@@ -38,4 +44,5 @@ export function AnnouncementBanner() {
       </button>
     </div>
   );
+  */
 }
