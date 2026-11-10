@@ -49,61 +49,38 @@ export default function PricingSection() {
             className="text-[20px] md:text-[24px] font-medium leading-tight mb-2"
             style={{ color: "var(--text-primary)" }}
           >
-            Setup fee + pay per meeting
+            Pay per qualified meeting
           </h3>
           <p
             className="text-[0.875rem]"
             style={{ color: "var(--text-muted)" }}
           >
-            One-time setup to build your outbound system. Then pay only when qualified meetings land on your calendar.
+            You pay when qualified meetings land on your calendar. No meetings, no bill.
           </p>
         </div>
 
         {/* Body */}
         <div className="px-6 py-6">
-          {/* How it works */}
-          <div className="space-y-4 mb-6">
-            <div
-              className="p-4"
-              style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-default)",
-              }}
+          {/* Qualified meeting definition */}
+          <div
+            className="p-4 mb-6"
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-default)",
+            }}
+          >
+            <p
+              className="text-[0.75rem] font-medium uppercase tracking-wide mb-2"
+              style={{ color: "var(--text-muted)" }}
             >
-              <p
-                className="text-[0.75rem] font-medium uppercase tracking-wide mb-2"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Setup fee (one-time)
-              </p>
-              <p
-                className="text-[0.875rem]"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Covers ICP research, target list building, domain setup, warmup, and sequence writing. Your outbound system, ready to launch.
-              </p>
-            </div>
-
-            <div
-              className="p-4"
-              style={{
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-default)",
-              }}
+              Qualified meeting =
+            </p>
+            <p
+              className="text-[0.875rem]"
+              style={{ color: "var(--text-secondary)" }}
             >
-              <p
-                className="text-[0.75rem] font-medium uppercase tracking-wide mb-2"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Per qualified meeting
-              </p>
-              <p
-                className="text-[0.875rem]"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                You pay when a decision-maker at a company matching your ICP shows up to a call. No-shows and bad fits don't count.
-              </p>
-            </div>
+              A decision-maker at a company matching your ICP who shows up to the call. No-shows and bad fits don't count.
+            </p>
           </div>
 
           {/* What's included */}
@@ -160,7 +137,7 @@ export default function PricingSection() {
             className="text-[0.75rem] text-center mt-4"
             style={{ color: "var(--text-muted)" }}
           >
-            We'll discuss exact pricing on the call based on your ICP and volume.
+            We'll discuss pricing on the call based on your ICP and goals.
           </p>
         </div>
       </motion.div>

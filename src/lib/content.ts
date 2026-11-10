@@ -116,7 +116,7 @@ export const WHY_AUTOIKIGAI: WhyPillar[] = [
   {
     icon: "ShieldCheck",
     title: "Pay for Results",
-    description: "Setup fee to build your system, then you only pay when qualified meetings hit your calendar.",
+    description: "You only pay when qualified meetings hit your calendar. No meetings, no bill.",
   },
 ];
 
@@ -162,7 +162,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
   {
     question: "What if no meetings come in?",
-    answer: "After setup, you only pay for meetings that show up. No meetings, no per-meeting fee. We're incentivized to make it work.",
+    answer: "You only pay for meetings that show up. No meetings, no bill. We're incentivized to make it work.",
   },
   {
     question: "Do you lock me into a contract?",
@@ -216,4 +216,4 @@ export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";
 
 // Risk reversal text - used in Hero and CTA for consistency
-export const GUARANTEE_TEXT = "Setup fee + pay per meeting. No meetings, no per-meeting fee.";
+export const GUARANTEE_TEXT = "Pay per meeting. No meetings, no bill.";

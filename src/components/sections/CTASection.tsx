@@ -29,7 +29,7 @@ export default function CTASection() {
           className="text-[1.125rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.02em] mb-8"
           style={{ color: "var(--text-muted)" }}
         >
-          Join the founding client pilot. Setup fee to build your system, then pay per meeting.
+          Join the founding client pilot. Pay per meeting. No meetings, no bill.
         </p>
 
         {/* CTA */}
