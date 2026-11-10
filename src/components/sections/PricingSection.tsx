@@ -14,16 +14,16 @@ export default function PricingSection() {
         transition={{ duration: 0.4 }}
         className="mb-12"
       >
-        <p className="section-label">Pricing</p>
+        <p className="section-label">Get Started</p>
         <h2
           className="text-[24px] md:text-[34px] leading-[1.1] tracking-[-0.03em] font-medium max-w-2xl"
           style={{ color: "var(--text-primary)" }}
         >
-          Custom pricing based on your goals
+          What you get
         </h2>
       </motion.div>
 
-      {/* Pricing Card */}
+      {/* Card */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,12 +42,12 @@ export default function PricingSection() {
             background: "var(--bg-elevated)",
           }}
         >
-          <span className="code-tag mb-2 inline-block">Founding Client Pilot</span>
+          <span className="code-tag mb-2 inline-block">Done-for-you outbound</span>
           <h3
             className="text-[20px] md:text-[24px] font-medium leading-tight"
             style={{ color: "var(--text-primary)" }}
           >
-            Pay-per-meeting model
+            Qualified meetings on your calendar
           </h3>
         </div>
 
@@ -57,7 +57,7 @@ export default function PricingSection() {
             className="text-[0.9375rem] leading-[1.7] mb-6"
             style={{ color: "var(--text-muted)" }}
           >
-            Pricing is determined after a discovery call where we review your offer, ICP, and sales process. We structure it so you only pay for results.
+            We build and run your entire outbound system. You focus on closing deals.
           </p>
 
           {/* What's included */}
@@ -67,7 +67,7 @@ export default function PricingSection() {
               "Sending domain setup and warmup",
               "Cold email and LinkedIn sequences",
               "Reply management and qualification",
-              "Calendar booking with qualified prospects",
+              "Calendar booking with decision-makers",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div
@@ -93,28 +93,6 @@ export default function PricingSection() {
             ))}
           </div>
 
-          {/* Qualified meeting definition */}
-          <div
-            className="px-4 py-3 mb-6"
-            style={{
-              background: "var(--bg-surface)",
-              border: "1px solid var(--border-default)",
-            }}
-          >
-            <p
-              className="text-[0.75rem] font-medium mb-1"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Qualified meeting =
-            </p>
-            <p
-              className="text-[0.8125rem]"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              A decision-maker at a company matching your agreed ICP who shows up to the call.
-            </p>
-          </div>
-
           {/* CTA */}
           <a
             href={BOOKING_URL}
@@ -129,7 +107,7 @@ export default function PricingSection() {
             className="text-[0.75rem] text-center mt-4"
             style={{ color: "var(--text-muted)" }}
           >
-            Limited availability. Monthly retainer options available after pilot.
+            Limited spots. We work with a small number of clients at a time.
           </p>
         </div>
       </motion.div>
