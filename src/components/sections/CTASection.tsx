@@ -29,7 +29,7 @@ export default function CTASection() {
           className="text-[1.125rem] md:text-[1.25rem] leading-[1.5] tracking-[-0.02em] mb-8"
           style={{ color: "var(--text-muted)" }}
         >
-          Apply for a pilot and see qualified prospects on your calendar within weeks.
+          Join the founding client pilot. Setup fee to build your system, then pay per meeting.
         </p>
 
         {/* CTA */}
@@ -39,7 +39,7 @@ export default function CTASection() {
             className="btn-primary inline-flex items-center gap-2"
             style={{ padding: "14px 28px", fontSize: "0.875rem" }}
           >
-            Apply to work with us
+            Apply for the pilot
             <ArrowRight className="w-4 h-4" />
           </a>
           <p

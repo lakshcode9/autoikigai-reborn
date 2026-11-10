@@ -115,8 +115,8 @@ export const WHY_AUTOIKIGAI: WhyPillar[] = [
   },
   {
     icon: "ShieldCheck",
-    title: "Done For You",
-    description: "We handle list building, infrastructure, copywriting, and replies. You just show up to the meetings.",
+    title: "Pay for Results",
+    description: "Setup fee to build your system, then you only pay when qualified meetings hit your calendar.",
   },
 ];
 
@@ -161,8 +161,8 @@ export const FAQ_ITEMS: FAQItem[] = [
     answer: "First emails go out within 14 days of signing. Most clients see their first qualified meetings within 3-4 weeks. Results depend on your offer, ICP, and market.",
   },
   {
-    question: "What if it doesn't work?",
-    answer: "We test and iterate until it does. Outbound is a numbers game with the right targeting and messaging. We'll find what works for your market.",
+    question: "What if no meetings come in?",
+    answer: "After setup, you only pay for meetings that show up. No meetings, no per-meeting fee. We're incentivized to make it work.",
   },
   {
     question: "Do you lock me into a contract?",
@@ -216,4 +216,4 @@ export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";
 
 // Risk reversal text - used in Hero and CTA for consistency
-export const GUARANTEE_TEXT = "We handle everything. You just close the deals.";
+export const GUARANTEE_TEXT = "Setup fee + pay per meeting. No meetings, no per-meeting fee.";
