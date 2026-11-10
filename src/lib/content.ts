@@ -210,7 +210,7 @@ export const ABOUT = {
   builtWith: ["Clay", "Instantly", "Smartlead", "Apollo", "n8n"],
 };
 
-export const CAL_LINK = "laksh-autoikigai/autoikigai-application";
+export const CAL_LINK = "ラクシュ-9q0fjl/autoikigai-discovery";
 export const CAL_URL = `https://cal.com/${CAL_LINK}`;
 export const PLAYBOOKS_URL = "https://resources.autoikigai.space";
 export const BOOKING_URL = "/book-a-call";
